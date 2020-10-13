@@ -1,24 +1,9 @@
+/* color palette: https://coolors.co/449fee-0e62ab-073763-052542-4b2e83-e8e3d2-b7a57a-85754d */
+
 body {
   background:  #073763;
   color: white;
 }
-
-/* NAVBAR */
-/* .nav {
-  color: white;
-}
-/* change the link color */
-.navbar-custom .navbar-nav .nav-link {
-  color: #073763;
-  font-family: 'Bungee', cursive;
-
-}
-/* change the color of active and hovered links 
-.navbar-custom .nav-item.active .nav-link,
-.navbar-custom .nav-item:hover .nav-link {
-  color: #073763;
-  text-decoration: underline solid #073763;
-} */
 
 /* HEADER */
 #s-header-img {
@@ -42,12 +27,8 @@ body {
 
 .navbar .nav-link:hover,
 .navbar .nav-link:focus {
-  color: #0E62AB;
+  color: #449FEE;
   text-decoration: none;
-}
-
-.navbar .navbar-brand {
-  color: #fff;
 }
 
 /* Change navbar styling on scroll 
@@ -57,17 +38,17 @@ body {
 }
 
 .navbar.active .nav-link {
-  color: #555;
+  color: #073763;
 }
 
 .navbar.active .nav-link:hover,
 .navbar.active .nav-link:focus {
-  color: #555;
+  color: #85754D;
   text-decoration: none;
 }
 
 .navbar.active .navbar-brand {
-  color: #555;
+  /* if wanted to change to different logo on nav bar on active */
 }
 
 /* navbar hamburger menu */
@@ -91,6 +72,12 @@ body {
       color:  #073763;
       background-color: white;
       text-align: center;
+  }
+
+  .navbar .nav-link:hover,
+  .navbar .nav-link:focus {
+    color: #85754D;
+    text-decoration: none;
   }
 }
 
