@@ -101,6 +101,9 @@ h1, h2, h3, h4, .navbar .nav-link{
   .navbar {
     transition: none;
   }
+  .navbar.active {
+    transition: all 0.4s;
+  }
   .navbar .navbar-brand, .navbar .nav-link {
       color:  #073763;
       background-color: white;
