@@ -2,8 +2,8 @@
 
 /* CONTENT */
 body {
-  background-color:  #073763;
-  color: white;
+  background-color:  white;
+  color: #073763;
 }
 
 h1, h2, h3, h4, .navbar .nav-link{
@@ -117,10 +117,43 @@ h1, h2, h3, h4, .navbar .nav-link{
 #welcome {
   background:  #073763;
   color: white;
-  width: 80%;
   text-align: center;
+}
+
+#welcome > article {
+  width: 80%;
   margin: auto;
 }
 
+/* PAGE PREVIEWS section */
+#pgpreview > div > div {
+}
 
+#pgpreview a {
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  background-color: #073763;
+  margin: auto;
+  color: white;
+}
+footer li {
+  list-style-type: none;
+}
+
+.social-logo {
+  width: 3em;
+}
+
+#footer-social-media {
+  display: flex;
+  justify-content: center;
+}
+
+#footer-social-media li {
+  align-items: center;
+  padding: 1.5em;
+}
 
