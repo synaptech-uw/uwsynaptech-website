@@ -50,7 +50,7 @@ h1, h2, h3, h4, .navbar .nav-link{
   reference: https://bootstrapious.com/p/transparent-navbar
  */
 .navbar {
-  /* transition: all 0.4s; */
+  transition: all 0.4s;
 }
 
 .navbar .nav-link {
@@ -146,7 +146,6 @@ iframe {
 }
 
 /* Responsive iFrame */
-
 .responsive-iframe-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -164,7 +163,6 @@ iframe {
   width: 100%;
   height: 100%;
 }
-
 
 /* FOOTER */
 footer {
