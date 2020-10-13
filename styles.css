@@ -98,6 +98,9 @@ h1, h2, h3, h4, .navbar .nav-link{
 
 /* Change navbar styling on small viewports */
 @media (max-width: 991.98px) {
+  .navbar {
+    transition: none;
+  }
   .navbar .navbar-brand, .navbar .nav-link {
       color:  #073763;
       background-color: white;
