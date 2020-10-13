@@ -146,7 +146,7 @@ footer li {
 }
 
 .social-logo {
-  width: 3em;
+  width: 2em;
 }
 
 #footer-social-media {
@@ -156,6 +156,6 @@ footer li {
 
 #footer-social-media li {
   align-items: center;
-  padding: 1.5em;
+  padding: 1em;
 }
 
