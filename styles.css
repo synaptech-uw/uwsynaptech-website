@@ -54,7 +54,7 @@ h1, h2, h3, h4, .navbar .nav-link{
 }
 
 .navbar .nav-link {
-  color: #fff;
+  color: white;
   font-family: 'Bungee', cursive;
 }
 
@@ -67,7 +67,7 @@ h1, h2, h3, h4, .navbar .nav-link{
 /* Change navbar styling on scroll 
   controlled in js file*/
 .navbar.active {
-  background: #fff;
+  background: white;
 }
 
 .navbar.active .nav-link {
@@ -112,18 +112,23 @@ h1, h2, h3, h4, .navbar .nav-link{
 }
 
 /* toggled when menu is opened */
-/* .menu-displayed {
+.menu-displayed {
   background-color: white;
-  display: block;
-} */
+}
 
 /* hide logo when first */
-.navbar .navbar-brand > img {
+/* .navbar .navbar-brand > img {
+  display: none;
+} */
+.hide-logo {
   display: none;
 }
-.navbar.active .navbar-brand > img {
+.display-logo {
   display: block;
 } 
+/* .navbar.active .navbar-brand > img {
+  display: block;
+}  */
 
 /* WELCOME section */
 #welcome {
