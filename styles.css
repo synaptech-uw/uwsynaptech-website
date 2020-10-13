@@ -1,0 +1,20 @@
+/* NAVBAR */
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: #073763;
+  font-family: 'Bungee', cursive;
+
+}
+/* change the color of active and hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #073763;
+  text-decoration: underline solid #073763;
+}
+
+/* HEADER */
+#s-header-img {
+  width: 100%;
+}
+
+/* CONTENT */
