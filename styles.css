@@ -170,6 +170,9 @@ footer {
   margin: auto;
   color: white;
 }
+footer ul {
+  padding-inline-start: unset;
+}
 footer li {
   list-style-type: none;
 }
