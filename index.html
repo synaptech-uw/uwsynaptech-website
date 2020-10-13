@@ -1,23 +1,65 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-custom sticky-top navbar-expand-lg navbar-light bg-white">
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <header class="header">
+    <!-- navbar reference: https://bootstrapious.com/p/transparent-navbar-->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+      <div class="container"> <a class="navbar-brand" href="#">
+          <img src="img/synaptech_logo_transparent.png" height=70 alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Resources</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Join</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <!-- Navbar -->
+  <!-- <nav class="navbar navbar-custom sticky-top navbar-expand-lg navbar-light bg-white">
       <a class="navbar-brand" href="#">
         <img src="img/synaptech_logo_transparent.png" height=70 alt="">
       </a>
@@ -49,44 +91,54 @@
           </li>
       </ul>
       </div>
-    </nav>
+    </nav> -->
 
-    <!-- header image -->
-    <header>
-      <img id="s-header-img" src="img/header_logo.png" alt="Synaptech logo with circuits around it">
-    </header>
-    <!-- Synaptech introduction -->
-    <section id="about">
-      <article>
-        <h2>About Us</h2>
-        <p>We're a neurotech RSO at UW. Synaptech is a club that looks to introduce
-          people of all disciplines into the field of neural engineering.
-          We do a lot of really cool projects ranging from hardware hacking
-          to developing software for neurotech hardware (and maybe even a bit of VR).
-          If you're looking for somewhere to work on personal projects,
-          this is the place! All experience levels are welcome.</p>
-      </article>
-    </section>
-    <!-- Links to other pages -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          One of three columns
-        </div>
-        <div class="col-sm-4">
-          One of three columns
-        </div>
-        <div class="col-sm-4">
-          One of three columns
-        </div>
+  <!-- header image -->
+  <header>
+    <img id="s-header-img" src="img/header_logo_dark.png" alt="Synaptech logo with circuits around it">
+  </header>
+  <!-- Synaptech introduction -->
+  <section id="about">
+    <article>
+      <h2>About Us</h2>
+      <p>We're a neurotech RSO at UW. Synaptech is a club that looks to introduce
+        people of all disciplines into the field of neural engineering.
+        We do a lot of really cool projects ranging from hardware hacking
+        to developing software for neurotech hardware (and maybe even a bit of VR).
+        If you're looking for somewhere to work on personal projects,
+        this is the place! All experience levels are welcome.</p>
+    </article>
+  </section>
+  <!-- Links to other pages -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        One of three columns
+      </div>
+      <div class="col-sm-4">
+        One of three columns
+      </div>
+      <div class="col-sm-4">
+        One of three columns
       </div>
     </div>
-    <!-- Footer -->
+  </div>
+  <!-- Footer -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  <div style="height:800px">content</div>
+
+  <!-- JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="scripts.js"></script>
+</body>
+
 </html>
