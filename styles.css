@@ -50,7 +50,7 @@ h1, h2, h3, h4, .navbar .nav-link{
   reference: https://bootstrapious.com/p/transparent-navbar
  */
 .navbar {
-  transition: all 0.4s;
+  /* transition: all 0.4s; */
 }
 
 .navbar .nav-link {
