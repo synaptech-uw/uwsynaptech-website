@@ -125,14 +125,6 @@ h1, h2, h3, h4, .navbar .nav-link{
   margin: auto;
 }
 
-/* PAGE PREVIEWS section */
-#pgpreview > div > div {
-}
-
-#pgpreview a {
-  text-decoration: none;
-}
-
 /* CALENDAR */
 /* TODO make responsive
 https://profromgo.com/blog/google-calendar-responsive/ */
