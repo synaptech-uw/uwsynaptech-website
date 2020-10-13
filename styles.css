@@ -19,6 +19,14 @@ body {
   right: 0;
   margin: 0 auto;
   width: 50%;
+
+  animation: fadein ease 4s;
+}
+
+/* make logo fade in */
+@keyframes fadein {
+  0% {opacity:0;}
+  100% {opacity:1;}
 }
 
 /* CONTENT */
