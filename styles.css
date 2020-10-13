@@ -12,11 +12,22 @@ h1, h2, h3, h4, .navbar .nav-link{
 }
 
 /* HEADER */
-#s-header-img {
+.s-header-img {
   width: 100%;
   position: relative;
 }
 
+#mobile-header-logo {
+  position: absolute;
+  top: 30%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 70%;
+
+  animation: fadein ease 4s;
+}
 #header-logo {
   position: absolute;
   top: 0;

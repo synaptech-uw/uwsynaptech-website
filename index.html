@@ -59,9 +59,25 @@
 
   <!-- header image -->
   <header>
-    <img id="s-header-img" src="img/background_without_logo.png" alt="Illlustration of blue circuits">
+    <!-- desktop -->
+    <div class="d-none d-sm-block">
+      <img class="s-header-img" class="d-none d-sm-block" src="img/background_without_logo.png"
+        alt="Illlustration of blue circuits">
+    </div>
+    <!-- mobile -->
+    <div class="d-sm-none">
+      <img class="s-header-img" class="d-sm-none" src="img/mobile_dark_website_background.png"
+        alt="Illlustration of blue circuits">
+    </div>
     <div>
-      <img id="header-logo" src="img/dark_synaptech_logo_transparent.png" alt="Synaptech logo">
+      <!-- desktop -->
+      <div class="d-none d-sm-block">
+        <img id="header-logo" src="img/dark_synaptech_logo_transparent.png" alt="Synaptech logo">
+      </div>
+      <!-- mobile -->
+      <div class="d-sm-none">
+        <img id="mobile-header-logo" src="img/dark_synaptech_logo_transparent.png" alt="Synaptech logo">
+      </div>
     </div>
   </header>
   <!-- Synaptech introduction -->
