@@ -112,10 +112,10 @@ h1, h2, h3, h4, .navbar .nav-link{
 }
 
 /* toggled when menu is opened */
-.menu-displayed {
+/* .menu-displayed {
   background-color: white;
   display: block;
-}
+} */
 
 /* hide logo when first */
 .navbar .navbar-brand > img {

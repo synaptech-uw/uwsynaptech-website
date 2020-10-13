@@ -13,8 +13,8 @@ $(function () {
 });
 
 /* make navbar expand w/styling even when transparent */
-$(".navbar-toggler").click(function () {
-  $("nav").toggleClass("menu-displayed");
-  /* show logo */
-  $('.navbar-brand > img').toggle(0);
-})
+// $(".navbar-toggler").click(function () {
+//   $("nav").toggleClass("menu-displayed");
+//   /* show logo */
+//   $('.navbar-brand > img').toggle(0);
+// })
