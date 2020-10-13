@@ -1,8 +1,14 @@
 /* color palette: https://coolors.co/449fee-0e62ab-073763-052542-4b2e83-e8e3d2-b7a57a-85754d */
 
+/* CONTENT */
 body {
-  background:  #073763;
+  background-color:  #073763;
   color: white;
+}
+
+h1, h2, h3, h4, .navbar .nav-link{
+  font-family: 'Bungee', cursive;
+  text-align: center;
 }
 
 /* HEADER */
@@ -105,7 +111,16 @@ body {
 }
 .navbar.active .navbar-brand > img {
   display: block;
-} */
+} 
+
+/* WELCOME section */
+#welcome {
+  background:  #073763;
+  color: white;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
 
 
 

@@ -4,7 +4,7 @@
 */
 $(function () {
   $(window).on('scroll', function () {
-      if ( $(window).scrollTop() > 10 ) {
+      if ( $(window).scrollTop() > 150 ) {
           $('.navbar').addClass('active');
       } else {
           $('.navbar').removeClass('active');
