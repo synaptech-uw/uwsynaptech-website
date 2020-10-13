@@ -133,6 +133,16 @@ h1, h2, h3, h4, .navbar .nav-link{
   text-decoration: none;
 }
 
+/* CALENDAR */
+/* TODO make responsive
+https://profromgo.com/blog/google-calendar-responsive/ */
+/* for google calendar */
+iframe {
+  display: block;
+  margin: auto;
+}
+
+
 /* FOOTER */
 footer {
   background-color: #073763;
