@@ -10,7 +10,7 @@ $(function () {
       $('.navbar .navbar-brand > img').addClass('display-logo');
     } else {
       $('.navbar').removeClass('active');
-      // if navbar is open
+      // if navbar hamburger dropdown is open
       if (!($(".navbar-collapse.show")[0])) {
         $('.navbar').removeClass('menu-displayed');
         $('.navbar .navbar-brand > img').removeClass('display-logo');
@@ -31,19 +31,4 @@ $(".navbar-toggler").click(function () {
     $('.navbar .navbar-brand > img').addClass('hide-logo');
     $('.navbar .navbar-brand > img').removeClass('display-logo');
   }
-  /* show logo */
-  // $('.navbar-brand > img').toggle(0);
-})
-
-
-// $(function () {
-//   $(window).on('scroll', function () {
-//     if ($(".navbar-collapse.show")[0]) {
-//       // Do something if class exists
-//       $("nav").toggleClass("menu-displayed");
-//       console.log("show");
-//     } else {
-//       // Do something if class does not exist
-//     }
-//   })
-// });
+});

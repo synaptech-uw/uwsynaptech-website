@@ -116,19 +116,14 @@ h1, h2, h3, h4, .navbar .nav-link{
   background-color: white;
 }
 
-/* hide logo when first */
-/* .navbar .navbar-brand > img {
-  display: none;
-} */
+/* hide/display logo
+  toggled in js file */
 .hide-logo {
   display: none;
 }
 .display-logo {
   display: block;
-} 
-/* .navbar.active .navbar-brand > img {
-  display: block;
-}  */
+}
 
 /* WELCOME section */
 #welcome {
