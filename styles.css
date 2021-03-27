@@ -67,11 +67,11 @@ h1, h2, h3, h4, .navbar .nav-link{
 /* Change navbar styling on scroll 
   controlled in js file*/
 .navbar.active {
-  background: white;
+  background: #073763;
 }
 
 .navbar.active .nav-link {
-  color: #073763;
+  color: white;
 }
 
 .navbar.active .nav-link:hover,
@@ -87,7 +87,7 @@ h1, h2, h3, h4, .navbar .nav-link{
 /* navbar hamburger menu */
 /* Set the border color */     
 .custom-toggler.navbar-toggler { 
-  border-color: white; 
+  border-color: white;
 } 
 /* Setting the stroke using rgb values (0, 128, 0) */ 
 .custom-toggler .navbar-toggler-icon { 
