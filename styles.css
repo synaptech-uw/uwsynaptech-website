@@ -17,6 +17,7 @@ h1, h2, h3, h4, .navbar .nav-link{
   position: relative;
 }
 
+
 #mobile-header-logo {
   position: absolute;
   top: 30%;
@@ -80,9 +81,6 @@ h1, h2, h3, h4, .navbar .nav-link{
   text-decoration: none;
 }
 
-.navbar.active .navbar-brand {
-  /* if wanted to change to different logo on nav bar on active */
-}
 
 /* navbar hamburger menu */
 /* Set the border color */     
@@ -197,3 +195,33 @@ footer li {
   padding: 1em;
 }
 
+/*This is for the about page*/
+.information{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5; 
+}
+
+#admin{
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap:wrap;
+}
+
+.profile-pic{
+  width:230px;
+  height:230px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.alignment{
+  padding: 0;
+  margin: 0;
+}
