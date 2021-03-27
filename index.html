@@ -1,92 +1,181 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-custom sticky-top navbar-expand-lg navbar-light bg-white">
-      <a class="navbar-brand" href="#">
-        <img src="img/synaptech_logo_transparent.png" height=70 alt="">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          
-        </ul>
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Resources</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Join</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-      </ul>
+  <!-- fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <title>Synaptech @ UW</title>
+</head>
+
+<body>
+  <header class="header">
+    <!-- navbar reference: https://bootstrapious.com/p/transparent-navbar-->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+      <div class="container"> <a class="navbar-brand" href="#">
+          <img class="hide-logo" src="img/synaptech_logo_transparent.png" height=70 alt="Synaptech Logo">
+        </a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+          </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show">
+              <a class="nav-link" href="about.html">Our Team</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+              <a class="nav-link" href="#resources">Resources</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+              <a class="nav-link" href="#calendar">Calendar</a>
+            </li>
+            <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
+  </header>
 
-    <!-- header image -->
-    <header>
-      <img id="s-header-img" src="img/header_logo.png" alt="Synaptech logo with circuits around it">
-    </header>
-    <!-- Synaptech introduction -->
-    <section id="about">
-      <article>
-        <h2>About Us</h2>
-        <p>We're a neurotech RSO at UW. Synaptech is a club that looks to introduce
-          people of all disciplines into the field of neural engineering.
-          We do a lot of really cool projects ranging from hardware hacking
-          to developing software for neurotech hardware (and maybe even a bit of VR).
-          If you're looking for somewhere to work on personal projects,
-          this is the place! All experience levels are welcome.</p>
-      </article>
-    </section>
-    <!-- Links to other pages -->
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          One of three columns
-        </div>
-        <div class="col-sm-4">
-          One of three columns
-        </div>
-        <div class="col-sm-4">
-          One of three columns
-        </div>
+  <!-- header image -->
+  <header>
+    <!-- desktop -->
+    <div class="d-none d-sm-block">
+      <img class="s-header-img" class="d-none d-sm-block" src="img/background_without_logo.png"
+        alt="Illlustration of blue circuits">
+    </div>
+    <!-- mobile -->
+    <div class="d-sm-none">
+      <img class="s-header-img" class="d-sm-none" src="img/mobile_dark_website_background.png"
+        alt="Illlustration of blue circuits">
+    </div>
+    <div>
+      <!-- desktop -->
+      <div class="d-none d-sm-block">
+        <img id="header-logo" src="img/dark_synaptech_logo_transparent.png" alt="Synaptech logo">
+      </div>
+      <!-- mobile -->
+      <div class="d-sm-none">
+        <img id="mobile-header-logo" src="img/dark_synaptech_logo_transparent.png" alt="Synaptech logo">
       </div>
     </div>
-    <!-- Footer -->
+  </header>
+  <!-- Synaptech introduction -->
+  <section id="welcome" class="container-fluid p-5">
+    <article>
+      <h2>Welcome to UW's Neurotech RSO</h2>
+      <p class="">We're a neurotech RSO at UW. Synaptech is a club that looks to introduce
+        people of all disciplines into the field of neural engineering.
+        We do a lot of really cool projects ranging from hardware hacking
+        to developing software for neurotech hardware (and maybe even a bit of VR).
+        If you're looking for somewhere to work on personal projects,
+        this is the place! All experience levels are welcome.</p>
+    </article>
+  </section>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
+  <!-- About -->
+  <section id="about" class="container p-5">
+    <h2>About</h2>
+  </section>
+  <!-- Projects -->
+  <section id="projects" class="container p-5">
+    <h2>Projects</h2>
+  </section>
+  <!-- Calendar -->
+  <section id="calendar" class="container p-5">
+    <h2>Calendar</h2>
+    <div class="responsive-iframe-container d-none d-sm-block">
+      <p>desktop</p>
+      <!-- month view for desktop -->
+      <iframe
+        src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=c3luYXB0ZWNodXdAZ21haWwuY29t&amp;color=%23039BE5&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1"
+        style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div class="responsive-iframe-container d-sm-none">
+      <p>phone</p>
+      <!-- agenda view for phone-->
+      <iframe
+        src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=c3luYXB0ZWNodXdAZ21haWwuY29t&amp;color=%23039BE5&amp;mode=AGENDA"
+        style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </section>
+  <!-- Resources -->
+  <section id="resources" class="container p-5">
+    <h2>Resources</h2>
+    <p>Working on club projects? Here are some links that will probably help out:</p>
+    <ul>
+      <li>Docs on <a href="https://github.com/synaptech-uw">Github</a>. We've written up some
+        tutorials to get you
+        started.</li>
+      <li>Our club <a href="https://drive.google.com/drive/folders/1gwPD_q4vCvAGEGNJr7iavUbZv3IUxi9U?usp=sharing">Google
+          Drive</a>.
+        If you're part of the club we'll approve your request to access. Here we have data
+        collected, some project code and documentation that hasn't found its way to Github.</li>
+      <li>A <a href="https://github.com/alexandrebarachant/muse-lsl">python library</a> for the
+        Muse brainwave headset.</li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="container-fluid py-5">
+    <h3>Contact Us!</h3>
+    <ul id="footer-social-media">
+      <!-- facebook logo is from https://iconmonstr.com/facebook-4-png/
+        License said it could be used without attribution. -->
+      <li><a href="https://www.facebook.com/uwsynaptech"><img class="social-logo" src="img/facebook_logo.png"
+            alt="Facebook logo"></a></li>
+      <!-- instagram logo is from https://iconmonstr.com/instagram-11-png/
+        License said it could be used without attribution. -->
+      <li><a href="https://www.instagram.com/uwsynaptech/"><img class="social-logo" src="img/instagram_logo.png"
+            alt="Instagram logo"></a></li>
+      <!-- discord logo is from https://iconmonstr.com/discord-1-png/
+        License said it could be used without attribution. -->
+      <li><a href="https://discord.gg/CwtEv37"><img class="social-logo" src="img/discord_logo.png"
+            alt="Discord logo"></a></li>
+      <!-- github logo is from https://iconmonstr.com/github-1-png/
+        License said it could be used without attribution. -->
+      <li><a href="https://github.com/synaptech-uw"><img class="social-logo" src="img/github_logo.png"
+            alt="Github logo"></a></li>
+      <!-- email logo is from https://iconmonstr.com/email-2-png/
+        License said it could be used without attribution. -->
+      <li><a href="mailto:synaptechuw@gmail.com"><img class="social-logo" src="img/email_logo.png"
+            alt="Github logo"></a></li>
+    </ul>
+  </footer>
+
+
+  <!-- JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="scripts.js"></script>
+</body>
+
 </html>
