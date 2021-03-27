@@ -3,7 +3,48 @@
 <head>
     <link href="styles.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
+<header class="header">
+  <!-- navbar reference: https://bootstrapious.com/p/transparent-navbar-->
+  <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container"> <a class="navbar-brand" href="#">
+        <img class="hide-logo" src="img/synaptech_logo_transparent.png" height=70 alt="Synaptech Logo">
+      </a>
+      <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="about.html">Our Team</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="#resources">Resources</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="#calendar">Calendar</a>
+          </li>
+          <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
 <body>         
     <table id= "admin" style = "width:80%;">
         <tr>
@@ -97,4 +138,30 @@
 
 </table>
 </body>
+<footer id="contact" class="container-fluid py-5">
+  <h3>Contact Us!</h3>
+  <ul id="footer-social-media">
+    <!-- facebook logo is from https://iconmonstr.com/facebook-4-png/
+      License said it could be used without attribution. -->
+    <li><a href="https://www.facebook.com/uwsynaptech"><img class="social-logo" src="img/facebook_logo.png"
+          alt="Facebook logo"></a></li>
+    <!-- instagram logo is from https://iconmonstr.com/instagram-11-png/
+      License said it could be used without attribution. -->
+    <li><a href="https://www.instagram.com/uwsynaptech/"><img class="social-logo" src="img/instagram_logo.png"
+          alt="Instagram logo"></a></li>
+    <!-- discord logo is from https://iconmonstr.com/discord-1-png/
+      License said it could be used without attribution. -->
+    <li><a href="https://discord.gg/CwtEv37"><img class="social-logo" src="img/discord_logo.png"
+          alt="Discord logo"></a></li>
+    <!-- github logo is from https://iconmonstr.com/github-1-png/
+      License said it could be used without attribution. -->
+    <li><a href="https://github.com/synaptech-uw"><img class="social-logo" src="img/github_logo.png"
+          alt="Github logo"></a></li>
+    <!-- email logo is from https://iconmonstr.com/email-2-png/
+      License said it could be used without attribution. -->
+    <li><a href="mailto:synaptechuw@gmail.com"><img class="social-logo" src="img/email_logo.png"
+          alt="Github logo"></a></li>
+  </ul>
+</footer>
+
 </html>
