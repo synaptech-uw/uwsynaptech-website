@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="452b2760-7611-4ac5-8009-3bebe0ea33d1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +43,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.google.cloudcode.ide_session_index" value="20210325_0000" />
+    <property name="com.google.cloudcode.ide_session_index" value="20210403_0001" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -79,6 +78,8 @@
       <workItem from="1616549024485" duration="166000" />
       <workItem from="1616549243277" duration="1114000" />
       <workItem from="1616689475817" duration="7942000" />
+      <workItem from="1617468402763" duration="28000" />
+      <workItem from="1617468436241" duration="72000" />
     </task>
     <task id="LOCAL-00001" summary="Projects Page Template">
       <created>1616819121329</created>
@@ -108,7 +109,14 @@
       <option name="project" value="LOCAL" />
       <updated>1616906709784</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Made changes">
+      <created>1617468422389</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617468422389</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +127,7 @@
     <MESSAGE value="Projects First Project Done" />
     <MESSAGE value="Added LinkedIn" />
     <MESSAGE value="Added Header and Footer to About" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Header and Footer to About" />
+    <MESSAGE value="Made changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made changes" />
   </component>
 </project>
