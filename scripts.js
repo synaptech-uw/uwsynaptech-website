@@ -3,7 +3,6 @@
   reference: https://bootstrapious.com/p/transparent-navbar
 */
 $(function () {
-  console.log(top.location.pathname);
   if (top.location.pathname == "/index.html" || top.location.pathname == "/") { // only do fancy scroll stuff on home page
     $(window).on('scroll', function () {
       if ($(window).scrollTop() > 150) {
