@@ -4,7 +4,7 @@
 */
 $(function () {
   console.log(top.location.pathname);
-  if (top.location.pathname == "/index.html") { // only do fancy scroll stuff on home page
+  if (top.location.pathname == "/index.html" || top.location.pathname == "/") { // only do fancy scroll stuff on home page
     $(window).on('scroll', function () {
       if ($(window).scrollTop() > 150) {
         $('.navbar').addClass('active');
