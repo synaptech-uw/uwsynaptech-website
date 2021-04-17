@@ -16,57 +16,59 @@
         <link rel="stylesheet" href="styles.css">
         <title>Synaptech @ UW</title>
     </head>
-
-    <!-- Synaptech introduction -->
-    <section id="welcome" class="container-fluid p-5">
-        <article>
-            <h2>Our Team</h2>
-            <p class="">Our team is made up of some very motivated individuals attending the University of Washington</p>
-        </article>
-    </section>
-
-    <header class="header">
-        <!-- navbar reference: https://bootstrapious.com/p/transparent-navbar-->
-        <nav class="navbar navbar-expand-lg fixed-top py-3">
-            <div class="container"> <a class="navbar-brand" href="#">
-                <img class="hide-logo" src="img/synaptechLogos/synaptech_logo_transparent.png" height=70 alt="Synaptech Logo">
-            </a>
-                <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="about.html">About</a>
-                        </li>
-                        <li class="nav-item"  data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="about.html">Our Team</a>
-                        </li>
-                        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="projects.html">Projects</a>
-                        </li>
-                        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="index.html#resources">Resources</a>
-                        </li>
-                        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="index.html#calendar">Calendar</a>
-                        </li>
-                        <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                            <a class="nav-link" href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
     <body>
+        <header class="header">
+            <!-- navbar reference: https://bootstrapious.com/p/transparent-navbar-->
+            <nav class="navbar navbar-expand-lg fixed-top py-3 active">
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img class="display-logo" src="img/synaptechLogos/cropped_dark_synaptech_logo_transparent.png"
+                            height="70" alt="Synaptech Logo">
+                    </a>
+                    <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                        </ul>
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item" data-toggle="collapse"
+                            data-target=".navbar-collapse.show">
+                            <a class="nav-link" href="about.html">Our Team</a>
+                            </li>
+                            <li class="nav-item" data-toggle="collapse"
+                                data-target=".navbar-collapse.show">
+                                <a class="nav-link" href="projects.html">Projects</a>
+                            </li>
+                            <li class="nav-item" data-toggle="collapse"
+                                data-target=".navbar-collapse.show">
+                                <a class="nav-link" href="index.html#resources">Resources</a>
+                            </li>
+                            <li class="nav-item" data-toggle="collapse"
+                                data-target=".navbar-collapse.show">
+                                <a class="nav-link" href="index.html#calendar">Calendar</a>
+                            </li>
+                            <li class="nav-item" data-toggle="collapse"
+                                data-target=".navbar-collapse.show">
+                                                                <a class="nav-link" href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <!-- Synaptech introduction -->
+        <section id="welcome" class="container-fluid p-5">
+            <article>
+                <h2>Our Team</h2>
+                <p class="">Our team is made up of some very motivated individuals attending the University of Washington</p>
+            </article>
+        </section>
         <table id="admin">
             <tr>
-              <th>
+                <th>
                   <!-- <img class = "profile-pic" style="align-items: center;"
                   src="img/profilePictures/DevyanshGupta.png" alt="profile picture of Devyansh
                   Gupta"> -->
@@ -194,6 +196,19 @@
                                                                 alt="LinkedIn logo"></a></li>
             </ul>
         </footer>
+
+            <!-- JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="scripts.js"></script>
 
     </body>
 </html>

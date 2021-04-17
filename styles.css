@@ -4,6 +4,11 @@
 body {
   background-color:  white;
   color: #073763;
+  padding-top: 112px;
+}
+
+.home-body {
+  padding-top: 0px;
 }
 
 h1, h2, h3, h4, .navbar .nav-link{
@@ -103,8 +108,6 @@ h1, h2, h3, h4, .navbar .nav-link{
     transition: all 0.4s;
   }
   .navbar .navbar-brand, .navbar .nav-link {
-      color:  #073763;
-      background-color: white;
       text-align: center;
   }
 
@@ -117,7 +120,8 @@ h1, h2, h3, h4, .navbar .nav-link{
 
 /* toggled when menu is opened */
 .menu-displayed {
-  background-color: white;
+  background-color: #073763;
+  color: white;
 }
 
 /* hide/display logo
