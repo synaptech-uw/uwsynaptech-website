@@ -133,43 +133,14 @@ h1, h2, h3, h4, .navbar .nav-link{
   display: block;
 }
 
-/* WELCOME section */
-#welcome {
-  background:  #073763;
-  color: white;
-  text-align: center;
+/* MAIN INFO */
+.main-info {
+  border: solid black;
 }
 
-#welcome > article {
-  width: 80%;
-  margin: auto;
-}
-
-/* CALENDAR */
-/* make responsive
-https://profromgo.com/blog/google-calendar-responsive/ */
-iframe {
-  display: block;
-  margin: auto;
-}
-
-/* Responsive iFrame */
-.responsive-iframe-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 30px;
-  height: 0;
-  overflow: hidden;
-}
-  
-.responsive-iframe-container iframe,
-.vresponsive-iframe-container object,
-.vresponsive-iframe-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.row {
+  border: solid green;
+  margin: 10px;
 }
 
 /* FOOTER */
