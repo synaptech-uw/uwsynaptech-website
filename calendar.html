@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <title>Synaptech @ UW</title>
+  </head>
+  <body>
+    <body>
+      <header class="header">
+          <!-- navbar reference: https://bootstrapious.com/p/transparent-navbar-->
+          <nav class="navbar navbar-expand-lg fixed-top py-3 active">
+              <div class="container">
+                  <a class="navbar-brand" href="index.html">
+                      <img class="display-logo" src="img/synaptechLogos/cropped_dark_synaptech_logo_transparent.png"
+                          height="70" alt="Synaptech Logo">
+                  </a>
+                  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+                      data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                      aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNav">
+                      <ul class="navbar-nav">
+                      </ul>
+                      <ul class="navbar-nav ml-auto">
+                          <li class="nav-item" data-toggle="collapse"
+                              data-target=".navbar-collapse.show">
+                              <a class="nav-link" href="about.html">Our Team</a>
+                          </li>
+                          <li class="nav-item" data-toggle="collapse"
+                              data-target=".navbar-collapse.show">
+                              <a class="nav-link" href="projects.html">Projects</a>
+                          </li>
+                          <li class="nav-item" data-toggle="collapse"
+                              data-target=".navbar-collapse.show">
+                              <a class="nav-link" href="resources.html">Resources</a>
+                          </li>
+                          <li class="nav-item" data-toggle="collapse"
+                              data-target=".navbar-collapse.show">
+                              <a class="nav-link" href="calendar.html">Calendar</a>
+                          </li>
+                          <li class="nav-item" data-toggle="collapse"
+                              data-target=".navbar-collapse.show">
+                              <a class="nav-link" href="#contact">Contact</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </nav>
+      </header>
+
+      <!-- Calendar -->
+      <section id="calendar" class="container p-5">
+        <h2>Calendar</h2>
+        <div class="responsive-iframe-container d-none d-sm-block">
+          <p>desktop</p>
+          <!-- month view for desktop -->
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=c3luYXB0ZWNodXdAZ21haWwuY29t&amp;color=%23039BE5&amp;showNav=1&amp;showDate=1&amp;showPrint=1&amp;showTabs=1&amp;showCalendars=1&amp;showTz=1"
+            style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <div class="responsive-iframe-container d-sm-none">
+          <p>phone</p>
+          <!-- agenda view for phone-->
+          <iframe
+            src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=c3luYXB0ZWNodXdAZ21haWwuY29t&amp;color=%23039BE5&amp;mode=AGENDA"
+            style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </section>
+  </body>
+
+</html>
