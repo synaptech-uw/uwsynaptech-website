@@ -20,7 +20,6 @@ $(function () {
       }
     });
   }
-  
 });
 
 /* make navbar expand w/styling even when transparent */
