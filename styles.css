@@ -142,7 +142,75 @@ h3 {
 
 /* MAIN INFO */
 .main-info {
-  border: solid black;
+  /* border: solid black; */
+}
+
+
+.row {
+  /* border: solid green; */
+  margin: 30px 20px 30px 20px;
+}
+
+/* Upoming Events */
+.event-specifics {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 10px 15px 10px;
+}
+
+.event-specifics p {
+  margin: 10px;
+}
+
+.event-details{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+}
+
+.event-details div {
+  height: 100%;
+  border: solid #073763 1px;
+}
+
+.month-day {
+  background-color: #073763;
+}
+
+.month-day p {
+  text-align: center;
+  color: white;
+}
+
+.day {
+  font-size: 35px;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sponsors */
+
+.sponsors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sponsor-image {
+  width: 300px;
+  margin: 20px;
+}
+
+.neurotech, .events {
+  /* border: solid blue; */
 }
 
 /* FOOTER */
