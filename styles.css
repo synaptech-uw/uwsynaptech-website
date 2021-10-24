@@ -140,19 +140,16 @@ h1, h2, h3, h4, .navbar .nav-link{
 
 .row {
   /* border: solid green; */
-  margin: 15px 10px 15px 10px;
+  margin: 30px 20px 30px 20px;
 }
 
-header div{
-  /* border: solid green; */
-  /* height: 100vh; */
-}
-
+/* Upoming Events */
 .event-specifics {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 15px 10px 15px 10px;
 }
 
 .event-specifics p {
@@ -164,7 +161,7 @@ header div{
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 450px;
+  width: 95%;
 }
 
 .event-details div {
@@ -188,6 +185,20 @@ header div{
 .events {
   display: flex;
   flex-direction: column;
+}
+
+/* Sponsors */
+
+.sponsors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sponsor-image {
+  width: 300px;
+  margin: 20px;
 }
 
 .neurotech, .events {
