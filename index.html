@@ -43,10 +43,10 @@
                 <a class="nav-link" href="projects.html">Projects</a>
               </li>
               <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" href="#resources">Resources</a>
+                <a class="nav-link" href="resources.html">Resources</a>
               </li>
               <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
-                <a class="nav-link" href="#calendar">Calendar</a>
+                <a class="nav-link" href="calendar.html">Calendar</a>
               </li>
               <li class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
                 <a class="nav-link" href="#contact">Contact</a>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </header>
-    
+
     <!-- Main Information -->
     <div class="main-info container-fluid">
         <div class="row">
@@ -137,13 +137,74 @@
             </div>
           </div>
         </div>
+
         <!-- HackJams -->
-        <div class="row">
-          <p>HackJams</p>
+        <div>
+          <h3>HackJams</h3>
+          <div class="col">
+            <!-- carousel reference: https://getbootstrap.com/docs/4.0/components/carousel/ -->
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1"></li>
+                <li data-target="#carousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active" class="row">
+                    <div class="row">
+                      <div class="col">
+                        <img class="d-block w-100" src="img/projectImages/arm_flex_demo.jpg" alt="First slide">
+                      </div>
+                      <div class="col">
+                        <h4>Project Name</h4>
+                        <p>A one sentence explanation of the project</p>
+                      </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row">
+                    <div class="col">
+                      <img class="d-block w-100" src="img/profilePictures/DevyanshGupta.png" alt="Second slide">
+                    </div>
+                    <div class="col">
+                      <h4>Project Name</h4>
+                      <p>A one sentence explanation of the project</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div class="row">
+                    <div class="col">
+                      <img class="d-block w-100" src="img/profilePictures/HritikArasu.png" alt="Third slide">
+                    </div>
+                    <div class="col">
+                      <h4>Project Name</h4>
+                      <p>A one sentence explanation of the project</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
         </div>
         <!-- Discord -->
-        <div class="row">
-          <p>Discord</p>
+        <div class="row" id="discord">
+          <div class="col">
+            <h3>Join Our Discord</h3>
+            <p>preliminary discord info</p>
+          </div>
+          <div class="col">
+            <img src="img/discordPlaceholder.png" alt="a picture from a neurotech x meeting,
+              showing multiple students around a table working together">
+          </div>
         </div>
         <!-- Sponsors -->
         <div class="row">

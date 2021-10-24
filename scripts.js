@@ -20,7 +20,6 @@ $(function () {
       }
     });
   }
-  
 });
 
 /* make navbar expand w/styling even when transparent */
@@ -36,3 +35,8 @@ $(".navbar-toggler").click(function () {
   //   $('.navbar .navbar-brand > img').removeClass('display-logo');
   // }
 });
+
+$('.carousel').carousel({
+  interval: 5000
+});
+
