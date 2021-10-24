@@ -13,7 +13,14 @@ body {
 
 h1, h2, h3, h4, .navbar .nav-link{
   font-family: 'Bungee', cursive;
+}
+
+h1, h2, h3, h4, .navbar .nav-link, #discord p {
   text-align: center;
+}
+
+h3 {
+  font-size: 35px;
 }
 
 /* HEADER */
@@ -70,7 +77,7 @@ h1, h2, h3, h4, .navbar .nav-link{
   text-decoration: none;
 }
 
-/* Change navbar styling on scroll 
+/* Change navbar styling on scroll
   controlled in js file*/
 .navbar.active {
   background: #073763;
@@ -88,15 +95,15 @@ h1, h2, h3, h4, .navbar .nav-link{
 
 
 /* navbar hamburger menu */
-/* Set the border color */     
-.custom-toggler.navbar-toggler { 
+/* Set the border color */
+.custom-toggler.navbar-toggler {
   border-color: white;
-} 
-/* Setting the stroke using rgb values (0, 128, 0) */ 
-.custom-toggler .navbar-toggler-icon { 
-  background-image: url( 
-"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(14, 98, 171, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E"); 
-} 
+}
+/* Setting the stroke using rgb values (0, 128, 0) */
+.custom-toggler .navbar-toggler-icon {
+  background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(14, 98, 171, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 
 
 /* Change navbar styling on small viewports */
@@ -138,11 +145,6 @@ h1, h2, h3, h4, .navbar .nav-link{
   border: solid black;
 }
 
-.row {
-  border: solid green;
-  margin: 10px;
-}
-
 /* FOOTER */
 footer {
   background-color: #073763;
@@ -178,7 +180,7 @@ footer li {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.5; 
+    line-height: 1.5;
 }
 
 #admin{
@@ -214,3 +216,21 @@ footer li {
 .quick-info {
   text-align: center;
 }
+
+.carousel-control-prev, .carousel-control-next {
+  background-color: gray;
+  opacity: 0.2;
+}
+
+.carousel-indicators li {
+  background-color: rgb(14 78 191);
+}
+
+#carousel img, #discord img {
+  height: 400px;
+}
+
+#discord {
+  padding-top: 50px;
+}
+
