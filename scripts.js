@@ -35,3 +35,8 @@ $(".navbar-toggler").click(function () {
   //   $('.navbar .navbar-brand > img').removeClass('display-logo');
   // }
 });
+
+$('.carousel').carousel({
+  interval: 5000
+});
+
