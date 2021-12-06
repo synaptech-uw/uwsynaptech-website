@@ -23,12 +23,15 @@ h3 {
   font-size: 35px;
 }
 
+h4 {
+  font-size: 30px;
+}
+
 /* HEADER */
 .s-header-img {
   width: 100%;
   position: relative;
 }
-
 
 #mobile-header-logo {
   position: absolute;
@@ -298,7 +301,24 @@ footer li {
   height: 400px;
 }
 
-#discord {
+.carousel-inner .col {
+  /* padding: 0; */
+  margin-top: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#hackjams {
   padding-top: 50px;
 }
 
+#hackjam-info {
+  margin-left: 50px;
+}
+
+#hackjams img {
+  height: 500px;
+  /* align-self: center; */
+  display: block;
+  margin:auto;
+}
