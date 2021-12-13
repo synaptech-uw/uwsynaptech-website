@@ -15,7 +15,7 @@ h1, h2, h3, h4, .navbar .nav-link{
   font-family: 'Bungee', cursive;
 }
 
-h1, h2, h3, h4, .navbar .nav-link, #discord p {
+h1, h2, h3, h4, .navbar .nav-link {
   text-align: center;
 }
 
@@ -143,12 +143,6 @@ h4 {
   display: block;
 }
 
-/* MAIN INFO */
-.main-info {
-  /* border: solid black; */
-}
-
-
 .row {
   /* border: solid green; */
   margin: 30px 20px 30px 20px;
@@ -178,6 +172,8 @@ h4 {
 .event-details div {
   height: 100%;
   border: solid #073763 1px;
+  border-radius: 20px;
+  margin-left: 10px;
 }
 
 .month-day {
@@ -212,8 +208,16 @@ h4 {
   margin: 20px;
 }
 
-.neurotech, .events {
-  /* border: solid blue; */
+.sponsor-image:hover {
+  filter: drop-shadow(10px 10px 5px rgb(190, 190, 190));
+}
+
+#sponsor-section {
+  margin-top: 20px;
+}
+
+#sponsor-section h3 {
+  margin-bottom: 0px;
 }
 
 /* FOOTER */
@@ -290,15 +294,16 @@ footer li {
 
 .carousel-control-prev, .carousel-control-next {
   background-color: gray;
-  opacity: 0.2;
+  opacity: 0.5;
 }
 
 .carousel-indicators li {
   background-color: rgb(14 78 191);
 }
 
-#carousel img, #discord img {
+#carousel img {
   height: 400px;
+  display: block;
 }
 
 .carousel-inner .col {
@@ -307,6 +312,27 @@ footer li {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+.carousel-control-prev, .carousel-control-next {
+  width: 4em;
+}
+
+.carousel {
+  padding-left: 3.5em;
+  padding-right: 3.5em;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .carousel-item img {
+  margin: auto;
+  align-self: center;
+} */
+
 
 #hackjams {
   padding-top: 50px;
@@ -321,4 +347,36 @@ footer li {
   /* align-self: center; */
   display: block;
   margin:auto;
+}
+
+#discord {
+  background-color: rgb(114, 137, 218);
+  margin: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+#discord a {
+  color: white;
+  align-items: center;
+}
+
+.project-container {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.project-row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#projects-page h2 {
+  margin-top: 2rem;
+}
+
+#projects-page {
+  margin-bottom: 2rem;
 }
