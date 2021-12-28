@@ -96,6 +96,14 @@ h4 {
   text-decoration: none;
 }
 
+.dropdown-menu {
+  background-color: rgba(14, 98, 171, 1);
+}
+
+.dropdown-item {
+  color: white;
+  font-size: 10px;
+}
 
 /* navbar hamburger menu */
 /* Set the border color */
@@ -292,6 +300,7 @@ footer li {
   text-align: center;
 }
 
+/* for the carousel/slideshow on index.html */
 .carousel-control-prev, .carousel-control-next {
   background-color: gray;
   opacity: 0.5;
@@ -328,27 +337,43 @@ footer li {
   align-items: center;
 }
 
+@media (max-width: 756px) {
+  #carousel {
+    display: none;
+  }
+}
+
+@media (min-width: 756px) {
+  #carousel-replacement {
+    display: none;
+  }
+}
+
 /* .carousel-item img {
   margin: auto;
   align-self: center;
 } */
 
-
-#hackjams {
+/* hacljams section on homepage */
+#hackjams-home {
   padding-top: 50px;
+  margin-right: auto;
 }
 
-#hackjam-info {
-  margin-left: 50px;
+@media (max-width: 618px) {
+  #hackjams-home {
+    margin: 50px;
+  }
 }
 
-#hackjams img {
+#hackjams-home img {
   height: 500px;
   /* align-self: center; */
   display: block;
   margin:auto;
 }
 
+/* discord bar on homepage */
 #discord {
   background-color: rgb(114, 137, 218);
   margin: 0px;
@@ -367,16 +392,148 @@ footer li {
   margin-right: 1.5rem;
 }
 
-.project-row1 {
+.project-row1, .project-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#projects-page h2 {
-  margin-top: 2rem;
+.project-row {
+  margin-bottom: 30px;
 }
 
-#projects-page {
+.projectThumbnail {
+  width: 398px;
+  height: 398px;
+  background-color: rgba(242, 242, 242, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.projectThumbnail h2 {
+  font-size: 24px;
+}
+
+.projectThumbnailImg {
+  width: 357px;
+  height: 274px;
+}
+
+.arrowSmall {
+  margin: 10px;
+  width: 34.64px;
+  align-self: flex-end;
+}
+
+.projectExpanded {
+  background-color: rgba(242, 242, 242, 1);
+}
+
+.projectExpanded h2 {
+  padding-top: 20px;
+}
+
+.projectExpanded .btn {
+  font-family: Roboto;
+  font-weight: 900;
+  font-size: 24px;
+  background-color: rgba(12, 76, 133, 1);
+  width: 202px;
+  height: 44px;
+  border-radius: 19px;
+}
+
+.projectExpanded button {
+  padding: 0px;
+}
+
+.projectExpanded a {
+  line-height: 1.25em;
+}
+
+.projectExpandedImg {
+  width: 433px;
+}
+
+.projectMembers {
+  list-style-type: none;
+  font-family: Open Sans;
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
+#ongoing-page h2, #hackjam-intro h2, #ongoing-intro h2 {
+  margin-top: 2rem;
+  text-align: left;
+}
+
+#ongoing-page {
   margin-bottom: 2rem;
+}
+
+#hackjam-intro, #hackjam-body, #ongoing-intro, #ongoing-body {
+  margin-left: 141px;
+  margin-right: 141px;
+}
+
+#hackjam-body,
+#ongoing-body,
+#ongoing-end-blurb,
+#hackjam-end-blurb,
+#ongoing-intro p,
+#hackjam-intro p {
+  color:black;
+}
+
+#hackjam-intro img, #ongoing-intro img {
+  width:400px;
+}
+
+.hackjam-main-info-row {
+  display:flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.hackjam-main-info-row h3 {
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.hackjam-main-info-row h4 {
+  font-size: 24px;
+  font-family: Open Sans;
+  font-weight: 800;
+}
+
+hr {
+  background: #073763;
+  border-radius: 42px;
+}
+
+#ongoing-end-blurb, #hackjam-end-blurb {
+  height: 222px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#ongoing-end-blurb h2, #hackjam-end-blurb h2 {
+  margin-bottom: 30px;
+}
+
+#ongoing-end-blurb a, #hackjam-end-blurb a {
+  color:#494949;
+}
+
+.emptyProject {
+  background-color: rgb(255, 255, 255);
 }
