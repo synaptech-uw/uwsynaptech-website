@@ -341,6 +341,7 @@ footer li {
   margin-right: 80px;
   margin-left: -35px;
   text-indent: 20px;
+  columns: 1;
   -webkit-columns: 1;
 }
 
