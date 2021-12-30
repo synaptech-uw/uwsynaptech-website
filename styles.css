@@ -11,6 +11,11 @@ body {
   padding-top: 0px;
 }
 
+.main-info-container-fluid {
+  margin-left: 172px;
+  margin-right: 172px;
+}
+
 h1, h2, h3, h4, .navbar .nav-link, .dropdown-item {
   font-family: 'Bungee', cursive;
 }
