@@ -331,6 +331,21 @@ footer li {
   padding-right: 3.5em;
 }
 
+.project-page-info {
+  list-style-type: none;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  margin-right: 80px;
+  margin-left: -35px;
+  text-indent: 20px;
+  columns: 1;
+  -webkit-columns: 1;
+}
+
+
 .align-center {
   display: flex;
   justify-content: center;
@@ -510,7 +525,7 @@ footer li {
 
 .hackjam-main-info-row h4 {
   font-size: 24px;
-  font-family: Open Sans;
+  font-family: 'Open Sans';
   font-weight: 800;
 }
 
