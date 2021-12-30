@@ -331,21 +331,6 @@ footer li {
   padding-right: 3.5em;
 }
 
-.project-page-info {
-  list-style-type: none;
-  font-family: 'Open Sans';
-  font-size: 18px;
-  font-weight: 800;
-  margin-top: 22px;
-  margin-bottom: 22px;
-  margin-right: 80px;
-  margin-left: -35px;
-  text-indent: 20px;
-  columns: 1;
-  -webkit-columns: 1;
-}
-
-
 .align-center {
   display: flex;
   justify-content: center;
@@ -402,6 +387,19 @@ footer li {
   align-items: center;
 }
 
+.project-page-info {
+  list-style-type: none;
+  font-family: 'Open Sans';
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  margin-right: 80px;
+  margin-left: -35px;
+  columns: 1;
+  -webkit-columns: 1;
+}
+
 .project-container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -448,9 +446,12 @@ footer li {
 
 .projectExpanded h2 {
   padding-top: 20px;
+  margin-bottom: 20px;
+  text-align: start;
+  margin-left: 24px;
 }
 
-.projectExpanded .btn {
+.projectExpanded .btn, .ongoingProject .btn {
   font-family: Roboto;
   font-weight: 900;
   font-size: 24px;
@@ -464,12 +465,24 @@ footer li {
   padding: 0px;
 }
 
-.projectExpanded a {
+.projectExpanded a, .ongoingProject a {
   line-height: 1.25em;
 }
 
 .projectExpandedImg {
   width: 433px;
+}
+
+.hackjamProject {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 41px;
+  margin-right: 41px;
+}
+
+.hackjamProjectText {
+  width: 680px;
 }
 
 .projectMembers {
@@ -551,4 +564,40 @@ hr {
 
 .emptyProject {
   background-color: rgb(255, 255, 255);
+}
+
+.ongoingProject {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ongoingProject img {
+  width: 264px;
+  height: 258px;
+}
+
+.ongoingProject h3 {
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.projectBody {
+  width: 598px;
+}
+
+.ongoingProject .btn {
+  margin-bottom: 30px;
+}
+
+.ongoingTeam hr {
+  height: 3px;
+  margin-top: 0px;
+}
+
+.ongoingTeam ul {
+  font-family: 'Open Sans';
+  font-weight: 800;
+  font-size: 24px;
+  list-style-type: circle;
 }
