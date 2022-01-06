@@ -412,7 +412,8 @@ footer li {
 }
 
 .project-row {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-top: 40px;
 }
 
 .projectThumbnail {
@@ -600,4 +601,16 @@ hr {
   font-weight: 800;
   font-size: 24px;
   list-style-type: circle;
+}
+
+.hidden {
+  /* Used to override other display properties,
+   * .hidden should always take highest precedence */
+  display: none !important;
+}
+
+.disabledArrowButton {
+  /* opacity:0.4;
+  filter:alpha(opacity=40); */
+  padding-bottom: 40px;
 }
