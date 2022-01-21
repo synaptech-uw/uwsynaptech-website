@@ -1,14 +1,40 @@
 /* color palette: https://coolors.co/449fee-0e62ab-073763-052542-4b2e83-e8e3d2-b7a57a-85754d */
 
+/* tablet */
+@media only screen and (min-width: 480px) {
+  html {
+      font-size: 16px;
+  }
+}
+
+/* desktop */
+@media only screen and (min-width: 768px) {
+  html {
+      font-size: 18px;
+  }
+}
+
+/* extra large */
+/* @media only screen and (min-width: 1024px) {
+  html {
+      font-size: 20px;
+  }
+} */
+
 /* CONTENT */
 body {
   background-color:  white;
   color: #073763;
-  padding-top: 112px;
+  padding-top: 6.2rem;
 }
 
 .home-body {
   padding-top: 0px;
+}
+
+.main-info-container-fluid {
+  margin-left: 12rem;
+  margin-right: 12rem;
 }
 
 h1, h2, h3, h4, .navbar .nav-link{
@@ -20,11 +46,11 @@ h1, h2, h3, h4, .navbar .nav-link {
 }
 
 h3 {
-  font-size: 35px;
+  font-size: 2.25rem;
 }
 
 h4 {
-  font-size: 30px;
+  font-size: 1.75rem;
 }
 
 /* HEADER */
@@ -102,7 +128,7 @@ h4 {
 
 .dropdown-item {
   color: white;
-  font-size: 10px;
+  font-size: 0.7rem;
 }
 
 /* navbar hamburger menu */
@@ -153,7 +179,7 @@ h4 {
 
 .row {
   /* border: solid green; */
-  margin: 30px 20px 30px 20px;
+  margin: 1.6rem 1.1rem 1.6rem 1.1rem;
 }
 
 /* Upoming Events */
@@ -162,11 +188,11 @@ h4 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 15px 10px 15px 10px;
+  margin: 0.8rem 0.55rem 0.8rem 0.55rem;
 }
 
 .event-specifics p {
-  margin: 10px;
+  margin: 0.55rem;
 }
 
 .event-details{
@@ -179,9 +205,9 @@ h4 {
 
 .event-details div {
   height: 100%;
-  border: solid #073763 1px;
-  border-radius: 20px;
-  margin-left: 10px;
+  border: solid #073763 0.05rem;
+  border-radius: 1.1rem;
+  margin-left: 0.55rem;
 }
 
 .month-day {
@@ -257,13 +283,13 @@ footer li {
 
 /*This is for the about page*/
 .information{
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 #admin{
@@ -337,37 +363,32 @@ footer li {
   align-items: center;
 }
 
-@media (max-width: 756px) {
+@media (max-width: 1054px) {
   #carousel {
     display: none;
   }
 }
 
-@media (min-width: 756px) {
+@media (min-width: 1054px) {
   #carousel-replacement {
     display: none;
   }
 }
 
-/* .carousel-item img {
-  margin: auto;
-  align-self: center;
-} */
-
 /* hacljams section on homepage */
 #hackjams-home {
-  padding-top: 50px;
+  padding-top: 2.7rem;
   margin-right: auto;
 }
 
 @media (max-width: 618px) {
   #hackjams-home {
-    margin: 50px;
+    margin: 2.7rem;
   }
 }
 
 #hackjams-home img {
-  height: 500px;
+  height: 31rem;
   /* align-self: center; */
   display: block;
   margin:auto;
@@ -377,8 +398,8 @@ footer li {
 #discord {
   background-color: rgb(114, 137, 218);
   margin: 0px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 1.1rem;
+  padding-bottom: 1.1rem;
   text-align: center;
 }
 
@@ -390,12 +411,11 @@ footer li {
 .project-page-info {
   list-style-type: none;
   font-family: 'Open Sans';
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 800;
-  margin-top: 22px;
-  margin-bottom: 22px;
-  margin-right: 80px;
-  margin-left: -35px;
+  margin-bottom: 1.2rem;
+  margin-right: 4.4rem;
+  margin-left: -1.9rem;
   columns: 1;
   -webkit-columns: 1;
 }
@@ -412,13 +432,13 @@ footer li {
 }
 
 .project-row {
-  margin-bottom: 40px;
-  margin-top: 40px;
+  margin-bottom: 2.2rem;
+  margin-top: 2.2rem;
 }
 
 .projectThumbnail {
-  width: 398px;
-  height: 398px;
+  width: 22.2rem;
+  height: 22.2rem;
   background-color: rgba(242, 242, 242, 1);
   display: flex;
   flex-direction: column;
@@ -427,17 +447,17 @@ footer li {
 }
 
 .projectThumbnail h2 {
-  font-size: 24px;
+  font-size: 1.33rem;
 }
 
 .projectThumbnailImg {
-  width: 357px;
-  height: 274px;
+  width: 19.8rem;
+  height: 15.2rem;
 }
 
 .arrowSmall {
-  margin: 10px;
-  width: 34.64px;
+  margin: 0.55rem;
+  width: 1.924rem;
   align-self: flex-end;
 }
 
@@ -446,20 +466,20 @@ footer li {
 }
 
 .projectExpanded h2 {
-  padding-top: 20px;
-  margin-bottom: 20px;
+  padding-top: 1.1rem;
+  margin-bottom: 1.1rem;
   text-align: start;
-  margin-left: 24px;
+  margin-left: 1.3rem;
 }
 
 .projectExpanded .btn, .ongoingProject .btn {
   font-family: Roboto;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 1.3rem;
   background-color: rgba(12, 76, 133, 1);
-  width: 202px;
-  height: 44px;
-  border-radius: 19px;
+  width: 11.2rem;
+  height: 2.4rem;
+  border-radius: 1.05rem;
 }
 
 .projectExpanded button {
@@ -471,28 +491,28 @@ footer li {
 }
 
 .projectExpandedImg {
-  width: 433px;
+  width: 24.05rem;
 }
 
 .hackjamProject {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 41px;
-  margin-right: 41px;
+  margin-left: 2.27rem;
+  margin-right: 2.27rem;
 }
 
 .hackjamProjectText {
-  width: 680px;
+  width: 37.7rem;
 }
 
 .projectMembers {
   list-style-type: none;
   font-family: Open Sans;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 800;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  margin-top: 1.22rem;
+  margin-bottom: 1.22rem;
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
@@ -508,8 +528,8 @@ footer li {
 }
 
 #hackjam-intro, #hackjam-body, #ongoing-intro, #ongoing-body {
-  margin-left: 141px;
-  margin-right: 141px;
+  margin-left: 7.83rem;
+  margin-right: 7.83rem;
 }
 
 #hackjam-body,
@@ -522,7 +542,7 @@ footer li {
 }
 
 #hackjam-intro img, #ongoing-intro img {
-  width:400px;
+  height:18rem;
 }
 
 .hackjam-main-info-row {
@@ -533,34 +553,34 @@ footer li {
 }
 
 .hackjam-main-info-row h3 {
-  font-size: 32px;
+  font-size: 1.7rem;
   font-weight: 400;
 }
 
 .hackjam-main-info-row h4 {
-  font-size: 24px;
+  font-size: 1.3rem;
   font-family: 'Open Sans';
   font-weight: 800;
 }
 
 hr {
   background: #073763;
-  border-radius: 42px;
+  border-radius: 2.3rem;
 }
 
 #ongoing-end-blurb, #hackjam-end-blurb {
-  height: 222px;
+  height: 12.3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 #ongoing-end-blurb h2, #hackjam-end-blurb h2 {
-  margin-bottom: 30px;
+  margin-bottom: 1.6rem;
 }
 
 #ongoing-end-blurb a, #hackjam-end-blurb a {
-  color:#494949;
+  color:rgb(114, 137, 218);
 }
 
 .emptyProject {
@@ -574,32 +594,32 @@ hr {
 }
 
 .ongoingProject img {
-  width: 264px;
-  height: 258px;
+  width: 14.6rem;
+  height: 14.3rem;
 }
 
 .ongoingProject h3 {
-  font-size: 32px;
-  margin-bottom: 5px;
+  font-size: 1.7rem;
+  margin-bottom: 0.27rem;
 }
 
 .projectBody {
-  width: 598px;
+  width: 33.2rem;
 }
 
 .ongoingProject .btn {
-  margin-bottom: 30px;
+  margin-bottom: 1.6rem;
 }
 
 .ongoingTeam hr {
-  height: 3px;
+  height: 0.16rem;
   margin-top: 0px;
 }
 
 .ongoingTeam ul {
   font-family: 'Open Sans';
   font-weight: 800;
-  font-size: 24px;
+  font-size: 1.3rem;
   list-style-type: circle;
 }
 
@@ -612,5 +632,5 @@ hr {
 .disabledArrowButton {
   /* opacity:0.4;
   filter:alpha(opacity=40); */
-  padding-bottom: 40px;
+  padding-bottom: 2.2rem;
 }
