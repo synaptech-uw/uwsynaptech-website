@@ -13,6 +13,7 @@
 
         <!-- fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
 
         <!-- Custom CSS -->
         <link rel="stylesheet" href="styles.css">
@@ -67,60 +68,228 @@
       </nav>
     </header>
 
+    <div id="hackjam-intro">
+        <h2>Hackjam Projects</h2>
+        <div class="row">
+            <div class="col project-page-info">
+                <p>At the HackJam, anyone interested in neural engineering is invited to join us and develop a project using neurotech hardware - no prior experience necessary! Participants begin the day by forming teams and attending workshops to learn the basics of neurotech and how to use their chosen hardware. Over the course of the HackJam, teams develop an idea for a neurotech project and build something cool! Past projects include games that can be controlled just by blinking, an interactive story where choices depend on brainwaves, and a proposal for generating music based on neural feedback.</p>
+            </div>
+            <img src="img/discordPlaceholder.png">
+        </div>
+    </div>
 
-        <!-- Footer -->
-        <footer id="contact" class="container-fluid py-5">
-            <h3>Contact Us!</h3>
-            <ul id="footer-social-media">
-                <!-- facebook logo is from https://iconmonstr.com/facebook-4-png/
-                    License said it could be used without attribution. -->
-                <li>
-                    <a href="https://www.facebook.com/uwsynaptech">
-                        <img class="social-logo"
-                            src="img/socialMediaLogos/facebook_logo.png" alt="Facebook logo">
-                    </a>
-                </li>
-                <!-- instagram logo is from https://iconmonstr.com/instagram-11-png/
-                    License said it could be used without attribution. -->
-                <li>
-                    <a href="https://www.instagram.com/uwsynaptech/">
-                        <img class="social-logo"
-                            src="img/socialMediaLogos/instagram_logo.png" alt="Instagram logo">
-                    </a>
-                </li>
-                <!-- discord logo is from https://iconmonstr.com/discord-1-png/
-                    License said it could be used without attribution. -->
-                <li><a href="https://discord.gg/CwtEv37">
-                        <img class="social-logo"
-                            src="img/socialMediaLogos/discord_logo.png" alt="Discord logo">
-                    </a>
-                </li>
-                <!-- github logo is from https://iconmonstr.com/github-1-png/
-                    License said it could be used without attribution. -->
-                <li>
-                    <a href="https://github.com/synaptech-uw">
-                        <img class="social-logo"
-                            src="img/socialMediaLogos/github_logo.png" alt="Github logo">
-                    </a>
-                </li>
-                <!-- email logo is from https://iconmonstr.com/email-2-png/
-                    License said it could be used without attribution. -->
-                <li>
-                    <a href="mailto:synaptechuw@gmail.com">
-                        <img class="social-logo"
-                            src="img/socialMediaLogos/email_logo.png" alt="Github logo">
-                    </a>
-                </li>
-                <!-- linkedin logo is from https://iconmonstr.com/linkedin-3-png/
-                    License said it could be used without attribution. -->
-                <li>
-                    <a href="https://www.linkedin.com/company/synaptechuw/">
-                        <img class="social-logo"
-                            src="img/socialMediaLogos/linkedin-logo.png" alt="LinkedIn logo">
-                    </a>
-                </li>
-            </ul>
-        </footer>
+    <div id="hackjam-body">
+        <div>
+            <div class="hackjam-main-info-row">
+                <h3>2021</h3>
+                <h4>Fall</h4>
+                <img src="img/show-more-arrow.png" class="arrowButton" type="button" data-toggle="collapse" data-target="#hackjam-fall-2021">
+            </div>
+            <hr>
+            <div id="hackjam-fall-2021" class="collapse">
+                <div class="project-row">
+                    <div class="projectThumbnail">
+                        <h2>NSPaint (NeuroScience Paint)</h2>
+                        <img src="img/hackjamImages/2021Fall/NSPaint_1.jpg" class="projectThumbnailImg" alt="An image of five people - the team who made NSPaint">
+                        <img src="img/show-more-arrow.png" class="arrowButton arrowSmall" type="button" data-toggle="collapse" data-target="#NSPaintExpanded">
+                    </div>
+                    <div class="projectThumbnail">
+                        <h2>Trees Among Us</h2>
+                        <img src="img/hackjamImages/2021Fall/Trees_Among_Us_1.jpg" class="projectThumbnailImg" alt="An image of five people standing in front of a whiteboard- the team who made Trees Among Us">
+                        <img src="img/show-more-arrow.png" class="arrowButton arrowSmall" type="button" data-toggle="collapse" data-target="#TreesAmongUsExpanded">
+                    </div>
+                    <div class="projectThumbnail">
+                        <h2>Don't Blink!</h2>
+                        <img src="img/hackjamImages/2021Fall/Dont_Blink_1.jpg" class="projectThumbnailImg" alt="An image of three people standing in front of a whiteboard- the team who made Don't Blink">
+                        <img src="img/show-more-arrow.png" class="arrowButton arrowSmall" type="button" data-toggle="collapse" data-target="#DontBlinkExpanded">
+                    </div>
+                </div>
+                <!-- expanded info for first project row -->
+                <div class="projectExpanded collapse" id="NSPaintExpanded">
+                    <h2>NSPaint (NeuroScience Paint)</h2>
+                    <div class="hackjamProject">
+                        <div class="hackjamProjectText">
+                            <p>NSPaint is a way to paint with just your eyes. It uses your brain waves to choose a color and paints at the location where you are looking!</p>
+                            <button class="btn btn-primary" disabled>Slides</button>
+                            <button class="btn btn-primary" disabled>Github Repo</button>
+                        </div>
+                        <div>
+                            <img src="img/hackjamImages/2021Fall/NSPaint_2.jpg" class="projectExpandedImg" alt="An image of two people working on a computer">
+                            <ul class="projectMembers">
+                                <li>Kirsten</li>
+                                <li>Peyton</li>
+                                <li>Brandon</li>
+                                <li>William</li>
+                                <li>Thomas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectExpanded collapse" id="TreesAmongUsExpanded">
+                    <h2>Trees Among Us</h2>
+                    <div class="hackjamProject">
+                        <div class="hackjamProjectText">
+                            <p>Visual novel with minimal visuals where the flow of the story is affected by brainwaves.</p>
+                            <a class="btn btn-primary" href="https://docs.google.com/presentation/d/1FLedrJCp9wSSKRRGzVljiu9VeT7Raqud_MLAEgpDl3Y/edit#slide=id.g10097e059f9_0_24" role="button">Slides</a>
+                            <button class="btn btn-primary" disabled>Github Repo</button>
+                        </div>
+                        <div>
+                            <img src="img/hackjamImages/2021Fall/Trees_Among_Us_2.jpg" class="projectExpandedImg" alt="An image of five people presenting using a projector">
+                            <ul class="projectMembers">
+                                <li>Pierre Karashchuk</li>
+                                <li>Chaytan Inman</li>
+                                <li>Jacob Song</li>
+                                <li>James Guo</li>
+                                <li>Kiet Anh Tran</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectExpanded collapse" id="DontBlinkExpanded">
+                    <h2>Don't Blink</h2>
+                    <div class="hackjamProject">
+                        <div class="hackjamProjectText">
+                            <p>Don't Blink! is a horror game that uses the Muse 2 heatset to measure the user's blinks and tension to affect gameplay. Whenever the user blinks in real life, the "weeping angel" statue within the game will appear closer and closer to them. It can also move when not on camera in-game. This combination of XR and traditional gameplay makes for a truly terrifying experience! </p>
+                            <button class="btn btn-primary" disabled>Slides</button>
+                            <button class="btn btn-primary" disabled>Github Repo</button>
+                        </div>
+                        <div>
+                            <img src="img/hackjamImages/2021Fall/Dont_Blink_2.jpg" class="projectExpandedImg" alt="An image of three people presenting using a projector">
+                            <ul class="projectMembers">
+                                <li>Varun</li>
+                                <li>Vatsal</li>
+                                <li>Vibhav</li>
+                                <li>Atri</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="projectThumbnail">
+                        <h2>Blink-Chase</h2>
+                        <img src="img/hackjamImages/2021Fall/Blink_Chase_1.jpg" class="projectThumbnailImg" alt="An image of three people doing a thumbs-up - the team who made Blink-Chase">
+                        <img src="img/show-more-arrow.png" class="arrowButton arrowSmall" type="button" data-toggle="collapse" data-target="#BlinkChaseExpanded">
+                    </div>
+                    <div class="projectThumbnail">
+                        <h2>BlinkBall</h2>
+                        <img src="img/hackjamImages/2021Fall/BlinkBall_1.jpg" class="projectThumbnailImg" alt="An image of two people in front of a table - the team who made BlinkBall">
+                        <img src="img/show-more-arrow.png" class="arrowButton arrowSmall" type="button" data-toggle="collapse" data-target="#BlinkBallExpanded">
+                    </div>
+                    <div class="projectThumbnail emptyProject">
+
+                    </div>
+                </div>
+                <!-- expanded info for second project row -->
+                <div class="projectExpanded collapse" id="BlinkChaseExpanded">
+                    <h2>Blink Chase</h2>
+                    <div class="hackjamProject">
+                        <div class=hackjamProjectText">
+                            <p>A 2D Unity game in which the behavior of an NPC agent is changed based on the player’s blinking, as detected by the muse headset. The game combines classical video game controls and blink-to-keypress, which is similar to the implementation outlined in the Chromedino demo. The blink detection is improved by a 5-second calibration period at the start of the program.</p>
+                            <button class="btn btn-primary" disabled>Slides</button>
+                            <button class="btn btn-primary" disabled>Github Repo</button>
+                        </div>
+                        <div>
+                            <img src="img/hackjamImages/2021Fall/Blink_Chase_2.jpg" class="projectExpandedImg" alt="An image of one person showing the camera a laptop screen">
+                            <ul class="projectMembers">
+                                <li>Steph</li>
+                                <li>Matthew</li>
+                                <li>William</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="projectExpanded collapse" id="BlinkBallExpanded">
+                    <h2>BlinkBall</h2>
+                    <div class="hackjamProject">
+                        <div class="hackjamProjectText">
+                            <p>BlinkBall is a baseball arcade game, where the objective is to hit the ball into a designated area for a homerun. To swing, blink. If the ball gets into the "brain area" a light will light up to indicate a homerun.</p>
+                            <button class="btn btn-primary" disabled>Slides</button>
+                            <button class="btn btn-primary" disabled>Github Repo</button>
+                        </div>
+                        <div>
+                            <img src="img/hackjamImages/2021Fall/BlinkBall_2.jpg" class="projectExpandedImg" alt="An image of two people working on either side of a desk, with several people watching in the background">
+                            <ul class="projectMembers">
+                                <li>Yui Suzuki</li>
+                                <li>Toma Itagaki</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <div class="hackjam-main-info-row">
+                <h3>2022</h3>
+                <h4>(Upcoming) Spring</h4>
+                <img src="img/show-more-arrow.png" class="arrowButton" type="button" data-toggle="collapse" data-target="#hackjam-spring-2022">
+            </div>
+            <hr>
+            <div id="hackjam-spring-2022" class="collapse">
+                <p>This hackjam will be happening in spring quarter of 2021. Stay tuned for updates by checking out our Discord!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="hackjam-end-blurb">
+        <h2>Want to participate in the next one?</h2>
+        <h2>Check out the <a href="https://discord.gg/CwtEv37">Discord</a> to stay updated!</h2>
+      </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="container-fluid py-5">
+        <h3>Contact Us!</h3>
+        <ul id="footer-social-media">
+            <!-- facebook logo is from https://iconmonstr.com/facebook-4-png/
+                License said it could be used without attribution. -->
+            <li>
+                <a href="https://www.facebook.com/uwsynaptech">
+                    <img class="social-logo"
+                        src="img/socialMediaLogos/facebook_logo.png" alt="Facebook logo">
+                </a>
+            </li>
+            <!-- instagram logo is from https://iconmonstr.com/instagram-11-png/
+                License said it could be used without attribution. -->
+            <li>
+                <a href="https://www.instagram.com/uwsynaptech/">
+                    <img class="social-logo"
+                        src="img/socialMediaLogos/instagram_logo.png" alt="Instagram logo">
+                </a>
+            </li>
+            <!-- discord logo is from https://iconmonstr.com/discord-1-png/
+                License said it could be used without attribution. -->
+            <li><a href="https://discord.gg/CwtEv37">
+                    <img class="social-logo"
+                        src="img/socialMediaLogos/discord_logo.png" alt="Discord logo">
+                </a>
+            </li>
+            <!-- github logo is from https://iconmonstr.com/github-1-png/
+                License said it could be used without attribution. -->
+            <li>
+                <a href="https://github.com/synaptech-uw">
+                    <img class="social-logo"
+                        src="img/socialMediaLogos/github_logo.png" alt="Github logo">
+                </a>
+            </li>
+            <!-- email logo is from https://iconmonstr.com/email-2-png/
+                License said it could be used without attribution. -->
+            <li>
+                <a href="mailto:synaptechuw@gmail.com">
+                    <img class="social-logo"
+                        src="img/socialMediaLogos/email_logo.png" alt="Github logo">
+                </a>
+            </li>
+            <!-- linkedin logo is from https://iconmonstr.com/linkedin-3-png/
+                License said it could be used without attribution. -->
+            <li>
+                <a href="https://www.linkedin.com/company/synaptechuw/">
+                    <img class="social-logo"
+                        src="img/socialMediaLogos/linkedin-logo.png" alt="LinkedIn logo">
+                </a>
+            </li>
+        </ul>
+    </footer>
 
         <!-- JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -137,6 +306,8 @@
             crossorigin="anonymous">
         </script>
         <script src="scripts.js"></script>
+        <script src="arrowButtons.js"></script>
+        <script src="hackjam.js"></script>
   </body>
 
 </html>
