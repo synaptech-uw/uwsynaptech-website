@@ -56,6 +56,7 @@ function ThreeBrain() {
           if(node.isMesh) node.material = testMat;
         });
         brain.scale.set(0.01, 0.01, 0.01);
+        brain.rotateY(4.5)
         console.log(brain);
         scene.add(brain);
         isLoaded = true;
@@ -71,9 +72,9 @@ function ThreeBrain() {
 
       var animate = function () {
         requestAnimationFrame( animate );
-        brain.rotation.x += -0.01;
-        brain.rotation.y += 0.05;
-        brain.rotation.z += -0.01;
+        //brain.rotation.x += 0.05;
+        //brain.rotation.y += 0.02;
+        //brain.rotation.z += -0.02;
         renderer.render( scene, camera );
       };
 
