@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import ThreeBrain from './ThreeBrain.js'
+//import ThreeBrain from './ThreeBrain.js'
+import ThreeScene from './ThreeScene.js'
 
 function App() {
   return (
+    <>
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,8 +21,8 @@ function App() {
           Learn React
         </a>
       </header>
-      <ThreeBrain />
     </div>
+    </>
   );
 }
 
