@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-//import ThreeBrain from './ThreeBrain.js'
-import ThreeScene from './ThreeScene.js'
+import ThreeScene from './ThreeScene.js';
+import Carousel from './Carousel';
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         </a>
       </header>
     </div>
+    <ThreeScene />
     </>
   );
 }
