@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import ThreeScene from './ThreeScene.js';
 import Carousel from './Carousel';
+import { Vector3 } from 'three';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         </a>
       </header>
     </div>
-    <ThreeScene />
+    <ThreeScene test = {(new Vector3(1, 2, 3))} />
     </>
   );
 }

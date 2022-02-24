@@ -43,6 +43,6 @@
 }
 
 .ThreeScene {
-  width:20rem;
-  height:20rem;
+  min-height:100vh;
+  max-width: 100vw;
 }
