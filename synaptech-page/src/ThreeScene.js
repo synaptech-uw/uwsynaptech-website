@@ -10,8 +10,9 @@ import { Vector3 } from "three";
 class LoadBrain extends Component {
   constructor(props) {
     super(props);
-    this.targetPOV = props.target;
-    this.lookAtPoint = (new Vector3(0, 0, 0));
+    this.state = {targetPOV : props.target,
+                lookAtPoint : new Vector3(0, 0, 0)}
+                ;
   };
 
   componentDidMount() {
@@ -111,13 +112,23 @@ class LoadBrain extends Component {
   startAnimationLoop = () => {
     // this.cube.rotation.x += 0.01;
     // this.cube.rotation.y += 0.01;
-
-    // Right now this only runs once?
-    this.camera.position.lerp((this.targetPOV), 0.01);
-    this.camera.lookAt(this.lookAtPoint);
+    this.camera.position.lerp((this.state.targetPOV), 0.01);
+    this.camera.lookAt(this.state.lookAtPoint);
     this.renderer.render( this.scene, this.camera );
     this.requestID = window.requestAnimationFrame(this.startAnimationLoop);
   };
+
+  moveCamera = (targetPos, lookAtCoord) => {
+    // Right now this only runs once?
+    this.camera.position.lerp(targetPos, 0.01);
+    this.camera.lookAt(lookAtCoord);
+    this.renderer.render( this.scene, this.camera );
+    this.requestID = window.requestAnimationFrame(this.moveCamera);
+  }
+
+
+  //Write event when user scrolls to certain points on the scrollbar. Have certain waypoints that
+  //trigger specific camera movements at that point.
 
   render() {
       return <div className = "ThreeScene" ref={ref => (this.el = ref)} />;
@@ -128,7 +139,6 @@ class ThreeScene extends Component {
 
   constructor(props) {
     super(props);
-    this.target = props.test;
   }
 
   state = { isMounted: true };
@@ -144,7 +154,7 @@ class ThreeScene extends Component {
         >
           {isMounted ? "Unmount" : "Mount"}
         </button>
-        {isMounted && <LoadBrain target = {this.target} />}
+        {isMounted && <LoadBrain target = {this.props.test} />}
         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
       </>
     );

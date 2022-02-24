@@ -23,7 +23,7 @@ function App() {
         </a>
       </header>
     </div>
-    <ThreeScene test = {(new Vector3(1, 2, 3))} />
+    <ThreeScene test = {(new Vector3(2, 1, 2))} />
     </>
   );
 }
