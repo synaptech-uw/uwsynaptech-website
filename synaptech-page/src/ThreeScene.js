@@ -33,7 +33,20 @@ class LoadBrain extends Component {
     this.renderer.setSize( width, height );
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
+    this.reshapeTex(this.scene.background, this);
   };
+
+  reshapeTex = (tex, reference) => {
+    const canvasAspect = reference.camera.aspect;
+    const imageAspect = tex.image ? tex.image.width / tex.image.height : 1;
+    const aspect = imageAspect / canvasAspect;
+
+    tex.offset.x = aspect > 1 ? (1 - 1 / aspect) / 2 : 0;
+    tex.repeat.x = aspect > 1 ? 1 / aspect : 1;
+
+    tex.offset.y = aspect > 1 ? 0 : (1 - aspect) / 2;
+    tex.repeat.y = aspect > 1 ? 1 : aspect;
+  }
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
@@ -54,15 +67,17 @@ class LoadBrain extends Component {
     this.renderer.setSize( width, height );
     this.el.appendChild( this.renderer.domElement ); // mount using React ref
 
-
     //Load background texture
-    function applyTex(tex, scene) {
-      scene.background = tex;
+    function applyTex(tex, reference) {
+      reference.reshapeTex(tex, reference);
+      reference.scene.background = tex;
+
+
     };
 
     const loader = new THREE.TextureLoader();
     loader.load('./assets/background_without_logo.png' ,
-    (texture) => applyTex(texture, this.scene));
+    (texture) => applyTex(texture, this));
 
   };
 
