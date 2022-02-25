@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 //import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
@@ -10,9 +9,15 @@ import { Vector3 } from "three";
 class LoadBrain extends Component {
   constructor(props) {
     super(props);
-    this.state = {targetPOV : props.target,
-                lookAtPoint : new Vector3(0, 0, 0)}
-                ;
+    this.state = {
+                targets : props.targets,
+                targetPOV : props.targets[0],
+                lookAtPoint : (new Vector3(0, 0, 0)),
+                height : 0,
+                width : 0,
+                thresholdCounter : 0,
+                animationCalled : false
+              };
   };
 
   componentDidMount() {
@@ -20,18 +25,40 @@ class LoadBrain extends Component {
       this.populateScene();
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
+      window.addEventListener('scroll', this.updateScrollPos);
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowResize);
+    window.removeEventListener('scroll', this.updateScrollPos);
     window.cancelAnimationFrame(this.requestID);
   }
 
+  updateScrollPos = () => {
+    if (window.scrollY > this.props.thresholds[this.state.thresholdCounter] ) {
+      const currThreshold = this.state.thresholdCounter;
+      //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
+      this.setState({
+        thresholdCounter : currThreshold + 1,
+        targetPOV : this.props.targets[currThreshold+1],
+      });
+  } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1 ] ) {
+      const currThreshold = this.state.thresholdCounter;
+      //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
+      this.setState({
+        thresholdCounter : currThreshold - 1,
+        targetPOV : this.props.targets[currThreshold - 1],
+      });
+  }
+  }
+
   handleWindowResize = () => {
-    const width = this.el.clientWidth;
-    const height = this.el.clientHeight;
-    this.renderer.setSize( width, height );
-    this.camera.aspect = width / height;
+    this.setState({
+      width : this.el.clientWidth,
+      height : this.el.clientHeight
+    });
+    this.renderer.setSize( this.state.width, this.state.height );
+    this.camera.aspect = this.state.width / this.state.height;
     this.camera.updateProjectionMatrix();
     this.reshapeTex(this.scene.background, this);
   };
@@ -50,6 +77,10 @@ class LoadBrain extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
+    this.setState({
+      width : this.el.clientWidth,
+      height : this.el.clientHeight
+    });
     const width = this.el.clientWidth;
     const height = this.el.clientHeight;
     this.scene = new THREE.Scene();
@@ -61,8 +92,9 @@ class LoadBrain extends Component {
     );
 
     // default camera position
-    this.camera.position.z = 5;
 
+    this.camera.z = 3;
+    this.camera.y = 1;
     this.renderer = new THREE.WebGLRenderer();
     this.renderer.setSize( width, height );
     this.el.appendChild( this.renderer.domElement ); // mount using React ref
@@ -71,8 +103,6 @@ class LoadBrain extends Component {
     function applyTex(tex, reference) {
       reference.reshapeTex(tex, reference);
       reference.scene.background = tex;
-
-
     };
 
     const loader = new THREE.TextureLoader();
@@ -127,18 +157,18 @@ class LoadBrain extends Component {
   startAnimationLoop = () => {
     // this.cube.rotation.x += 0.01;
     // this.cube.rotation.y += 0.01;
-    this.camera.position.lerp((this.state.targetPOV), 0.01);
-    this.camera.lookAt(this.state.lookAtPoint);
+    this.updateCamera();
     this.renderer.render( this.scene, this.camera );
     this.requestID = window.requestAnimationFrame(this.startAnimationLoop);
   };
 
-  moveCamera = (targetPos, lookAtCoord) => {
+  updateCamera = () => {
+    //console.log(this.state.targetPOV);
+    const targetPos = this.state.targetPOV;;
+    const lookAtCoord = this.state.lookAtPoint;
     // Right now this only runs once?
-    this.camera.position.lerp(targetPos, 0.01);
+    this.camera.position.lerp(targetPos, 0.07);
     this.camera.lookAt(lookAtCoord);
-    this.renderer.render( this.scene, this.camera );
-    this.requestID = window.requestAnimationFrame(this.moveCamera);
   }
 
 
@@ -157,7 +187,6 @@ class ThreeScene extends Component {
   }
 
   state = { isMounted: true };
-
   render() {
     const { isMounted = true } = this.state;
     return (
@@ -169,7 +198,7 @@ class ThreeScene extends Component {
         >
           {isMounted ? "Unmount" : "Mount"}
         </button>
-        {isMounted && <LoadBrain target = {this.props.test} />}
+        {isMounted && <LoadBrain targets = {this.props.targets} thresholds = {this.props.thresholds}/>}
         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
       </>
     );

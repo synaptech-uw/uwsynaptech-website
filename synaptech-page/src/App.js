@@ -5,6 +5,18 @@ import Carousel from './Carousel';
 import { Vector3 } from 'three';
 
 function App() {
+  const targetVecs = [];
+  targetVecs[0] = (new Vector3(0, 1, 3));
+  targetVecs[1] = (new Vector3(0, 1, 3));
+  targetVecs[2] = (new Vector3(2, 2, 3));
+  targetVecs[3] = (new Vector3(-3, 2, 2));
+
+  const thresholds = [];
+  thresholds[0] = 0;
+  thresholds[1] = 1000;
+  thresholds[2] = 1200;
+  thresholds[3] = 4000;
+
   return (
     <>
     <div className="App">
@@ -23,7 +35,13 @@ function App() {
         </a>
       </header>
     </div>
-    <ThreeScene test = {(new Vector3(5, -3, 5))} />
+
+    {/* Change props to list of vectors with varying points, maybe I can do a list of like x and y
+    values instead. Otherwise, we'll also need to pass in a couple waypoints, being the y value of
+    the other elements in the return. Getting these y values is the next step. Then we just
+    have to evaluate the step in the array and move forward or backward depending on the evaluation
+     */}
+    <ThreeScene targets = {targetVecs} thresholds = {thresholds} />
     </>
   );
 }
