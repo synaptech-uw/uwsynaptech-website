@@ -244,13 +244,13 @@ footer li {
   text-align: center;
 }
 
-a{
+.redir{
   color: #d3b979;
   font-weight: 500;
   text-decoration: underline;
 }
 
-a:hover {
+.redir:hover {
   color: #85754D;
   font-weight: 500;
   text-decoration: underline;
