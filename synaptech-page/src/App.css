@@ -52,7 +52,7 @@
 
 .BrainWindow {
   height: 33vh;
-  width: 33vw;
+  width: 100vw;
   border-color: white;
   border-style: solid;
   border-width: 2px;

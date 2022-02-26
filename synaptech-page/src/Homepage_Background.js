@@ -12,6 +12,7 @@ class LoadBrain extends Component {
     this.state = {
                 targets : props.targets,
                 targetPOV : props.targets[0],
+                raycastXY : [0, 0],
                 lookAtPoint : (new Vector3(0, 0, 0)),
                 height : 0,
                 width : 0,
@@ -41,6 +42,7 @@ class LoadBrain extends Component {
       this.setState({
         thresholdCounter : currThreshold + 1,
         targetPOV : this.props.targets[currThreshold+1],
+        raycastXY : this.props.raycastCoords
       });
   } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1 ] ) {
       const currThreshold = this.state.thresholdCounter;
@@ -48,6 +50,7 @@ class LoadBrain extends Component {
       this.setState({
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
+        raycastXY : this.props.raycastCoords
       });
     }
   }
@@ -108,6 +111,7 @@ class LoadBrain extends Component {
     const loader = new THREE.TextureLoader();
     loader.load('./assets/background_without_logo.png' ,
     (texture) => applyTex(texture, this));
+    this.raycaster = new THREE.Raycaster();
 
   };
 
@@ -170,6 +174,14 @@ class LoadBrain extends Component {
     // Right now this only runs once?
     this.camera.position.lerp(targetPos, 0.07);
     this.camera.lookAt(lookAtCoord);
+  }
+
+  highlightPoint = (x, y) => {
+    this.raycaster.setFromCamera({x, y}, this.camera);
+    var intersects = this.raycaster.intersectObjects(this.scene.children, true);
+    for (let i = 0; i < intersects.length; i++) {
+      console.log( intersects[ i ] );
+    }
   }
 
 
