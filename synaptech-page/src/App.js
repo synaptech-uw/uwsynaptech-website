@@ -3,6 +3,7 @@ import './App.css';
 import ThreeScene from './ThreeScene.js';
 import Carousel from './Carousel';
 import { Vector3 } from 'three';
+import StoreText from './StoreText';
 
 function App() {
   const targetVecs = [];
@@ -42,6 +43,7 @@ function App() {
     have to evaluate the step in the array and move forward or backward depending on the evaluation
      */}
     <ThreeScene targets = {targetVecs} thresholds = {thresholds} />
+    {/* <StoreText title={'Testing Title'} paras={['text para 1', 'text para 2']}/> */}
     </>
   );
 }
