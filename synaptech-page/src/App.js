@@ -30,12 +30,6 @@ function App() {
   targetVecs[4] = (new Vector3(-3, 2, 10));
   targetVecs[5] = (new Vector3(-3, 2, -3));
 
-
-  thresholds[0] = 0;
-  thresholds[1] = 1000;
-  thresholds[2] = 1200;
-  thresholds[3] = 4000;
-
   var windowsRendered = false;
 
   useEffect(() => {
