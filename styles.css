@@ -243,3 +243,15 @@ footer li {
 .quick-info {
   text-align: center;
 }
+
+a {
+  color: #d3b979;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #85754D;
+  font-weight: 500;
+  text-decoration: underline;
+}
