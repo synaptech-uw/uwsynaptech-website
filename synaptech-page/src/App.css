@@ -15,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -23,6 +23,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  z-index : 100;
 }
 
 .App-link {
@@ -43,6 +44,16 @@
 }
 
 .ThreeScene {
-  min-height:100vh;
-  max-width: 100vw;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  z-index : -1;
 }
+
+.BrainWindow {
+  height: 33vh;
+  width: 33vw;
+  border-color: white;
+  border-style: solid;
+  border-width: 2px;
+  }

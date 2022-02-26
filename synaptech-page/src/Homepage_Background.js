@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 //import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+//import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 import './App.css';
 import { Vector3 } from "three";
 
@@ -19,7 +19,6 @@ class LoadBrain extends Component {
                 animationCalled : false
               };
   };
-
   componentDidMount() {
       this.sceneSetup();
       this.populateScene();
@@ -35,6 +34,7 @@ class LoadBrain extends Component {
   }
 
   updateScrollPos = () => {
+    //console.log(window.scrollY);
     if (window.scrollY > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
@@ -49,7 +49,7 @@ class LoadBrain extends Component {
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
       });
-  }
+    }
   }
 
   handleWindowResize = () => {
@@ -166,6 +166,7 @@ class LoadBrain extends Component {
     //console.log(this.state.targetPOV);
     const targetPos = this.state.targetPOV;;
     const lookAtCoord = this.state.lookAtPoint;
+
     // Right now this only runs once?
     this.camera.position.lerp(targetPos, 0.07);
     this.camera.lookAt(lookAtCoord);
