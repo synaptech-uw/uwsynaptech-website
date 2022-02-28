@@ -9,7 +9,7 @@ import StoreText from './StoreText';
 import BrainWindow from './Homepage_Background_Window';
 
 function App() {
-  const numWindows = 0;
+  const numWindows = 4;
   const winArray = [];
   const refArray = [];
   const thresholds = [];
@@ -24,7 +24,7 @@ function App() {
 
   const targetVecs = [];
   targetVecs[0] = (new Vector3(0, 1, 3));
-  targetVecs[1] = (new Vector3(0, 1, 3));
+  targetVecs[1] = (new Vector3(0, 2, 3));
   targetVecs[2] = (new Vector3(2, 2, 3));
   targetVecs[3] = (new Vector3(-3, 2, 2));
   targetVecs[4] = (new Vector3(-3, 2, 10));
@@ -42,7 +42,7 @@ function App() {
     if (windowsRendered === true) {
       for (let i = 0; i < numWindows; i++) {
         const element = refArray[i].current
-        thresholds[i] = element.offsetTop - window.innerHeight + element.clientHeight/2;
+        thresholds[i] = element.offsetTop - window.innerHeight/2 + element.clientHeight/2;
         console.log(thresholds[i]);
       }
     }
@@ -74,6 +74,12 @@ function App() {
         </a>
       </header>
     </div>
+    { winArray[0] }
+    { winArray[1] }
+    { winArray[2] }
+    { winArray[3] }
+    { winArray[4] }
+
     </>
   );
 }

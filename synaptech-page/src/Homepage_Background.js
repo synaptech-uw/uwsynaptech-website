@@ -35,7 +35,7 @@ class LoadBrain extends Component {
   }
 
   updateScrollPos = () => {
-    //console.log(window.scrollY);
+    console.log(window.scrollY);
     if (window.scrollY > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
