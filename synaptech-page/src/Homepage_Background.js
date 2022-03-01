@@ -12,7 +12,8 @@ class LoadBrain extends Component {
     this.state = {
                 targets : props.targets,
                 targetPOV : props.targets[0],
-                raycastXY : [0, 0],
+                raycasts : props.rays,
+                raycastXY : props.rays[0],
                 lookAtPoint : (new Vector3(0, 0, 0)),
                 height : 0,
                 width : 0,
@@ -35,23 +36,25 @@ class LoadBrain extends Component {
   }
 
   updateScrollPos = () => {
-    console.log(window.scrollY);
+    //console.log(window.scrollY);
     if (window.scrollY > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
-      //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
+      //console.log(this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
         thresholdCounter : currThreshold + 1,
-        targetPOV : this.props.targets[currThreshold+1],
-        raycastXY : this.props.raycastCoords
+        targetPOV : this.props.targets[currThreshold + 1],
+        raycastXY : this.props.rays[currThreshold + 1]
       });
-  } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1 ] ) {
+      this.highlightPoint(this.state.raycastXY);
+  } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
-        raycastXY : this.props.raycastCoords
+        raycastXY : this.props.rays[currThreshold - 1]
       });
+      this.highlightPoint(this.state.raycastXY);
     }
   }
 
@@ -117,21 +120,24 @@ class LoadBrain extends Component {
 
 
   populateScene  = () => {
-    const color = 0xFFFFFF;
-    const intensity = 1;
+    const color = 0x3399ff;
+    const intensity = 2;
     const light = new THREE.DirectionalLight(color, intensity);
     light.position.set(-1, 2, 4);
     this.scene.add(light);
+    this.rayLight = new THREE.PointLight(0xFFFF00, 1000, 3.5, 2);
+    this.rayLight.position.set(0, 0, 0);
+    this.scene.add(this.rayLight);
 
     //Load brain object file
     var loader = new OBJLoader();
 
     //Create material for object
-    const testMat = new THREE.MeshLambertMaterial({
+    const testMat = new THREE.MeshPhongMaterial({
       color: 0x5555555,
       // wireframe: true
       //flatShading: false,
-      emissive: 0x3399ff
+      //emissive: 0x3399ff
       });
 
     //load Brain into directory
@@ -142,7 +148,7 @@ class LoadBrain extends Component {
       brain.scale.set(0.01, 0.01, 0.01);
       brain.rotateY(4.5)
       brain.position.x = 0;
-      brain.position.y = 0;
+      brain.position.y = -1;
       brain.position.z = 0;
       scene.add(brain);
     }
@@ -176,12 +182,18 @@ class LoadBrain extends Component {
     this.camera.lookAt(lookAtCoord);
   }
 
-  highlightPoint = (x, y) => {
-    this.raycaster.setFromCamera({x, y}, this.camera);
-    var intersects = this.raycaster.intersectObjects(this.scene.children, true);
-    for (let i = 0; i < intersects.length; i++) {
-      console.log( intersects[ i ] );
+  highlightPoint = (coords) => {
+    this.raycaster.setFromCamera(coords,  this.camera);
+    var intersects = this.raycaster.intersectObjects(this.scene.children);
+    //console.log(intersects);
+    if (intersects.length !== 0) {
+      const vec = intersects[0].point.applyMatrix4(this.camera.matrixWorld);
+      console.log(vec);
+      this.rayLight.position.set(vec.x, vec.y, vec.z);
     }
+    // for (let i = 0; i < intersects.length; i++) {
+    //   console.log( intersects[ i ] );
+    // }
   }
 
 
@@ -211,7 +223,7 @@ class ThreeScene extends Component {
         >
           {isMounted ? "Unmount" : "Mount"}
         </button>
-        {isMounted && <LoadBrain targets = {this.props.targets} thresholds = {this.props.thresholds}/>}
+        {isMounted && <LoadBrain targets = {this.props.targets} thresholds = {this.props.thresholds} rays = {this.props.rays} />}
         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
       </>
     );
