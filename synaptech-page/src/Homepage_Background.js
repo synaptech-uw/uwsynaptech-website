@@ -121,11 +121,11 @@ class LoadBrain extends Component {
 
   populateScene  = () => {
     const color = 0x3399ff;
-    const intensity = 2;
+    const intensity = 5;
     const light = new THREE.DirectionalLight(color, intensity);
     light.position.set(-1, 2, 4);
     this.scene.add(light);
-    this.rayLight = new THREE.PointLight(0xFFFF00, 1000, 3.5, 2);
+    this.rayLight = new THREE.PointLight(0xFFFF00, 50, 0.5, 2);
     this.rayLight.position.set(0, 0, 0);
     this.scene.add(this.rayLight);
 
@@ -133,7 +133,7 @@ class LoadBrain extends Component {
     var loader = new OBJLoader();
 
     //Create material for object
-    const testMat = new THREE.MeshPhongMaterial({
+    const testMat = new THREE.MeshLambertMaterial({
       color: 0x5555555,
       // wireframe: true
       //flatShading: false,
@@ -187,9 +187,9 @@ class LoadBrain extends Component {
     var intersects = this.raycaster.intersectObjects(this.scene.children);
     //console.log(intersects);
     if (intersects.length !== 0) {
-      const vec = intersects[0].point.applyMatrix4(this.camera.matrixWorld);
+      const vec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
       console.log(vec);
-      this.rayLight.position.set(vec.x, vec.y, vec.z);
+      this.rayLight.position.set(vec.x, vec.y, vec.z+0.5);
     }
     // for (let i = 0; i < intersects.length; i++) {
     //   console.log( intersects[ i ] );
