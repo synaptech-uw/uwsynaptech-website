@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import ThreeScene from './Homepage_Background';
 import Carousel from './Carousel';
+import Carousel2 from './Carousel2';
 import { Vector3 } from 'three';
 import StoreText from './StoreText';
 import BrainWindow from './Homepage_Background_Window';
@@ -92,6 +93,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Carousel2 />
     </div>
     { winArray[0] }
     { winArray[1] }
