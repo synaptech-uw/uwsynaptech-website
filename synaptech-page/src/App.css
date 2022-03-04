@@ -57,3 +57,29 @@
   border-style: solid;
   border-width: 2px;
   }
+
+.wire {
+  /* position: fixed; */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.backgroundPath {
+  stroke: yellow;
+  stroke-width: 10px;
+  fill: none;
+}
+
+.linkPath {
+  stroke: var(--base1);
+  stroke-width: 3px;
+  fill: none;
+}
+
+.droplet {
+  fill: var(--base1);
+  r: 5;
+}

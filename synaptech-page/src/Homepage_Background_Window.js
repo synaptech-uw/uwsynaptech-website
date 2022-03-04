@@ -8,6 +8,7 @@ function BrainWindow(props) {
     }, []);
     return(
         <div ref = {winRef} className = "BrainWindow">
+            { props.el }
         </div>
     )
 }

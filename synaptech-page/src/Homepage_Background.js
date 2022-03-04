@@ -45,8 +45,14 @@ class LoadBrain extends Component {
         targetPOV : this.props.targets[currThreshold + 1],
         raycastXY : this.props.rays[currThreshold + 1]
       });
-      this.highlightPoint(this.state.raycastXY);
-  } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
+      if(this.timer) {
+        clearTimeout(this.timer);
+      }
+      this.rayLight.intensity = 0;
+      if (this.state.thresholdCounter % 2 === 1) {
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
+      }
+    } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
@@ -54,8 +60,14 @@ class LoadBrain extends Component {
         targetPOV : this.props.targets[currThreshold - 1],
         raycastXY : this.props.rays[currThreshold - 1]
       });
-      this.highlightPoint(this.state.raycastXY);
-    }
+      if(this.timer) {
+        clearTimeout(this.timer);
+      }
+      this.rayLight.intensity = 0;
+      if (this.state.thresholdCounter % 2 === 1) {
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
+      }
+      }
   }
 
   handleWindowResize = () => {
@@ -120,12 +132,16 @@ class LoadBrain extends Component {
 
 
   populateScene  = () => {
-    const color = 0x3399ff;
-    const intensity = 5;
-    const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(-1, 2, 4);
+    const light = new THREE.AmbientLight(0x0E62AB, 2);
+    light.position.set(0, -4, 0);
     this.scene.add(light);
-    this.rayLight = new THREE.PointLight(0xFFFF00, 50, 0.5, 2);
+    const light2 = new THREE.DirectionalLight(0x5599ff, 2);
+    light2.position.set(0, 2, 0);
+    this.scene.add(light2);
+    const light3 = new THREE.DirectionalLight(0x5599ff, 2);
+    light3.position.set(2, 0, 0);
+    this.scene.add(light3);
+    this.rayLight = new THREE.PointLight(0xFFFF00, 50, 0.2, 2);
     this.rayLight.position.set(0, 0, 0);
     this.scene.add(this.rayLight);
 
@@ -133,7 +149,7 @@ class LoadBrain extends Component {
     var loader = new OBJLoader();
 
     //Create material for object
-    const testMat = new THREE.MeshLambertMaterial({
+    const testMat = new THREE.MeshPhongMaterial({
       color: 0x5555555,
       // wireframe: true
       //flatShading: false,
@@ -187,9 +203,14 @@ class LoadBrain extends Component {
     var intersects = this.raycaster.intersectObjects(this.scene.children);
     //console.log(intersects);
     if (intersects.length !== 0) {
-      const vec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
+      const pointVec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
+      const camZVec = (new Vector3(0, 0, 0.15));
+      camZVec.applyQuaternion(this.camera.quaternion);
+      
+      const vec = pointVec.add(camZVec);
       console.log(vec);
-      this.rayLight.position.set(vec.x, vec.y, vec.z+0.5);
+      this.rayLight.position.set(vec.x, vec.y, vec.z);
+      this.rayLight.intensity = 50;
     }
     // for (let i = 0; i < intersects.length; i++) {
     //   console.log( intersects[ i ] );

@@ -9,6 +9,7 @@ import { Vector3 } from 'three';
 import StoreText from './StoreText';
 import BrainWindow from './Homepage_Background_Window';
 import { Vector2 } from 'three';
+import Link from './BrainConnector.js';
 
 function App() {
   const numWindows = 5;
@@ -18,7 +19,8 @@ function App() {
   const raycasts = [];
 
   for (let i = 0; i < numWindows; i++) {
-    winArray.push(<BrainWindow
+    winArray.push(<BrainWindow 
+      el = { <p>TEST HELLO</p> }
       setRefFunc = {
         (ra) => refArray.push(ra)
       }
@@ -28,12 +30,16 @@ function App() {
   raycasts[0] = {x : 0, y: 0};
 
   const targetVecs = new Array(2*numWindows);
-   targetVecs[0] = (new Vector3(0, 0, 3));
-  // targetVecs[1] = (new Vector3(0, 2, 3));
-  // targetVecs[2] = (new Vector3(0, 1, 3));
-  // targetVecs[3] = (new Vector3(-3, 2, 2));
-  // targetVecs[4] = (new Vector3(0, 1, 3));
-  // targetVecs[5] = (new Vector3(-3, 2, -3));
+  targetVecs[0] = (new Vector3(0, 0, 3));
+  targetVecs[1] = (new Vector3(0, 2, 3));
+  targetVecs[2] = (new Vector3(0, 0, 3));
+  targetVecs[3] = (new Vector3(0, 2, -3));
+  targetVecs[4] = (new Vector3(0, 0, 3));
+  targetVecs[5] = (new Vector3(0, -2, 3));
+  targetVecs[6] = (new Vector3(0, 0, 3));
+  targetVecs[7] = (new Vector3(1, 1, 3));
+  targetVecs[8] = (new Vector3(0, 0, 3));
+  targetVecs[9] = (new Vector3(-1, 1, 3));
 
   var windowsRendered = false;
 
@@ -44,7 +50,7 @@ function App() {
   }, [refArray.length]);
 
   // MAKE SURE TO MAKE THIS UPDATE ON RESIZE AS WELL
-  useEffect(() => {
+  function setThresholds() {
     if (windowsRendered === true) {
       for (let i = 0; i < numWindows; i++) {
         const element = refArray[i].current
@@ -55,20 +61,20 @@ function App() {
         //console.log(thresholds[i]);
 
         //TEST PROPERTIES, THESE WILL NEED TO BE MANUALLY SET LATER
-        targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
-        targetVecs[ (i*2) +1  ] = (new Vector3(0, 2, 3));
+        // targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
+        // targetVecs[ (i*2) +1  ] = (new Vector3(0, 2, 3));
 
         const cast = new Vector2();
-        cast.x = 0.2;
-        cast.y = 0.2;
+        cast.x = 0.1;
+        cast.y = 0.1;
         raycasts[i * 2] = cast;
         raycasts[(i * 2) + 1] = cast;
-        //}
       }
     }
-  }, [windowsRendered]);
+  }
 
-
+  useEffect(() => setThresholds(), [windowsRendered]);
+  window.addEventListener('resize', setThresholds);
 
   return (
     <>
@@ -94,6 +100,12 @@ function App() {
         </a>
       </header>
       <Carousel2 />
+      <Link 
+        startX = {10} 
+        startY = {10}
+        endX = {200}
+        endY = {200}
+      />
     </div>
     { winArray[0] }
     { winArray[1] }
