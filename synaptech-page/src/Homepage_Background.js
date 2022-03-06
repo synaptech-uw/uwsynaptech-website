@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-//import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js'
-//import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
+import Link from './BrainConnector.js';
 import './App.css';
 import { Vector3 } from "three";
 
@@ -20,7 +19,9 @@ class LoadBrain extends Component {
                 thresholdCounter : 0,
                 animationCalled : false
               };
+    this.lightTimer = [];
   };
+
   componentDidMount() {
       this.sceneSetup();
       this.populateScene();
@@ -48,9 +49,18 @@ class LoadBrain extends Component {
       if(this.timer) {
         clearTimeout(this.timer);
       }
+
+      if ( this.lightTimer.length != 0 ) {
+        console.log(this.lightTimer);
+        for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
+          clearTimeout(this.lightTimer[timeout]);
+        }
+        this.lightTimer = [];
+      }
+
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 500);
       }
     } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
@@ -63,9 +73,17 @@ class LoadBrain extends Component {
       if(this.timer) {
         clearTimeout(this.timer);
       }
+      if ( this.lightTimer.length != 0 ) {
+        console.log(this.lightTimer);
+        for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
+          clearTimeout(this.lightTimer[timeout]);
+        }
+        this.lightTimer = [];
+      }
+
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 500);
       }
       }
   }
@@ -206,11 +224,18 @@ class LoadBrain extends Component {
       const pointVec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
       const camZVec = (new Vector3(0, 0, 0.15));
       camZVec.applyQuaternion(this.camera.quaternion);
-      
       const vec = pointVec.add(camZVec);
-      console.log(vec);
+      //console.log(vec);
       this.rayLight.position.set(vec.x, vec.y, vec.z);
-      this.rayLight.intensity = 50;
+      this.rayLight.intensity = 50*Math.sin(1/100);
+      console.log(this.state.thresholdCounter);
+      for( let v = 1; v <= 157; v++ ) {
+        if (this.rayLight.intensity > 0) {
+          this.lightTimer.push(setTimeout(() => {this.rayLight.intensity = (50*Math.sin(v/100))}, (10*v)));
+        }
+      }
+      // THIS IS WHERE WE WOULD THEN ACTIVATE DRAW = TRUE FOR THE POPUP AT A DELAY OF 3*157
+      //setTimeout(() => /* HERE */), 3*157;
     }
     // for (let i = 0; i < intersects.length; i++) {
     //   console.log( intersects[ i ] );
@@ -222,7 +247,15 @@ class LoadBrain extends Component {
   //trigger specific camera movements at that point.
 
   render() {
-      return <div className = "ThreeScene" ref={ref => (this.el = ref)} />;
+      return(
+      <div className = "ThreeScene" ref={ref => (this.el = ref)}> 
+        <Link
+        startX = {window.innerWidth/2 - window.innerWidth/3}
+        startY = {window.innerHeight/2 + window.innerWidth/20}
+        endX = {window.innerWidth/2 + (0.1*window.innerWidth/2)}
+        endY = {window.innerHeight/2 - (0.03*window.innerHeight/2)}
+      />
+      </div>);
   }
 }
 

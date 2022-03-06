@@ -21,8 +21,8 @@ export default class Link extends React.Component {
     let y2 = this.props.endY;
 
     return `M${x1},${y1}
-    C${x1 + 100},${y1}
-    ${x2 - 100},${y2}
+    C${x1 + window.innerWidth/3},${y1}
+    ${x2 - window.innerWidth/3},${y2}
     ${x2},${y2}`;
   }
   remove(e) {
@@ -37,12 +37,12 @@ export default class Link extends React.Component {
     return (
       <div>
         <svg className='wire'>
-          <path
+          {/* <path
             className='backgroundPath'
             d={this.calculateBezier.bind(this)()}
             onMouseOver={() => this.setState({ hovering: true })}
             onMouseOut={() => this.setState({ hovering: false })}
-          />
+          /> */}
           <path
             id={this.props.id}
             ref={this.linkPath}
@@ -50,7 +50,7 @@ export default class Link extends React.Component {
             d={this.calculateBezier.bind(this)()}
             onContextMenu={this.remove.bind(this)}
           />
-          <circle className='droplet'>
+          {/* <circle className='droplet'>
             <animateMotion
               ref={this.state.animateMotionRef}
               dur='1s'
@@ -71,7 +71,7 @@ export default class Link extends React.Component {
               dur='1s'
               repeatCount='1'
             />
-          </circle>
+          </circle> */}
         </svg>
       </div>
     );

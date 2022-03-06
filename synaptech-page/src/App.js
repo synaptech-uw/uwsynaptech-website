@@ -9,7 +9,6 @@ import { Vector3 } from 'three';
 import StoreText from './StoreText';
 import BrainWindow from './Homepage_Background_Window';
 import { Vector2 } from 'three';
-import Link from './BrainConnector.js';
 
 function App() {
   const numWindows = 5;
@@ -19,7 +18,7 @@ function App() {
   const raycasts = [];
 
   for (let i = 0; i < numWindows; i++) {
-    winArray.push(<BrainWindow 
+    winArray.push(<BrainWindow
       el = { <p>TEST HELLO</p> }
       setRefFunc = {
         (ra) => refArray.push(ra)
@@ -99,13 +98,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <Carousel2 />
-      <Link 
-        startX = {10} 
-        startY = {10}
-        endX = {200}
-        endY = {200}
-      />
+      {/* <Carousel2 /> */}
     </div>
     { winArray[0] }
     { winArray[1] }
