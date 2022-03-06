@@ -51,7 +51,7 @@ class LoadBrain extends Component {
       }
 
       if ( this.lightTimer.length != 0 ) {
-        console.log(this.lightTimer);
+        //console.log(this.lightTimer);
         for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
           clearTimeout(this.lightTimer[timeout]);
         }
@@ -74,7 +74,7 @@ class LoadBrain extends Component {
         clearTimeout(this.timer);
       }
       if ( this.lightTimer.length != 0 ) {
-        console.log(this.lightTimer);
+        //console.log(this.lightTimer);
         for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
           clearTimeout(this.lightTimer[timeout]);
         }
