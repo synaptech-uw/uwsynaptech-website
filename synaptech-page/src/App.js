@@ -38,15 +38,15 @@ function App() {
   raycasts[9] = {x : 0, y: 0};
 
   const targetVecs = new Array(2*numWindows);
-  targetVecs[0] = (new Vector3(0, 0, 3));
+  targetVecs[0] = (new Vector3(0, -1, 3));
   targetVecs[1] = (new Vector3(0, 2, 3));
-  targetVecs[2] = (new Vector3(0, 0, 3));
+  targetVecs[2] = (new Vector3(0, -1, 3));
   targetVecs[3] = (new Vector3(0, 2, -3));
-  targetVecs[4] = (new Vector3(0, 0, 3));
+  targetVecs[4] = (new Vector3(0, -1, 3));
   targetVecs[5] = (new Vector3(0, -2, 3));
-  targetVecs[6] = (new Vector3(0, 0, 3));
+  targetVecs[6] = (new Vector3(0, -1, 3));
   targetVecs[7] = (new Vector3(1, 1, 3));
-  targetVecs[8] = (new Vector3(0, 0, 3));
+  targetVecs[8] = (new Vector3(0, -1, 3));
   targetVecs[9] = (new Vector3(-1, 1, 3));
 
   var windowsRendered = false;

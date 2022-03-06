@@ -4,6 +4,7 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import Link from './BrainConnector.js';
 import './App.css';
 import { Vector3 } from "three";
+import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
 class LoadBrain extends Component {
   constructor(props) {
@@ -60,7 +61,7 @@ class LoadBrain extends Component {
 
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 500);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
       }
     } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
@@ -83,7 +84,7 @@ class LoadBrain extends Component {
 
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
       }
       }
   }
@@ -97,6 +98,7 @@ class LoadBrain extends Component {
     this.camera.aspect = this.state.width / this.state.height;
     this.camera.updateProjectionMatrix();
     this.reshapeTex(this.scene.background, this);
+    this.scene.children[4].scale.set(this.state.height*0.00002, this.state.height*0.00002, this.state.height*0.00002);
   };
 
   reshapeTex = (tex, reference) => {
@@ -124,15 +126,22 @@ class LoadBrain extends Component {
         75, // fov = field of view
         width / height, // aspect ratio
         0.1, // near plane
-        1000 // far plane
+        100 // far plane
     );
 
     // default camera position
 
     this.camera.z = 3;
     this.camera.y = 1;
-    this.renderer = new THREE.WebGLRenderer();
+    this.renderer = new THREE.WebGLRenderer({
+      powerPreference: "high-performance",
+      antialias: false,
+      stencil: false,
+      depth: true
+      });
     this.renderer.setSize( width, height );
+    this.composer = new EffectComposer(this.renderer);
+    this.composer.addPass(new RenderPass(this.scene, this.camera));
     this.el.appendChild( this.renderer.domElement ); // mount using React ref
 
     //Load background texture
@@ -163,6 +172,17 @@ class LoadBrain extends Component {
     this.rayLight.position.set(0, 0, 0);
     this.scene.add(this.rayLight);
 
+    // const raySphereGeo = new THREE.SphereBufferGeometry( 1/20, 16, 16 );
+    // const raySphereMat = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+    // this.raySphere = new THREE.Mesh(raySphereGeo, raySphereMat);
+    // this.raySphere.layers.set( 0 );
+    // this.raySphere.position.set(0, 0, 0);
+    // this.scene.add( this.raySphere );
+    this.composer.addPass(new EffectPass(this.camera, new BloomEffect({
+      //camera : this.camera,
+      //lightSource : this.rayLight.position
+    })));
+
     //Load brain object file
     var loader = new OBJLoader();
 
@@ -179,7 +199,7 @@ class LoadBrain extends Component {
       brain.traverse((node) => {
         if(node.isMesh) node.material = testMat;
       });
-      brain.scale.set(0.01, 0.01, 0.01);
+      brain.scale.set(window.innerHeight*0.00002, window.innerHeight*0.00002, window.innerHeight*0.00002);
       brain.rotateY(4.5)
       brain.position.x = 0;
       brain.position.y = -1;
@@ -195,6 +215,7 @@ class LoadBrain extends Component {
         console.log("An error happened" + error);
       }
     );
+    //this.composer.addPass(new EffectPass(this.camera, new GodRaysEffect(this.camera, this.raySphere)))
   };
 
 
@@ -222,15 +243,19 @@ class LoadBrain extends Component {
     console.log(intersects);
     if (intersects.length !== 0) {
       const pointVec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
-      const camZVec = (new Vector3(0, 0, 0.15));
+      const camZVec = (new Vector3(0, 0, 0.10));
       camZVec.applyQuaternion(this.camera.quaternion);
       const vec = pointVec.add(camZVec);
       //console.log(vec);
-      this.rayLight.position.set(vec.x, vec.y, vec.z);
+      this.rayLight.position.set(vec.x, Math.floor(vec.y*1000)/1000, vec.z);
+      //this.raySphere.position.set(vec.x, vec.y, vec.z);
       this.rayLight.intensity = 50*Math.sin(1/100);
       for( let v = 1; v <= 157; v++ ) {
         if (this.rayLight.intensity > 0) {
-          this.lightTimer.push(setTimeout(() => {this.rayLight.intensity = (50*Math.sin(v/100))}, (10*v)));
+          this.lightTimer.push(setTimeout(() => {
+            this.rayLight.intensity = ((50)*Math.sin(v/100));
+            // this.raySphere.scale.set(v/157, v/157, v/157);
+          }, (10*v)));
         }
       }
       // THIS IS WHERE WE WOULD THEN ACTIVATE DRAW = TRUE FOR THE POPUP AT A DELAY OF 3*157
@@ -252,7 +277,7 @@ class LoadBrain extends Component {
         startX = {window.innerWidth/2 - window.innerWidth/3}
         startY = {window.innerHeight/2 + window.innerWidth/20}
         endX = {(window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
-        endY = {-((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.95) }
+        endY = {-((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.9) }
       />
       </div>);
   }
