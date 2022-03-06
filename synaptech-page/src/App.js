@@ -26,7 +26,16 @@ function App() {
     />);
   }
 
-  raycasts[0] = {x : 0, y: 0};
+  raycasts[0] = {x : 0.1, y: 0.05};
+  raycasts[1] = {x : 0.1, y: 0.05};
+  raycasts[2] = {x : 0.2, y: -0.19};
+  raycasts[3] = {x : 0.2, y: -0.19};
+  raycasts[4] = {x : -0.1, y: -0.03};
+  raycasts[5] = {x : -0.1, y: -0.03};
+  raycasts[6] = {x : -0.05, y: 0};
+  raycasts[7] = {x : -0.05, y: 0};
+  raycasts[8] = {x : 0, y: 0};
+  raycasts[9] = {x : 0, y: 0};
 
   const targetVecs = new Array(2*numWindows);
   targetVecs[0] = (new Vector3(0, 0, 3));
@@ -63,11 +72,11 @@ function App() {
         // targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
         // targetVecs[ (i*2) +1  ] = (new Vector3(0, 2, 3));
 
-        const cast = new Vector2();
-        cast.x = 0.1;
-        cast.y = 0.1;
-        raycasts[i * 2] = cast;
-        raycasts[(i * 2) + 1] = cast;
+        //const cast = new Vector2();
+        //cast.x = 0.1;
+        //cast.y = 0.1;
+        //raycasts[i * 2] = cast;
+       // raycasts[(i * 2) + 1] = cast;
       }
     }
   }

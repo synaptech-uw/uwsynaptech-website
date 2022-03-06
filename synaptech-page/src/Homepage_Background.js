@@ -83,7 +83,7 @@ class LoadBrain extends Component {
 
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 500);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
       }
       }
   }
@@ -159,7 +159,7 @@ class LoadBrain extends Component {
     const light3 = new THREE.DirectionalLight(0x5599ff, 2);
     light3.position.set(2, 0, 0);
     this.scene.add(light3);
-    this.rayLight = new THREE.PointLight(0xFFFF00, 50, 0.2, 2);
+    this.rayLight = new THREE.PointLight(0xFFFF00, 0, 0.2, 1.5);
     this.rayLight.position.set(0, 0, 0);
     this.scene.add(this.rayLight);
 
@@ -167,9 +167,9 @@ class LoadBrain extends Component {
     var loader = new OBJLoader();
 
     //Create material for object
-    const testMat = new THREE.MeshPhongMaterial({
+    const testMat = new THREE.MeshLambertMaterial({
       color: 0x5555555,
-      // wireframe: true
+      //wireframe: true
       //flatShading: false,
       //emissive: 0x3399ff
       });
@@ -219,7 +219,7 @@ class LoadBrain extends Component {
   highlightPoint = (coords) => {
     this.raycaster.setFromCamera(coords,  this.camera);
     var intersects = this.raycaster.intersectObjects(this.scene.children);
-    //console.log(intersects);
+    console.log(intersects);
     if (intersects.length !== 0) {
       const pointVec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
       const camZVec = (new Vector3(0, 0, 0.15));
@@ -228,7 +228,6 @@ class LoadBrain extends Component {
       //console.log(vec);
       this.rayLight.position.set(vec.x, vec.y, vec.z);
       this.rayLight.intensity = 50*Math.sin(1/100);
-      console.log(this.state.thresholdCounter);
       for( let v = 1; v <= 157; v++ ) {
         if (this.rayLight.intensity > 0) {
           this.lightTimer.push(setTimeout(() => {this.rayLight.intensity = (50*Math.sin(v/100))}, (10*v)));
@@ -248,12 +247,12 @@ class LoadBrain extends Component {
 
   render() {
       return(
-      <div className = "ThreeScene" ref={ref => (this.el = ref)}> 
+      <div className = "ThreeScene" ref={ref => (this.el = ref)}>
         <Link
         startX = {window.innerWidth/2 - window.innerWidth/3}
         startY = {window.innerHeight/2 + window.innerWidth/20}
-        endX = {window.innerWidth/2 + (0.1*window.innerWidth/2)}
-        endY = {window.innerHeight/2 - (0.03*window.innerHeight/2)}
+        endX = {(window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
+        endY = {-((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.95) }
       />
       </div>);
   }
