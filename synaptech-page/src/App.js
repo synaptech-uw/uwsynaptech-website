@@ -8,7 +8,6 @@ import Carousel2 from './Carousel2';
 import { Vector3 } from 'three';
 import StoreText from './StoreText';
 import BrainWindow from './Homepage_Background_Window';
-import { Vector2 } from 'three';
 
 function App() {
   const numWindows = 5;
@@ -48,6 +47,7 @@ function App() {
   targetVecs[7] = (new Vector3(1, 1, vecZ));
   targetVecs[8] = (new Vector3(0, 0, vecZ));
   targetVecs[9] = (new Vector3(-1, 1, vecZ));
+  targetVecs[10] = (new Vector3(0, 0, vecZ));
 
   var windowsRendered = false;
 
@@ -62,7 +62,7 @@ function App() {
     if (windowsRendered === true) {
       for (let i = 0; i < numWindows; i++) {
         const element = refArray[i].current
-        const threshStart = (element.offsetTop - window.innerHeight/2 + element.clientHeight/3);
+        const threshStart = (element.offsetTop - window.innerHeight/2 + element.clientHeight/5);
         const threshEnd = (element.offsetTop - window.innerHeight/2 + element.clientHeight);
         thresholds[ i*2 ] =  threshStart; //[threshStart, threshEnd];
         thresholds[ (i*2) +1 ] = threshEnd;
@@ -98,6 +98,7 @@ function App() {
     {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
     and start getting some text into the page.  */}
     <div className="App">
+      {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
       <header className="App-header">
         <img src={"/assets/dark_synaptech_logo_transparent.png"} className="App-logo" alt="logo" />
         <p>
@@ -115,12 +116,24 @@ function App() {
       {/* <Carousel2 /> */}
     </div>
     { winArray[0] }
+    {/* INSTEAD OF USING DIV BACKGROUNDS, CHANGE THE LIGHT LEVELS WHEN A USER
+    SCROLLS IN AND OUT OF THRESHOLDS! THAT WAY THINGS CAN BE COHESIVE AND SMOOTH */}
     <StoreText title = {"testTitle"} elems = {testText}>
     </StoreText>
+    <div className = "App">
+    </div>
     { winArray[1] }
+    <div className = "App">
+    </div>
     { winArray[2] }
+    <div className = "App">
+    </div>
     { winArray[3] }
+    <div className = "App">
+    </div>
     { winArray[4] }
+    <div className = "App">
+    </div>
 
     </>
   );

@@ -2,6 +2,9 @@
   text-align: center;
   font-size: 16;
   background-color: rgba(10, 21, 44, 0.616);
+  backdrop-filter: blur(0.5rem);
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .App-logo {

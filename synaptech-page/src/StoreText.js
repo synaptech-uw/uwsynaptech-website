@@ -10,6 +10,7 @@ function StoreText(props) {
     <div className = "storeText">
       <h2 className = "storeTextTitle">{props.title}</h2>
       {textItems}
+      {/* Add a reference to this object and get its position once it's rendered? */}
     </div>
   )
 
