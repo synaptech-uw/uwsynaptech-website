@@ -19,7 +19,6 @@ function App() {
 
   for (let i = 0; i < numWindows; i++) {
     winArray.push(<BrainWindow
-      el = { <p>TEST HELLO</p> }
       setRefFunc = {
         (ra) => refArray.push(ra)
       }
@@ -30,24 +29,25 @@ function App() {
   raycasts[1] = {x : 0.1, y: 0.05};
   raycasts[2] = {x : 0.2, y: -0.19};
   raycasts[3] = {x : 0.2, y: -0.19};
-  raycasts[4] = {x : -0.1, y: -0.03};
-  raycasts[5] = {x : -0.1, y: -0.03};
-  raycasts[6] = {x : -0.05, y: 0};
-  raycasts[7] = {x : -0.05, y: 0};
+  raycasts[4] = {x : -0.3, y: -0.03};
+  raycasts[5] = {x : -0.3, y: -0.03};
+  raycasts[6] = {x : -0.15, y: 0};
+  raycasts[7] = {x : -0.15, y: 0};
   raycasts[8] = {x : 0, y: 0};
   raycasts[9] = {x : 0, y: 0};
 
   const targetVecs = new Array(2*numWindows);
-  targetVecs[0] = (new Vector3(0, -1, 3));
-  targetVecs[1] = (new Vector3(0, 2, 3));
-  targetVecs[2] = (new Vector3(0, -1, 3));
-  targetVecs[3] = (new Vector3(0, 2, -3));
-  targetVecs[4] = (new Vector3(0, -1, 3));
-  targetVecs[5] = (new Vector3(0, -2, 3));
-  targetVecs[6] = (new Vector3(0, -1, 3));
-  targetVecs[7] = (new Vector3(1, 1, 3));
-  targetVecs[8] = (new Vector3(0, -1, 3));
-  targetVecs[9] = (new Vector3(-1, 1, 3));
+  const vecZ = 3;
+  targetVecs[0] = (new Vector3(0, 0, vecZ));
+  targetVecs[1] = (new Vector3(0, 2, vecZ));
+  targetVecs[2] = (new Vector3(0, 0, vecZ));
+  targetVecs[3] = (new Vector3(0, 2, -vecZ));
+  targetVecs[4] = (new Vector3(0, 0, vecZ));
+  targetVecs[5] = (new Vector3(0, -2, vecZ));
+  targetVecs[6] = (new Vector3(0, 0, vecZ));
+  targetVecs[7] = (new Vector3(1, 1, vecZ));
+  targetVecs[8] = (new Vector3(0, 0, vecZ));
+  targetVecs[9] = (new Vector3(-1, 1, vecZ));
 
   var windowsRendered = false;
 
@@ -83,7 +83,8 @@ function App() {
 
   useEffect(() => setThresholds(), [windowsRendered]);
   window.addEventListener('resize', setThresholds);
-
+  const testText = [];
+  testText[0] = <p>The fitnessgram pacer test is a multistage</p>;
   return (
     <>
      {/* Change props to list of vectors with varying points, maybe I can do a list of like x and y
@@ -92,9 +93,13 @@ function App() {
     have to evaluate the step in the array and move forward or backward depending on the evaluation
      */}
     <ThreeScene targets = {targetVecs} thresholds = {thresholds} rays = {raycasts} />
+
+
+    {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
+    and start getting some text into the page.  */}
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={"/assets/dark_synaptech_logo_transparent.png"} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -110,6 +115,8 @@ function App() {
       {/* <Carousel2 /> */}
     </div>
     { winArray[0] }
+    <StoreText title = {"testTitle"} elems = {testText}>
+    </StoreText>
     { winArray[1] }
     { winArray[2] }
     { winArray[3] }

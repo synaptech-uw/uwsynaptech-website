@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import Link from './BrainConnector.js';
@@ -18,7 +18,11 @@ class LoadBrain extends Component {
                 height : 0,
                 width : 0,
                 thresholdCounter : 0,
-                animationCalled : false
+                animationCalled : false,
+                tanFOV : Math.tan( ( ( Math.PI / 180 ) * 120 / 2 ) ), //55 here is the camera's FOV remember this
+                ogWinHeight : window.innerHeight,
+                ogWinWidth : window.innerWidth,
+                drawLine : false
               };
     this.lightTimer = [];
   };
@@ -45,13 +49,14 @@ class LoadBrain extends Component {
       this.setState({
         thresholdCounter : currThreshold + 1,
         targetPOV : this.props.targets[currThreshold + 1],
-        raycastXY : this.props.rays[currThreshold + 1]
+        raycastXY : this.props.rays[currThreshold + 1],
+        showLine : false
       });
       if(this.timer) {
         clearTimeout(this.timer);
       }
 
-      if ( this.lightTimer.length != 0 ) {
+      if ( this.lightTimer.length !== 0 ) {
         //console.log(this.lightTimer);
         for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
           clearTimeout(this.lightTimer[timeout]);
@@ -63,42 +68,44 @@ class LoadBrain extends Component {
       if (this.state.thresholdCounter % 2 === 1) {
         this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
       }
+      this.setState({drawLine : false});
     } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
-        raycastXY : this.props.rays[currThreshold - 1]
+        raycastXY : this.props.rays[currThreshold - 1],
+        showLine : false
       });
       if(this.timer) {
         clearTimeout(this.timer);
       }
-      if ( this.lightTimer.length != 0 ) {
+      if ( this.lightTimer.length !== 0 ) {
         //console.log(this.lightTimer);
         for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
           clearTimeout(this.lightTimer[timeout]);
         }
         this.lightTimer = [];
       }
-
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
         this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
       }
-      }
+      this.setState({drawLine : false});
+    }
   }
 
   handleWindowResize = () => {
     this.setState({
-      width : this.el.clientWidth,
-      height : this.el.clientHeight
+      width : window.innerWidth,
+      height : window.innerHeight
     });
-    this.renderer.setSize( this.state.width, this.state.height );
     this.camera.aspect = this.state.width / this.state.height;
+    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth )));
     this.camera.updateProjectionMatrix();
+    this.renderer.setSize( this.state.width, this.state.height );
     this.reshapeTex(this.scene.background, this);
-    this.scene.children[4].scale.set(this.state.height*0.00002, this.state.height*0.00002, this.state.height*0.00002);
   };
 
   reshapeTex = (tex, reference) => {
@@ -116,17 +123,17 @@ class LoadBrain extends Component {
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
     this.setState({
-      width : this.el.clientWidth,
-      height : this.el.clientHeight
+      width : window.innerWidth,
+      height : window.innerHeight
     });
-    const width = this.el.clientWidth;
-    const height = this.el.clientHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
-        75, // fov = field of view
+        Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth ))), // fov = field of view
         width / height, // aspect ratio
         0.1, // near plane
-        100 // far plane
+        10 // far plane
     );
 
     // default camera position
@@ -199,11 +206,13 @@ class LoadBrain extends Component {
       brain.traverse((node) => {
         if(node.isMesh) node.material = testMat;
       });
-      brain.scale.set(window.innerHeight*0.00002, window.innerHeight*0.00002, window.innerHeight*0.00002);
+      const scaleFac = 0.01;
+      brain.scale.set(scaleFac, scaleFac, scaleFac);
       brain.rotateY(4.5)
       brain.position.x = 0;
       brain.position.y = -1;
       brain.position.z = 0;
+      brain.name = "Brain"
       scene.add(brain);
     }
     loader.load('./assets/Brain.obj',
@@ -257,28 +266,24 @@ class LoadBrain extends Component {
             // this.raySphere.scale.set(v/157, v/157, v/157);
           }, (10*v)));
         }
+        this.lightTimer.push(setTimeout(() => {
+          this.setState({drawLine : true})
+        }, (50)));
       }
-      // THIS IS WHERE WE WOULD THEN ACTIVATE DRAW = TRUE FOR THE POPUP AT A DELAY OF 3*157
-      //setTimeout(() => /* HERE */), 3*157;
     }
-    // for (let i = 0; i < intersects.length; i++) {
-    //   console.log( intersects[ i ] );
-    // }
   }
-
-
   //Write event when user scrolls to certain points on the scrollbar. Have certain waypoints that
   //trigger specific camera movements at that point.
 
   render() {
       return(
       <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-        <Link
-        startX = {window.innerWidth/2 - window.innerWidth/3}
-        startY = {window.innerHeight/2 + window.innerWidth/20}
-        endX = {(window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
-        endY = {-((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.9) }
-      />
+        { ( this.state.drawLine ) && <Link
+          startX = { window.innerWidth/2 + window.innerWidth/3 }
+          startY = { window.innerHeight/2 + window.innerWidth/20 }
+          endX = { (window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
+          endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.9) }
+        /> }
       </div>);
   }
 }

@@ -1,13 +1,14 @@
+import './App.css'
 function StoreText(props) {
 
-  const paras = props.paras;
-  const textItems = paras.map((para) =>
-    <p>{para}</p>
+  const elems = props.elems;
+  const textItems = elems.map((para) =>
+    para
   );
 
   return(
-    <div>
-      <h2>{props.title}</h2>
+    <div className = "storeText">
+      <h2 className = "storeTextTitle">{props.title}</h2>
       {textItems}
     </div>
   )

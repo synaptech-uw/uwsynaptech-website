@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-size: 16;
+  background-color: rgba(10, 21, 44, 0.616);
 }
 
 .App-logo {
@@ -8,11 +9,11 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   /* background-color: #282c34; */
@@ -51,19 +52,19 @@
 }
 
 .BrainWindow {
-  height: 45vh;
-  width: 100vw;
-  border-color: white;
+  height: 60vh;
+  width: 10vw;
+  /* border-color: white;
   border-style: solid;
-  border-width: 2px;
+  border-width: 2px; */
   }
 
 .wire {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   z-index: 100;
 }
 
@@ -75,11 +76,29 @@
 
 .linkPath {
   stroke: rgb(255, 255, 162);
-  stroke-width: 3px;
+  stroke-width: 0.3rem;
   fill: none;
 }
 
-.droplet {
-  fill: var(--base1);
-  border-radius: 5;
+.storeText {
+  display:flex;
+  flex-direction: column;
+  width: 20rem;
+  border-style:solid;
+  border-color:darkblue;
+  border-width: 0;
+  border-left-width: 1rem;
+  border-left-color:rgb(255, 255, 162);
+  border-right-width: 0.1rem;
+  border-right-color:white;
+  background-color: rgba(10, 21, 44, 0.616);
+  color: white;
+  padding: 1rem;
+}
+
+.storeTextTitle {
+  border-color: rgb(47, 141, 218);
+  border-width: 0;
+  border-bottom-width:  0.3rem;
+  border-style: solid;
 }
