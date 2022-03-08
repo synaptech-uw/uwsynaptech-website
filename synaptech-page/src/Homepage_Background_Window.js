@@ -5,7 +5,7 @@ function BrainWindow(props) {
     const winRef = useRef();
     useEffect(() => {
         props.setRefFunc(winRef);
-    }, []);
+    });
     return(
         <div ref = {winRef} className = "BrainWindow">
             { props.el }

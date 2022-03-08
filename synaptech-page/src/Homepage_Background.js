@@ -6,7 +6,7 @@ import './App.css';
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
-class LoadBrain extends Component {
+class ThreeDBrain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,10 +27,6 @@ class LoadBrain extends Component {
     this.lightTimer = [];
   };
 
-  shouldComponentUpdate() {
-    return false;
-  }
-
   componentDidMount() {
       this.sceneSetup();
       this.populateScene();
@@ -46,7 +42,7 @@ class LoadBrain extends Component {
   }
 
   updateScrollPos = () => {
-    console.log(this.props.userScroll);
+    //console.log(this.props.userScroll);
     if (this.props.userScroll > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(this.props.thresholds[this.state.thresholdCounter]);
@@ -98,7 +94,6 @@ class LoadBrain extends Component {
       }
       this.setState({drawLine : false});
     }
-    //this.props.userScroll(window.scrollY);
   }
 
   handleWindowResize = () => {
@@ -111,6 +106,7 @@ class LoadBrain extends Component {
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.state.width, this.state.height );
     this.reshapeTex(this.scene.background, this);
+    console.log(this.props.thresholds);
   };
 
   reshapeTex = (tex, reference) => {
@@ -273,6 +269,8 @@ class LoadBrain extends Component {
         }
         this.lightTimer.push(setTimeout(() => {
           this.setState({drawLine : true})
+          console.log(this.state.drawLine);
+          console.log(this.state.raycastXY);
         }, (50)));
       }
     }
@@ -282,40 +280,43 @@ class LoadBrain extends Component {
 
   render() {
       return(
-      <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-        { ( this.state.drawLine ) && <Link
-          startX = { window.innerWidth/2 + window.innerWidth/3 }
-          startY = { window.innerHeight/2 + window.innerWidth/20 }
-          endX = { (window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
-          endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.9) }
-        /> }
-      </div>);
+        <>
+          <div className = "ThreeScene" ref={ref => (this.el = ref)}>
+          </div>);
+          { ( this.state.drawLine ) && <Link
+            startX = { window.innerWidth/2 + window.innerWidth/3 }
+            startY = { window.innerHeight/2 + window.innerWidth/20 }
+            endX = { (window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
+            endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.9) }
+          /> }
+        </>
+      );
   }
 }
 
-class ThreeScene extends Component {
+// class ThreeScene extends Component {
 
-  constructor(props) {
-    super(props);
-  }
+//   constructor(props) {
+//     super(props);
+//   }
 
-  state = { isMounted: true };
-  render() {
-    const { isMounted = true } = this.state;
-    return (
-      <>
-        <button
-          onClick={() =>
-            this.setState(state => ({ isMounted: !state.isMounted }))
-          }
-        >
-          {isMounted ? "Unmount" : "Mount"}
-        </button>
-        {isMounted && <LoadBrain userScroll = {this.props.userScroll} targets = {this.props.targets} thresholds = {this.props.thresholds} rays = {this.props.rays} />}
-        {isMounted && <div>Scroll to zoom, drag to rotate</div>}
-      </>
-    );
-  }
-}
+//   state = { isMounted: true };
+//   render() {
+//     const { isMounted = true } = this.state;
+//     return (
+//       <>
+//         <button
+//           onClick={() =>
+//             this.setState(state => ({ isMounted: !state.isMounted }))
+//           }
+//         >
+//           {isMounted ? "Unmount" : "Mount"}
+//         </button>
+//         {isMounted && <LoadBrain userScroll = {this.props.userScroll} targets = {this.props.targets} thresholds = {this.props.thresholds} rays = {this.props.rays} />}
+//         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
+//       </>
+//     );
+//   }
+// }
 
-export default ThreeScene;
+export default ThreeDBrain;

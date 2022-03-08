@@ -20,6 +20,7 @@ export default class Link extends React.Component {
     let y1 = this.props.startY;
     let x2 = this.props.endX;
     let y2 = this.props.endY;
+    console.log(window.innerWidth);
 
     var path = `M${x2},${y2}
     C${x2 - window.innerWidth/3},${y2}
@@ -45,7 +46,7 @@ export default class Link extends React.Component {
   render() {
     return (
       <div>
-        <SvgLines animate={ true } fade = {true} duration={ 1300 } >
+        <SvgLines animate={ true } fade = { true } duration={ 1300 } >
           <svg className='wire'>
             {/* <path
               className='backgroundPath'
