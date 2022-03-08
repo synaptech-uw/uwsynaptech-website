@@ -15,6 +15,10 @@ function App() {
   const winArray = [];
   const refArray = [];
   const raycasts = [];
+  //Blurbs will be structured as an array [title, elemsArr[]]
+  //These will be passed into the background to render the different elements.
+
+  const blurbs = [];
   const blurbCoords = [];
 
   const [thresh, setThresh] = useState([]);
@@ -23,8 +27,8 @@ function App() {
     winArray.push(<BrainWindow setRefFunc={(ra) => refArray.push(ra)} />);
   }
 
-  raycasts[0] = { x: 0.1, y: 0.05 };
-  raycasts[1] = { x: 0.1, y: 0.05 };
+  raycasts[0] = { x: 0.15, y: 0.05 };
+  raycasts[1] = { x: 0.15, y: 0.05 };
   raycasts[2] = { x: 0.2, y: -0.19 };
   raycasts[3] = { x: 0.2, y: -0.19 };
   raycasts[4] = { x: -0.2, y: -0.03 };
@@ -35,17 +39,17 @@ function App() {
   raycasts[9] = { x: 0, y: 0 };
   raycasts[10] = { x: 0, y: 0 };
 
-  blurbCoords[0] = { x: 0.5, y: 0.3 };
-  blurbCoords[1] = { x: 0.5, y: 0.3 };
-  blurbCoords[2] = { x: 0.5, y: -0.3 };
-  blurbCoords[3] = { x: 0.5, y: -0.3 };
+  blurbCoords[0] = { x: -0.8, y: -0.1 };
+  blurbCoords[1] = { x: -0.8, y: -0.1 };
+  blurbCoords[2] = { x: -0.5, y: -0.3 };
+  blurbCoords[3] = { x: -0.5, y: -0.3 };
   blurbCoords[4] = { x: -0.5, y: -0.3 };
   blurbCoords[5] = { x: -0.5, y: -0.3 };
-  blurbCoords[6] = { x: -0.5, y: 0.3 };
-  blurbCoords[7] = { x: -0.5, y: 0.3 };
-  blurbCoords[8] = { x: 0.5, y: 0.3 };
-  blurbCoords[9] = { x: 0.5, y: 0.3 };
-  blurbCoords[10] = { x: 0.5, y: 0.3 };
+  blurbCoords[6] = { x: -0.5, y: -0.3 };
+  blurbCoords[7] = { x: -0.5, y: -0.3 };
+  blurbCoords[8] = { x: -0.5, y: -0.3 };
+  blurbCoords[9] = { x: -0.5, y: -0.3 };
+  blurbCoords[10] = { x: -0.5, y: -0.3 };
 
   const targetVecs = new Array(2 * numWindows);
   const vecZ = 8;
@@ -63,6 +67,10 @@ function App() {
   targetVecs[10] = new Vector3(0, 0, vecZ);
 
   var windowsRendered = false;
+
+  blurbs[0] = ["Who are we?", [<p>
+    Synaptech serves as University of Washington’s sole project-based neurotech club, hosting opportunities to hack and develop various neurotech projects. From HackJams to long-term projects, students can look to gain real experience with neural interfaces and neural data.
+  </p>]]
 
   useEffect(() => {
     if (refArray.length === numWindows) {
@@ -154,7 +162,7 @@ function App() {
         targets={targetVecs}
         thresholds={thresh}
         rays={raycasts}
-        blurb = {testText}
+        blurb = {blurbs}
         blurbCoords = {blurbCoords}
       />
 

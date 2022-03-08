@@ -10,7 +10,7 @@ function StoreText(props) {
   var styleStr = ("left : " + String((props.coords.x + 1)*50) + "vw;" + " bottom : " + String((props.coords.y + 0.995)*50) + "vh;");
   useEffect(() => {
     styleStr = ("left : " + String((props.coords.x + 1)*50) + "vw;" + " bottom : " + String((props.coords.y + 0.995)*50) + "vh;");
-    console.log(styleStr);
+   //console.log(styleStr);
   }, [props.coords]);
 
   return(

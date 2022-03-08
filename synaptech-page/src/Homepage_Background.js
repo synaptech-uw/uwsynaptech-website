@@ -17,6 +17,8 @@ class ThreeDBrain extends Component {
                 raycastXY : props.rays[0],
                 blurbCoords : props.blurbCoords,
                 blurbXY : props.blurbCoords[0],
+                blurbs : props.blurb,
+                currBlurb : props.blurb[0],
                 lookAtPoint : (new Vector3(0, 0, 0)),
                 height : 0,
                 width : 0,
@@ -107,7 +109,7 @@ class ThreeDBrain extends Component {
       height : this.el.clientHeight
     });
     this.camera.aspect = this.state.width / this.state.height;
-    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth )));
+    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( this.el.clientWidth / this.state.ogWinWidth )));
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.state.width, this.state.height );
     this.reshapeTex(this.scene.background, this);
@@ -128,7 +130,7 @@ class ThreeDBrain extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
-    
+    console.log(this.props.blurb[0]);
     const width = this.el.clientWidth;
     const height = this.el.clientHeight;
     this.setState({
@@ -288,12 +290,12 @@ class ThreeDBrain extends Component {
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-          { ( this.state.drawLine ) && <StoreText title={"testTitle"} coords = {this.state.blurbXY} elems={this.props.blurb}></StoreText> }
+          { ( this.state.drawLine ) && <StoreText title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText> }
           { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
-            startY = { -((window.innerHeight*this.state.blurbXY.y/2) - window.innerHeight/2) }
+            startY = { -((this.el.clientHeight*this.state.blurbXY.y/2) - this.el.clientHeight/2) }
             endX = { (this.state.width*this.state.raycastXY.x)/2 + this.state.width/2 }
-            endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/2) }
+            endY = { -((this.el.clientHeight*this.state.raycastXY.y/2) - this.el.clientHeight/2) }
           /> }
           </div>);
         </>
