@@ -1,3 +1,96 @@
+html {
+  font-size: 14px;
+  font-family:'Bungee', 'Segoe UI', Geneva, Verdana, sans-serif;
+}
+
+/* tablet */
+@media only screen and (min-width: 480px) {
+  html {
+      font-size: 16px;
+  }
+}
+
+/* desktop */
+@media only screen and (min-width: 768px) {
+  html {
+      font-size: 18px;
+  }
+}
+
+/* extra large */
+@media only screen and (min-width: 1024px) {
+  html {
+      font-size: 20px;
+  }
+}
+
+h1 {
+  font-family : "Bungee";
+}
+
+.Logo {
+  position: fixed;
+  height: 10rem;
+  width: 10rem;
+  background: url("./assets/synaptechLogos/dark_synaptech_logo_transparent.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-left: 1rem;
+  display:flex;
+  left:-1rem;
+}
+
+.Navbar-Link {
+  background:none;
+  border: none;
+  color: white;
+}
+
+.app-title {
+  position: fixed;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  font-family:"Bungee";
+  right: 2rem;
+}
+
+.Header {
+  position: fixed;
+  display:flex;
+  height: 4rem;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #073763;
+  border-bottom-left-radius:0.5rem;
+  border-bottom-right-radius:0.5rem;
+  flex-direction:row;
+  z-index:10000;
+  transition-property: height;
+  transition: transform 1s ease-in-out;
+  transform: translateY(0vh);
+}
+
+.Header-Hidden {
+  position: fixed;
+  height: 4rem;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #073763;
+  flex-direction:row;
+  border-bottom-left-radius:0.5rem;
+  border-bottom-right-radius:0.5rem;
+  z-index:10000;
+  transition-property: height;
+  transition: transform 1s ease-in-out;
+  transform: translateY(-4rem);
+}
+
 .Welcome {
   position:fixed;
   text-align: center;
@@ -6,7 +99,7 @@
   backdrop-filter: blur(0.5rem);
   min-height: 100vh;
   min-width: 100vw;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   transform: translateY(0vh);
 }
 .Welcome-Scrolled {
@@ -17,15 +110,16 @@
   backdrop-filter: blur(0.5rem);
   min-height: 100vh;
   min-width: 100vw;
-  transition: all 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
   transform: translateY(-100vh);
 }
 
 .Body {
+  color:white;
+  font-size:2rem;
   text-align: center;
-  font-size: 16;
   min-height: 100vh;
-  min-width: 100vw;
+  width: 100%;
 }
 
 .App-logo {
@@ -69,6 +163,7 @@
 }
 
 .ThreeScene {
+  max-width:2560px;
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -77,10 +172,8 @@
 
 .BrainWindow {
   height: 60vh;
-  width: 100vw;
   border-color: white;
   border-style: solid;
-  border-width: 2px;
   }
 
 .wire {
@@ -105,11 +198,12 @@
 }
 
 .storeText {
+  position:absolute;
   display:flex;
   flex-direction: column;
-  width: 20rem;
+  width: auto;
   border-style:solid;
-  border-color:darkblue;
+  border-color:rgb(255, 255, 162);
   border-width: 0;
   border-left-width: 1rem;
   border-left-color:rgb(255, 255, 162);
@@ -118,6 +212,8 @@
   background-color: rgba(10, 21, 44, 0.616);
   color: white;
   padding: 1rem;
+  backdrop-filter: blur(0.2rem);
+  z-index:200;
 }
 
 .storeTextTitle {

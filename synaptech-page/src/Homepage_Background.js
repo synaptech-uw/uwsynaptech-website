@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import Link from './BrainConnector.js';
 import './App.css';
+import StoreText from "./StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
@@ -14,6 +15,8 @@ class ThreeDBrain extends Component {
                 targetPOV : props.targets[0],
                 raycasts : props.rays,
                 raycastXY : props.rays[0],
+                blurbCoords : props.blurbCoords,
+                blurbXY : props.blurbCoords[0],
                 lookAtPoint : (new Vector3(0, 0, 0)),
                 height : 0,
                 width : 0,
@@ -50,6 +53,7 @@ class ThreeDBrain extends Component {
         thresholdCounter : currThreshold + 1,
         targetPOV : this.props.targets[currThreshold + 1],
         raycastXY : this.props.rays[currThreshold + 1],
+        blurbXY : this.props.blurbCoords[currThreshold + 1],
         showLine : false
       });
       if(this.timer) {
@@ -76,6 +80,7 @@ class ThreeDBrain extends Component {
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
         raycastXY : this.props.rays[currThreshold - 1],
+        blurbXY : this.props.blurbCoords[currThreshold - 1],
         showLine : false
       });
       if(this.timer) {
@@ -98,15 +103,15 @@ class ThreeDBrain extends Component {
 
   handleWindowResize = () => {
     this.setState({
-      width : window.innerWidth,
-      height : window.innerHeight
+      width : this.el.clientWidth,
+      height : this.el.clientHeight
     });
     this.camera.aspect = this.state.width / this.state.height;
     this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth )));
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.state.width, this.state.height );
     this.reshapeTex(this.scene.background, this);
-    console.log(this.props.thresholds);
+    // console.log(this.props.thresholds);
   };
 
   reshapeTex = (tex, reference) => {
@@ -123,15 +128,16 @@ class ThreeDBrain extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
+    
+    const width = this.el.clientWidth;
+    const height = this.el.clientHeight;
     this.setState({
-      width : window.innerWidth,
-      height : window.innerHeight
+      width : width,
+      height : width
     });
-    const width = window.innerWidth;
-    const height = window.innerHeight;
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(
-        Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth ))), // fov = field of view
+        Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( this.state.width / this.state.ogWinWidth ))), // fov = field of view
         width / height, // aspect ratio
         0.1, // near plane
         10 // far plane
@@ -263,14 +269,14 @@ class ThreeDBrain extends Component {
       for( let v = 1; v <= 157; v++ ) {
         if (this.rayLight.intensity > 0) {
           this.lightTimer.push(setTimeout(() => {
-            this.rayLight.intensity = ((50)*Math.sin(v/100));
+            this.rayLight.intensity = ((20)*Math.sin(v/100));
             // this.raySphere.scale.set(v/157, v/157, v/157);
           }, (10*v)));
         }
         this.lightTimer.push(setTimeout(() => {
           this.setState({drawLine : true})
-          console.log(this.state.drawLine);
-          console.log(this.state.raycastXY);
+          // console.log(this.state.drawLine);
+          // console.log(this.state.raycastXY);
         }, (50)));
       }
     }
@@ -282,13 +288,14 @@ class ThreeDBrain extends Component {
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-          </div>);
+          { ( this.state.drawLine ) && <StoreText title={"testTitle"} coords = {this.state.blurbXY} elems={this.props.blurb}></StoreText> }
           { ( this.state.drawLine ) && <Link
-            startX = { window.innerWidth/2 + window.innerWidth/3 }
-            startY = { window.innerHeight/2 + window.innerWidth/20 }
-            endX = { (window.innerWidth*this.state.raycastXY.x)/2 + window.innerWidth/2 }
-            endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/1.9) }
+            startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
+            startY = { -((window.innerHeight*this.state.blurbXY.y/2) - window.innerHeight/2) }
+            endX = { (this.state.width*this.state.raycastXY.x)/2 + this.state.width/2 }
+            endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/2) }
           /> }
+          </div>);
         </>
       );
   }

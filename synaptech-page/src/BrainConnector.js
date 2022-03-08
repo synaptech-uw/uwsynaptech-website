@@ -20,7 +20,7 @@ export default class Link extends React.Component {
     let y1 = this.props.startY;
     let x2 = this.props.endX;
     let y2 = this.props.endY;
-    console.log(window.innerWidth);
+    //console.log(window.innerWidth);
 
     var path = `M${x2},${y2}
     C${x2 - window.innerWidth/3},${y2}
