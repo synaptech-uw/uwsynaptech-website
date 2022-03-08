@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
+import useScrollPosition from './useScrollPosition';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -36,17 +37,18 @@ function App() {
   raycasts[9] = {x : 0, y: 0};
 
   const targetVecs = new Array(2*numWindows);
-  const vecZ = 3;
+  const vecZ = 10;
+  const vecZ2 = 3;
   targetVecs[0] = (new Vector3(0, 0, vecZ));
-  targetVecs[1] = (new Vector3(0, 2, vecZ));
+  targetVecs[1] = (new Vector3(0, 2, vecZ2));
   targetVecs[2] = (new Vector3(0, 0, vecZ));
-  targetVecs[3] = (new Vector3(0, 2, -vecZ));
+  targetVecs[3] = (new Vector3(0, 2, -vecZ2));
   targetVecs[4] = (new Vector3(0, 0, vecZ));
-  targetVecs[5] = (new Vector3(0, -2, vecZ));
+  targetVecs[5] = (new Vector3(0, -2, vecZ2));
   targetVecs[6] = (new Vector3(0, 0, vecZ));
-  targetVecs[7] = (new Vector3(1, 1, vecZ));
+  targetVecs[7] = (new Vector3(1, 1, vecZ2));
   targetVecs[8] = (new Vector3(0, 0, vecZ));
-  targetVecs[9] = (new Vector3(-1, 1, vecZ));
+  targetVecs[9] = (new Vector3(-1, 1, vecZ2));
   targetVecs[10] = (new Vector3(0, 0, vecZ));
 
   var windowsRendered = false;
@@ -66,7 +68,7 @@ function App() {
         const threshEnd = (element.offsetTop - window.innerHeight/2 + element.clientHeight);
         thresholds[ i*2 ] =  threshStart; //[threshStart, threshEnd];
         thresholds[ (i*2) +1 ] = threshEnd;
-        //console.log(thresholds[i]);
+        console.log(thresholds[i]);
 
         //TEST PROPERTIES, THESE WILL NEED TO BE MANUALLY SET LATER
         // targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
@@ -80,9 +82,19 @@ function App() {
       }
     }
   }
-
+  const [ introClass, setIntroClass ] = useState("Welcome");
   useEffect(() => setThresholds(), [windowsRendered]);
+  const [userScroll, setUserScroll] = useState(0);
   window.addEventListener('resize', setThresholds);
+  const scrollPos = useScrollPosition();
+  useEffect(() => {
+    console.log(scrollPos)
+    if (scrollPos > 1) {
+      setIntroClass("Welcome-Scrolled");
+    } else {
+      setIntroClass("Welcome");
+    }
+  }, [scrollPos]);
   const testText = [];
   testText[0] = <p>The fitnessgram pacer test is a multistage</p>;
   return (
@@ -92,12 +104,12 @@ function App() {
     the other elements in the return. Getting these y values is the next step. Then we just
     have to evaluate the step in the array and move forward or backward depending on the evaluation
      */}
-    <ThreeScene targets = {targetVecs} thresholds = {thresholds} rays = {raycasts} />
+    <ThreeScene userScroll = {(scrolly) => {setUserScroll(scrolly)}} targets = {targetVecs} thresholds = {thresholds} rays = {raycasts} />
 
 
     {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
     and start getting some text into the page.  */}
-    <div className="App">
+    {<div className={introClass}>
       {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
       <header className="App-header">
         <img src={"/assets/dark_synaptech_logo_transparent.png"} className="App-logo" alt="logo" />
@@ -114,25 +126,25 @@ function App() {
         </a>
       </header>
       {/* <Carousel2 /> */}
-    </div>
+    </div> }
     { winArray[0] }
     {/* INSTEAD OF USING DIV BACKGROUNDS, CHANGE THE LIGHT LEVELS WHEN A USER
     SCROLLS IN AND OUT OF THRESHOLDS! THAT WAY THINGS CAN BE COHESIVE AND SMOOTH */}
     <StoreText title = {"testTitle"} elems = {testText}>
     </StoreText>
-    <div className = "App">
+    <div className = "Body">
     </div>
     { winArray[1] }
-    <div className = "App">
+    <div className = "Body">
     </div>
     { winArray[2] }
-    <div className = "App">
+    <div className = "Body">
     </div>
     { winArray[3] }
-    <div className = "App">
+    <div className = "Body">
     </div>
     { winArray[4] }
-    <div className = "App">
+    <div className = "Body">
     </div>
 
     </>

@@ -27,6 +27,10 @@ class LoadBrain extends Component {
     this.lightTimer = [];
   };
 
+  shouldComponentUpdate() {
+    return false;
+  }
+
   componentDidMount() {
       this.sceneSetup();
       this.populateScene();
@@ -42,8 +46,7 @@ class LoadBrain extends Component {
   }
 
   updateScrollPos = () => {
-    //console.log(window.scrollY);
-    if (window.scrollY > this.props.thresholds[this.state.thresholdCounter] ) {
+    if (this.props.userScroll > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
@@ -69,7 +72,7 @@ class LoadBrain extends Component {
         this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
       }
       this.setState({drawLine : false});
-    } else if (window.scrollY < this.props.thresholds[this.state.thresholdCounter -1] ) {
+    } else if (this.props.userScroll < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
@@ -94,6 +97,7 @@ class LoadBrain extends Component {
       }
       this.setState({drawLine : false});
     }
+    //this.props.userScroll(window.scrollY);
   }
 
   handleWindowResize = () => {
@@ -306,7 +310,7 @@ class ThreeScene extends Component {
         >
           {isMounted ? "Unmount" : "Mount"}
         </button>
-        {isMounted && <LoadBrain targets = {this.props.targets} thresholds = {this.props.thresholds} rays = {this.props.rays} />}
+        {isMounted && <LoadBrain userScroll = {this.props.userScroll} targets = {this.props.targets} thresholds = {this.props.thresholds} rays = {this.props.rays} />}
         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
       </>
     );
