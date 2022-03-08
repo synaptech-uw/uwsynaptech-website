@@ -69,7 +69,7 @@ function App() {
         thresholds[ i*2 ] =  threshStart; //[threshStart, threshEnd];
         thresholds[ (i*2) +1 ] = threshEnd;
         console.log(thresholds[i]);
-
+        console.log("THRESHOLDS");
         //TEST PROPERTIES, THESE WILL NEED TO BE MANUALLY SET LATER
         // targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
         // targetVecs[ (i*2) +1  ] = (new Vector3(0, 2, 3));
@@ -83,7 +83,7 @@ function App() {
     }
   }
   const [ introClass, setIntroClass ] = useState("Welcome");
-  useEffect(() => setThresholds(), [windowsRendered]);
+  useEffect(() => setThresholds());
   const [userScroll, setUserScroll] = useState(0);
   window.addEventListener('resize', setThresholds);
   const scrollPos = useScrollPosition();
@@ -127,9 +127,11 @@ function App() {
       </header>
       {/* <Carousel2 /> */}
     </div> }
+    <div className = "Body">
+
+    </div>
     { winArray[0] }
-    {/* INSTEAD OF USING DIV BACKGROUNDS, CHANGE THE LIGHT LEVELS WHEN A USER
-    SCROLLS IN AND OUT OF THRESHOLDS! THAT WAY THINGS CAN BE COHESIVE AND SMOOTH */}
+    
     <StoreText title = {"testTitle"} elems = {testText}>
     </StoreText>
     <div className = "Body">

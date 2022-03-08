@@ -24,6 +24,8 @@
 .Body {
   text-align: center;
   font-size: 16;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
 .App-logo {
