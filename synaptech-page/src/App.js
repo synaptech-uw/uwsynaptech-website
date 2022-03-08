@@ -88,7 +88,8 @@ function App() {
   window.addEventListener('resize', setThresholds);
   const scrollPos = useScrollPosition();
   useEffect(() => {
-    console.log(scrollPos)
+    //console.log(scrollPos)
+    setUserScroll(scrollPos);
     if (scrollPos > 1) {
       setIntroClass("Welcome-Scrolled");
     } else {
@@ -104,7 +105,7 @@ function App() {
     the other elements in the return. Getting these y values is the next step. Then we just
     have to evaluate the step in the array and move forward or backward depending on the evaluation
      */}
-    <ThreeScene userScroll = {(scrolly) => {setUserScroll(scrolly)}} targets = {targetVecs} thresholds = {thresholds} rays = {raycasts} />
+    <ThreeScene userScroll = {userScroll} targets = {targetVecs} thresholds = {thresholds} rays = {raycasts} />
 
 
     {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
@@ -128,10 +129,11 @@ function App() {
       {/* <Carousel2 /> */}
     </div> }
     <div className = "Body">
-
+      
     </div>
     { winArray[0] }
-    
+    {/* INSTEAD OF USING DIV BACKGROUNDS, CHANGE THE LIGHT LEVELS WHEN A USER
+    SCROLLS IN AND OUT OF THRESHOLDS! THAT WAY THINGS CAN BE COHESIVE AND SMOOTH */}
     <StoreText title = {"testTitle"} elems = {testText}>
     </StoreText>
     <div className = "Body">

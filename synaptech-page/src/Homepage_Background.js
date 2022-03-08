@@ -46,6 +46,7 @@ class LoadBrain extends Component {
   }
 
   updateScrollPos = () => {
+    console.log(this.props.userScroll);
     if (this.props.userScroll > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(this.props.thresholds[this.state.thresholdCounter]);
@@ -253,7 +254,7 @@ class LoadBrain extends Component {
   highlightPoint = (coords) => {
     this.raycaster.setFromCamera(coords,  this.camera);
     var intersects = this.raycaster.intersectObjects(this.scene.children);
-    console.log(intersects);
+    //console.log(intersects);
     if (intersects.length !== 0) {
       const pointVec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
       const camZVec = (new Vector3(0, 0, 0.10));
