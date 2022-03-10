@@ -27,7 +27,8 @@ class ThreeDBrain extends Component {
                 tanFOV : Math.tan( ( ( Math.PI / 180 ) * 120 / 2 ) ), //55 here is the camera's FOV remember this
                 ogWinHeight : window.innerHeight,
                 ogWinWidth : window.innerWidth,
-                drawLine : false
+                drawLine : false,
+                inThreshold : false
               };
     this.lightTimer = [];
   };
@@ -52,10 +53,12 @@ class ThreeDBrain extends Component {
       const currThreshold = this.state.thresholdCounter;
       //console.log(this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
+        inThreshold : false,
         thresholdCounter : currThreshold + 1,
         targetPOV : this.props.targets[currThreshold + 1],
         raycastXY : this.props.rays[currThreshold + 1],
         blurbXY : this.props.blurbCoords[currThreshold + 1],
+        currBlurb : this.props.blurb[currThreshold + 1],
         showLine : false
       });
       if(this.timer) {
@@ -72,17 +75,20 @@ class ThreeDBrain extends Component {
 
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
       }
       this.setState({drawLine : false});
+
     } else if (this.props.userScroll < this.props.thresholds[this.state.thresholdCounter -1] ) {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
+        inThreshold : false,
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
         raycastXY : this.props.rays[currThreshold - 1],
         blurbXY : this.props.blurbCoords[currThreshold - 1],
+        currBlurb : this.props.blurb[currThreshold - 1],
         showLine : false
       });
       if(this.timer) {
@@ -97,10 +103,11 @@ class ThreeDBrain extends Component {
       }
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1300);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
       }
       this.setState({drawLine : false});
     }
+    console.log(this.props.thresholds[this.state.thresholdCounter])
   }
 
   handleWindowResize = () => {
@@ -251,7 +258,7 @@ class ThreeDBrain extends Component {
     const lookAtCoord = this.state.lookAtPoint;
 
     // Right now this only runs once?
-    this.camera.position.lerp(targetPos, 0.07);
+    this.camera.position.lerp(targetPos, 0.08);
     this.camera.lookAt(lookAtCoord);
   }
 
@@ -290,7 +297,13 @@ class ThreeDBrain extends Component {
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-          { ( this.state.drawLine ) && <StoreText title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText> }
+            <div className = {(this.state.thresholdCounter %2 === 0 ) ? "blur-on" : "blur-off"}>
+            </div>
+          {
+            <StoreText showClass = {
+              (this.state.drawLine) ? "storeText" : "storeText-hidden"
+            } title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText>
+          }
           { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
             startY = { -((this.el.clientHeight*this.state.blurbXY.y/2) - this.el.clientHeight/2) }

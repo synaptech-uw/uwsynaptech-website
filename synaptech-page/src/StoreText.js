@@ -14,7 +14,7 @@ function StoreText(props) {
   }, [props.coords]);
 
   return(
-    <div className = "storeText" Style = {styleStr}>
+    <div className = {props.showClass} Style = {styleStr}>
       <h2 className = "storeTextTitle">{props.title}</h2>
       {textItems}
       {/* Add a reference to this object and get its position once it's rendered? */}

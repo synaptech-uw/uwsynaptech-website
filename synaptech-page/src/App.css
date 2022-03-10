@@ -1,33 +1,81 @@
 html {
-  font-size: 14px;
-  font-family:'Bungee', 'Segoe UI', Geneva, Verdana, sans-serif;
+
+  font-size: 10px;
+  font-family:'Bungee', 'Open Sans', Geneva, Verdana, sans-serif;
 }
 
 /* tablet */
 @media only screen and (min-width: 480px) {
   html {
-      font-size: 16px;
+      font-size: 12px;
   }
 }
 
 /* desktop */
 @media only screen and (min-width: 768px) {
   html {
-      font-size: 18px;
+      font-size: 16px;
   }
 }
 
 /* extra large */
 @media only screen and (min-width: 1024px) {
   html {
-      font-size: 20px;
+      font-size: 18px;
   }
+}
+.blur-on {
+  width : 100vw;
+  height : 100vh;
+  backdrop-filter: blur(0.2rem);
+  position: absolute;
+  top:0;
+  left:0;
+  transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
+  background-color:rgba(0, 0, 0, 0.322);
+}
+.blur-off {
+  width : 100vw;
+  height : 100vh;
+  position: absolute;
+  backdrop-filter: blur(0.0rem);
+  top:0;
+  left:0;
+  transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
 }
 
 h1 {
   font-family : "Bungee";
 }
 
+h2 {
+  font-family : "Bungee";
+}
+
+h3 {
+  font-family : "Roboto", monospace;;
+  font-weight : bolder;
+}
+
+.cta {
+  font-family:"Roboto"
+}
+.Welcome-Text {
+  padding:4rem;
+  font-family:'Inconsolata';
+  opacity: 100%;
+  transition: transform 1s ease-in-out, opacity 1s ease-in;
+  transition-delay: 0.2s;
+  transform: translateY(0vh);
+}
+
+.Welcome-Text-hidden {
+  padding:4rem;
+  font-family:'Inconsolata', monospace;
+  opacity: 0%;
+  transition: transform 1s ease-in-out, opacity 1s ease-in;
+  transform: translateY(5vh);
+}
 .Logo {
   position: fixed;
   height: 10rem;
@@ -48,12 +96,11 @@ h1 {
 }
 
 .app-title {
-  position: fixed;
+  position: absolute;
   color: white;
   font-weight: bold;
   font-size: 0.75rem;
   font-family:"Bungee";
-  left: 10rem;
   right:2rem;
   align-items: right;
 }
@@ -101,8 +148,11 @@ h1 {
   backdrop-filter: blur(0.5rem);
   min-height: 100vh;
   min-width: 100vw;
-  transition: transform 0.5s ease-in-out;
-  transform: translateY(0vh);
+  /* transition: transform 0.5s ease-in-out; */
+  transition: opacity 0.5s ease-in-out;
+  opacity:100%;
+  /* transform: translateY(0vh); */
+  z-index: 100000;
 }
 .Welcome-Scrolled {
   position:fixed;
@@ -112,16 +162,21 @@ h1 {
   backdrop-filter: blur(0.5rem);
   min-height: 100vh;
   min-width: 100vw;
-  transition: transform 0.5s ease-in-out;
-  transform: translateY(-100vh);
+  transition: opacity 0.5s ease-in-out;
+  opacity:0%;
+  /* transition: transform 0.5s ease-in-out;
+  transform: translateY(-100vh); */
+  z-index: 100000;
 }
-
-.Body {
+.Body{
   color:white;
   font-size: 2rem;
   text-align: center;
-  min-height: 100vh;
+  min-height: 50vh;
+  height: fit-content;
   width: 100%;
+  display:flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -173,9 +228,9 @@ h1 {
 }
 
 .BrainWindow {
-  height: 60vh;
+  height: 150vh;
   border-color: white;
-  border-style: solid;
+  border-style: none;
   }
 
 .wire {
@@ -204,7 +259,7 @@ h1 {
   height: fit-content;
   display:flex;
   flex-direction: column;
-  right: 10vw;
+  width: 25rem;
   border-style:solid;
   border-color:rgb(255, 255, 162);
   border-width: 0;
@@ -217,6 +272,33 @@ h1 {
   padding: 1rem;
   backdrop-filter: blur(0.2rem);
   z-index:200;
+  transition: transform 1s ease-in-out;
+  transition-delay: 1s;
+  transform: rotateY(0deg);
+  transform-origin: left bottom;
+}
+.storeText-hidden {
+  position:absolute;
+  height: fit-content;
+  display:flex;
+  overflow: hidden;
+  flex-direction: column;
+  right : 10vw;
+  border-style:solid;
+  border-color:rgb(255, 255, 162);
+  border-width: 0;
+  border-left-width: 1rem;
+  border-left-color:rgb(255, 255, 162);
+  border-right-width: 0.1rem;
+  border-right-color:white;
+  background-color: rgba(10, 21, 44, 0.616);
+  color: white;
+  padding: 1rem;
+  backdrop-filter: blur(0.2rem);
+  z-index:200;
+  transition: transform 0s;
+  transform: rotateY(90deg);
+  transform-origin:left bottom;
 }
 
 .storeTextTitle {
@@ -224,4 +306,10 @@ h1 {
   border-width: 0;
   border-bottom-width:  0.3rem;
   border-style: solid;
+}
+
+.social-logo {
+  width: 2rem;
+  height: 2rem;
+  padding:0.1rem;
 }
