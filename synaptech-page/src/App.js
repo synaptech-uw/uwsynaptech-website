@@ -180,12 +180,8 @@ function App() {
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
             About us
           </h2>
-          <p Style={"font-size : 1.5rem; text-align: left; padding-top:4rem;"}> We're a neurotech RSO at UW. Synaptech is a club that looks to introduce
-            people of all disciplines into the field of neural engineering.
-            We do a lot of really cool projects ranging from hardware hacking
-            to developing software for neurotech hardware (and maybe even a bit of VR).
-            If you're looking for somewhere to work on personal projects,
-            this is the place! All experience levels are welcome.</p>
+          <p Style={"font-size : 1.5rem; text-align: left; padding-top:4rem;"}> We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field!</p>
+            <p Style={"font-size : 1.5rem; text-align: left;"}> We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects! </p>
         </div>
         <div Style = {"display: flex; flex-direction: row; position: absolute; right: 4rem; left: 50vw; padding-left: 2rem;"}>
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
