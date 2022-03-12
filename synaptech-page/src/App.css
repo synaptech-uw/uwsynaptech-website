@@ -113,9 +113,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #073763;
-  border-bottom-left-radius:0.5rem;
-  border-bottom-right-radius:0.5rem;
+  /* background: #073763; */
   flex-direction:row;
   z-index:10000;
   transition-property: height;
@@ -130,10 +128,8 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #073763;
+  /* background: #073763; */
   flex-direction:row;
-  border-bottom-left-radius:0.5rem;
-  border-bottom-right-radius:0.5rem;
   z-index:10000;
   transition-property: height;
   transition: transform 1s ease-in-out;

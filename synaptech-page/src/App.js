@@ -28,7 +28,7 @@ function App() {
   }
 
   raycasts[0] = { x: 0.15, y: 0.05 };
-  raycasts[2] = { x: 0.2, y: -0.19 };
+  raycasts[2] = { x: 0.2, y: -0.1 };
   raycasts[4] = { x: -0.2, y: -0.03 };
   raycasts[6] = { x: -0.15, y: 0 };
   raycasts[8] = { x: -0.05, y: 0.2 };
@@ -69,7 +69,7 @@ function App() {
   targetVecs[0] = new Vector3(0, 0, vecZ);
   targetVecs[1] = new Vector3(0, 2, vecZ2);
   targetVecs[2] = new Vector3(0, 0, vecZ);
-  targetVecs[3] = new Vector3(0, 2, -vecZ2);
+  targetVecs[3] = new Vector3(3, 1, vecZ2);
   targetVecs[4] = new Vector3(0, 0, vecZ);
   targetVecs[5] = new Vector3(0, -2, vecZ2);
   targetVecs[6] = new Vector3(0, 0, vecZ);

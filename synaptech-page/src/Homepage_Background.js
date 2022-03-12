@@ -75,7 +75,7 @@ class ThreeDBrain extends Component {
 
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
       }
       this.setState({drawLine : false});
 
@@ -103,7 +103,7 @@ class ThreeDBrain extends Component {
       }
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 1000);
       }
       this.setState({drawLine : false});
     }
