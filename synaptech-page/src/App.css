@@ -263,10 +263,10 @@ h3 {
   border-left-color:rgb(255, 255, 162);
   border-right-width: 0.1rem;
   border-right-color:white;
-  background-color: rgba(10, 21, 44, 0.616);
+  background-color: rgba(7, 14, 29, 0.719);
   color: white;
   padding: 1rem;
-  backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(7px);
   z-index:200;
   transition: transform 1s ease-in-out;
   transition-delay: 1s;
@@ -287,10 +287,10 @@ h3 {
   border-left-color:rgb(255, 255, 162);
   border-right-width: 0.1rem;
   border-right-color:white;
-  background-color: rgba(10, 21, 44, 0.616);
+  background-color: rgba(7, 14, 29, 0.719);
   color: white;
   padding: 1rem;
-  backdrop-filter: blur(0.2rem);
+  backdrop-filter: blur(7px);
   z-index:200;
   transition: transform 0s;
   transform: rotateY(90deg);
