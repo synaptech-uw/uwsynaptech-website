@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 import Link from './BrainConnector.js';
-import './App.css';
+import './Styles.css';
 import StoreText from "./StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";

@@ -1,5 +1,6 @@
-html {
+/* Styling for overall html */
 
+html {
   font-size: 10px;
   font-family:'Bungee', 'Open Sans', Geneva, Verdana, sans-serif;
 }
@@ -24,6 +25,26 @@ html {
       font-size: 18px;
   }
 }
+
+h1 {
+  font-family : "Bungee";
+}
+
+h2 {
+  font-family : "Bungee";
+}
+
+h3 {
+  font-family : "Roboto", monospace;;
+  font-weight : bolder;
+}
+
+.cta {
+  font-family:"Roboto"
+}
+
+
+/* Homepage styling */
 .blur-on {
   width : 100vw;
   height : 100vh;
@@ -44,22 +65,6 @@ html {
   transition: background-color 0.5s ease-in-out, backdrop-filter 0.5s ease-in-out;
 }
 
-h1 {
-  font-family : "Bungee";
-}
-
-h2 {
-  font-family : "Bungee";
-}
-
-h3 {
-  font-family : "Roboto", monospace;;
-  font-weight : bolder;
-}
-
-.cta {
-  font-family:"Roboto"
-}
 .Welcome-Text {
   padding:4rem;
   font-family:'Inconsolata';
@@ -76,6 +81,7 @@ h3 {
   transition: transform 1s ease-in-out, opacity 1s ease-in;
   transform: translateY(5vh);
 }
+
 .Logo {
   position: fixed;
   height: 10rem;
@@ -113,7 +119,6 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: #073763; */
   flex-direction:row;
   z-index:10000;
   transition-property: height;
@@ -128,7 +133,6 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: #073763; */
   flex-direction:row;
   z-index:10000;
   transition-property: height;
@@ -144,12 +148,11 @@ h3 {
   backdrop-filter: blur(0.5rem);
   min-height: 100vh;
   min-width: 100vw;
-  /* transition: transform 0.5s ease-in-out; */
   transition: opacity 0.5s ease-in-out;
   opacity:100%;
-  /* transform: translateY(0vh); */
   z-index: 100000;
 }
+
 .Welcome-Scrolled {
   position:fixed;
   text-align: center;
@@ -160,10 +163,9 @@ h3 {
   min-width: 100vw;
   transition: opacity 0.5s ease-in-out;
   opacity:0%;
-  /* transition: transform 0.5s ease-in-out;
-  transform: translateY(-100vh); */
   z-index: 100000;
 }
+
 .Body{
   color:white;
   font-size: 2rem;
@@ -187,7 +189,6 @@ h3 {
 } */
 
 .App-header {
-  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -202,19 +203,16 @@ h3 {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
-.c {
-  width:auto;
-  height:auto;
-}
+} */
 
+/* Background styling */
 .ThreeScene {
   max-width:2560px;
   height: 100vh;

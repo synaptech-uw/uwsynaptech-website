@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./Styles.css";
 import SvgLines from 'react-mt-svg-lines';
 
 export default class Link extends React.Component {

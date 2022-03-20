@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useScrollPosition from "./useScrollPosition";
-import ReactDOM from "react-dom";
-import logo from "./logo.svg";
-import "./App.css";
+import "./Styles.css";
 import ThreeDBrain from "./Homepage_Background";
 import Carousel from "./Carousel";
 import Carousel2 from "./Carousel2";
@@ -10,7 +8,7 @@ import { Vector3 } from "three";
 import BrainWindow from "./Homepage_Background_Window";
 import Navbar from "./Navbar.js"
 
-function App() {
+function HomePage() {
   const numWindows = 5;
   const winArray = [];
   const refArray = [];
@@ -173,8 +171,6 @@ function App() {
         </p>
       </div>
       {winArray[0]}
-      {/* INSTEAD OF USING DIV BACKGROUNDS, CHANGE THE LIGHT LEVELS WHEN A USER
-    SCROLLS IN AND OUT OF THRESHOLDS! THAT WAY THINGS CAN BE COHESIVE AND SMOOTH */}
       <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
         <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 50vw; padding-right: 2rem;"}>
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
@@ -227,33 +223,33 @@ function App() {
       </div>
       </div>
       {winArray[4]}
-      <footer Style = {"bottom: 0; width: 100%; height: 6rem; color: white; background-color: #031A2F; display: flex; flex-direction: column;"}>
+      {/* <footer Style = {"bottom: 0; width: 100%; height: 6rem; color: white; background-color: #031A2F; display: flex; flex-direction: column;"}>
         <div Style = {"padding-top: 3rem; padding-right: 2rem; display: flex; flex-direction: row; position: absolute; right: 0; "}>
           <h3 Style = {"padding-right: 1rem;"}>Contact us: </h3>
-          {/* <!-- facebook logo is from https://iconmonstr.com/facebook-4-png/
-            License said it could be used without attribution. --> */}
+          { <!-- facebook logo is from https://iconmonstr.com/facebook-4-png/
+            License said it could be used without attribution. --> }
           <a href="https://www.facebook.com/uwsynaptech"><img class="social-logo" src="assets/socialMediaLogos/facebook_logo.png"
                 alt="Facebook logo"/></a>
-          {/* <!-- instagram logo is from https://iconmonstr.com/instagram-11-png/
-            License said it could be used without attribution. --> */}
+          { <!-- instagram logo is from https://iconmonstr.com/instagram-11-png/
+            License said it could be used without attribution. --> }
           <a href="https://www.instagram.com/uwsynaptech/"><img class="social-logo" src="assets/socialMediaLogos/instagram_logo.png"
                 alt="Instagram logo"/></a>
-          {/* <!-- github logo is from https://iconmonstr.com/github-1-png/
-            License said it could be used without attribution. --> */}
+          { <!-- github logo is from https://iconmonstr.com/github-1-png/
+            License said it could be used without attribution. --> }
           <a href="https://github.com/synaptech-uw"><img class="social-logo" src="assets/socialMediaLogos/github_logo.png"
                 alt="Github logo"/></a>
-          {/* <!-- email logo is from https://iconmonstr.com/email-2-png/
-            License said it could be used without attribution. --> */}
+          { <!-- email logo is from https://iconmonstr.com/email-2-png/
+            License said it could be used without attribution. --> }
           <a href="mailto:synaptechuw@gmail.com"><img class="social-logo" src="assets/socialMediaLogos/email_logo.png"
                 alt="E-Mail"/></a>
-          {/* <!-- linkedIn logo is from https://iconmonstr.com/linkedin-3-png/
-            License said it could be used without attribution. --> */}
+          { <!-- linkedIn logo is from https://iconmonstr.com/linkedin-3-png/
+            License said it could be used without attribution. --> }
           <a href="https://www.linkedin.com/company/synaptechuw/"><img class="social-logo" src="assets/socialMediaLogos/linkedin-logo.png"
                                                                           alt="LinkedIn logo"/></a>
         </div>
-      </footer>
+      </footer> */}
     </>
   );
 }
 
-export default App;
+export default HomePage;
