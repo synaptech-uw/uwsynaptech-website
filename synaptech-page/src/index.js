@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import HomePage from './Homepage.js';
+import OurTeam from './OurTeam.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <HomePage />
+    {/* <HomePage /> */}
+    <OurTeam />
   </React.StrictMode>,
   document.getElementById('root')
 );

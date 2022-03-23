@@ -51,7 +51,7 @@ function HomePage() {
 
   blurbs[6] = ["Feeling unprepared?", [<p> Synaptech offers workshops to help prepare students for their Hackathons, to ensure everyone feels prepared to attempt their dream project! Check out our upcoming events! </p>]]
 
-  blurbs[8] = ["Prospective members", [<p>Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!</p>, <p>Don't feel discouraged just because you don't see an immidiate use for your skillset, neuroengineering is an extremely diverse field!</p>]]
+  blurbs[8] = ["Prospective members", [<p>Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!</p>, <p>Don't feel discouraged just because you don't see an immediate use for your skillset; neuroengineering is an extremely diverse field!</p>]]
 
   blurbs[10] = [null, [null, null]];
 
@@ -195,7 +195,8 @@ function HomePage() {
             Project Spotlight
           </h2>
           <div Style = {"top: 5rem; border: solid white; left: 10rem; right: 10rem; height: 50vh; position: absolute;"}>
-            Projects carousel here
+            {/* Projects carousel here */}
+            <Carousel2 />
           </div>
         </div>
       </div>
