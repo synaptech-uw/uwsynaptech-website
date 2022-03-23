@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './App.css'
+import './Styles.css'
 function Navbar(props) {
     return(
         <header className={props.show}>
