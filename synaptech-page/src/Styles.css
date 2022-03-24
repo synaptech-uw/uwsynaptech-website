@@ -67,6 +67,8 @@ h3 {
 
 .Welcome-Text {
   padding:4rem;
+  padding-top:0;
+  top:0;
   font-family:'Inconsolata';
   opacity: 100%;
   transition: transform 1s ease-in-out, opacity 1s ease-in;
@@ -76,6 +78,8 @@ h3 {
 
 .Welcome-Text-hidden {
   padding:4rem;
+  padding-top:0;
+  top:0;
   font-family:'Inconsolata', monospace;
   opacity: 0%;
   transition: transform 1s ease-in-out, opacity 1s ease-in;
@@ -177,8 +181,34 @@ h3 {
   flex-direction: column;
 }
 
+.test{
+  color:white;
+  min-height: 50vh;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.test-locked{
+  color:white;
+  min-height: 50vh;
+  height: fit-content;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position:fixed;
+  overflow:hidden;
+}
+
+html::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
 .App-logo {
-  height: 40vmin;
+  height: 35vw;
+  width: 35vw;
   pointer-events: none;
 }
 
@@ -197,6 +227,7 @@ h3 {
   font-size: calc(10px + 2vmin);
   color: white;
   z-index : 100;
+  width: 100vw;
 }
 
 .App-link {

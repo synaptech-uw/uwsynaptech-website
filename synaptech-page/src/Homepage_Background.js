@@ -107,7 +107,7 @@ class ThreeDBrain extends Component {
       }
       this.setState({drawLine : false});
     }
-    console.log(this.props.thresholds[this.state.thresholdCounter])
+    //console.log(this.props.thresholds[this.state.thresholdCounter])
   }
 
   handleWindowResize = () => {

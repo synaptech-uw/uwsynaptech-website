@@ -114,27 +114,44 @@ function HomePage() {
       setThresh(thresholds);
     }
   }
-  const [introClass, setIntroClass] = useState("Welcome");
 
-  useEffect(() => setThresholds(), []);
+  const [firstScroll, setFirstScroll] = useState(false);
+  const [firstLockClass, setFirstLockClass] = useState("test")
 
   useEffect(() => {
+    setThresholds()
     window.addEventListener("resize", setThresholds);
   }, []);
 
   const scrollPos = useScrollPosition();
 
-  const testText = [];
-  testText[0] = <p>The fitnessgram pacer test is a multistage</p>;
+  if ( firstScroll === false && scrollPos >= 20) {
+    setFirstScroll(true);
+    setFirstLockClass("test-locked");
+    setTimeout(() => {
+      setFirstLockClass("test")
+    }, 2000);
+  }
+  // I need a boolean that tracks when the user first scrolls past the beginning of the page.
+
+  // This boolean will be used to evaluate whether the page should be locked from scrolling for a second.
+
+  // I can use useEffect to trigger this lock once the firstScroll statement changes.
+
+
+  // const testText = [];
+  // testText[0] = <p>The fitnessgram pacer test is a multistage</p>;
+
+
   return (
-    <>
+    <div className = {firstLockClass}>
       <head>
         <style>
           @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inconsolata&family=Open+Sans:wght@800&family=Roboto:wght@400;900&display=swap');
         </style>
       </head>
       <Navbar show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
-      <div className={ !(scrollPos > 1) ? "Welcome" : "Welcome-Scrolled" }>
+      <div className={ (!firstScroll && !(scrollPos > 1)) ? "Welcome" : "Welcome-Scrolled" }>
         {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
         <header className="App-header">
           <img
@@ -164,9 +181,9 @@ function HomePage() {
       {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
     and start getting some text into the page.  */}
       <div className="Body">
-        <div Style={"height:70vh"}>
+        <div Style={"height:50vh"}>
         </div>
-        <p className = {(scrollPos > 1) ? "Welcome-Text" : "Welcome-Text-hidden"}>
+        <p className = {(firstScroll) ? "Welcome-Text" : "Welcome-Text-hidden"}>
           Welcome to Synaptech, the University of Washington's Undergraduate Neurotechnology RSO
         </p>
       </div>
@@ -249,7 +266,7 @@ function HomePage() {
                                                                           alt="LinkedIn logo"/></a>
         </div>
       </footer> */}
-    </>
+    </div>
   );
 }
 
