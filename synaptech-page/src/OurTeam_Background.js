@@ -39,15 +39,12 @@ class ThreeDBrain extends Component {
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
       window.addEventListener('scroll', this.updateScrollPos);
-      window.addEventListener('load', this.updateScrollPos);
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowResize);
     window.removeEventListener('scroll', this.updateScrollPos);
-    window.removeEventListener('load', this.updateScrollPos);
     window.cancelAnimationFrame(this.requestID);
-    
   }
 
   updateScrollPos = () => {
@@ -140,6 +137,7 @@ class ThreeDBrain extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
+    console.log(this.props.blurb[0]);
     const width = this.el.clientWidth;
     const height = this.el.clientHeight;
     this.setState({
@@ -158,7 +156,6 @@ class ThreeDBrain extends Component {
 
     this.camera.z = 3;
     this.camera.y = 1;
-    this.camera.z = 8;
     this.renderer = new THREE.WebGLRenderer({
       powerPreference: "high-performance",
       antialias: false,
@@ -180,6 +177,7 @@ class ThreeDBrain extends Component {
     loader.load('./assets/background_without_logo.png' ,
     (texture) => applyTex(texture, this));
     this.raycaster = new THREE.Raycaster();
+
   };
 
 
