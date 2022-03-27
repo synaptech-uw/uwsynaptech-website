@@ -7,30 +7,19 @@ import StoreText from "./StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
-class ThreeDBrain extends Component {
+class ThreeDBrainBG extends Component {
   constructor(props) {
     super(props);
     this.state = {
-                targets : props.targets,
-                targetPOV : props.targets[0],
-                raycasts : props.rays,
-                raycastXY : props.rays[0],
-                blurbCoords : props.blurbCoords,
-                blurbXY : props.blurbCoords[0],
-                blurbs : props.blurb,
-                currBlurb : props.blurb[0],
+                targetPOV : (new Vector3(0, 0, 8)),
                 lookAtPoint : (new Vector3(0, 0, 0)),
                 height : 0,
                 width : 0,
-                thresholdCounter : 0,
                 animationCalled : false,
                 tanFOV : Math.tan( ( ( Math.PI / 180 ) * 120 / 2 ) ), //55 here is the camera's FOV remember this
                 ogWinHeight : window.innerHeight,
                 ogWinWidth : window.innerWidth,
-                drawLine : false,
-                inThreshold : false
               };
-    this.lightTimer = [];
   };
 
   componentDidMount() {
@@ -38,76 +27,11 @@ class ThreeDBrain extends Component {
       this.populateScene();
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
-      window.addEventListener('scroll', this.updateScrollPos);
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowResize);
-    window.removeEventListener('scroll', this.updateScrollPos);
     window.cancelAnimationFrame(this.requestID);
-  }
-
-  updateScrollPos = () => {
-    //console.log(this.props.userScroll);
-    if (this.props.userScroll > this.props.thresholds[this.state.thresholdCounter] ) {
-      const currThreshold = this.state.thresholdCounter;
-      //console.log(this.props.thresholds[this.state.thresholdCounter]);
-      this.setState({
-        inThreshold : false,
-        thresholdCounter : currThreshold + 1,
-        targetPOV : this.props.targets[currThreshold + 1],
-        raycastXY : this.props.rays[currThreshold + 1],
-        blurbXY : this.props.blurbCoords[currThreshold + 1],
-        currBlurb : this.props.blurb[currThreshold + 1],
-        showLine : false
-      });
-      if(this.timer) {
-        clearTimeout(this.timer);
-      }
-
-      if ( this.lightTimer.length !== 0 ) {
-        //console.log(this.lightTimer);
-        for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
-          clearTimeout(this.lightTimer[timeout]);
-        }
-        this.lightTimer = [];
-      }
-
-      this.rayLight.intensity = 0;
-      if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
-      }
-      this.setState({drawLine : false});
-
-    } else if (this.props.userScroll < this.props.thresholds[this.state.thresholdCounter -1] ) {
-      const currThreshold = this.state.thresholdCounter;
-      //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
-      this.setState({
-        inThreshold : false,
-        thresholdCounter : currThreshold - 1,
-        targetPOV : this.props.targets[currThreshold - 1],
-        raycastXY : this.props.rays[currThreshold - 1],
-        blurbXY : this.props.blurbCoords[currThreshold - 1],
-        currBlurb : this.props.blurb[currThreshold - 1],
-        showLine : false
-      });
-      if(this.timer) {
-        clearTimeout(this.timer);
-      }
-      if ( this.lightTimer.length !== 0 ) {
-        //console.log(this.lightTimer);
-        for ( let timeout = 0; timeout < this.lightTimer.length; timeout++ ) {
-          clearTimeout(this.lightTimer[timeout]);
-        }
-        this.lightTimer = [];
-      }
-      this.rayLight.intensity = 0;
-      if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
-      }
-      this.setState({drawLine : false});
-    }
-    //console.log(this.props.thresholds[this.state.thresholdCounter])
   }
 
   handleWindowResize = () => {
@@ -137,7 +61,6 @@ class ThreeDBrain extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
-    console.log(this.props.blurb[0]);
     const width = this.el.clientWidth;
     const height = this.el.clientHeight;
     this.setState({
@@ -231,6 +154,7 @@ class ThreeDBrain extends Component {
       brain.name = "Brain"
       scene.add(brain);
     }
+
     loader.load('./assets/Brain.obj',
       (out) => loadedBrain( out, this.scene ),
       function(xhr) {
@@ -262,34 +186,6 @@ class ThreeDBrain extends Component {
     this.camera.lookAt(lookAtCoord);
   }
 
-  highlightPoint = (coords) => {
-    this.raycaster.setFromCamera(coords,  this.camera);
-    var intersects = this.raycaster.intersectObjects(this.scene.children);
-    //console.log(intersects);
-    if (intersects.length !== 0) {
-      const pointVec = intersects[0].point//.applyMatrix4(this.camera.matrixWorld);
-      const camZVec = (new Vector3(0, 0, 0.10));
-      camZVec.applyQuaternion(this.camera.quaternion);
-      const vec = pointVec.add(camZVec);
-      //console.log(vec);
-      this.rayLight.position.set(vec.x, Math.floor(vec.y*1000)/1000, vec.z);
-      //this.raySphere.position.set(vec.x, vec.y, vec.z);
-      this.rayLight.intensity = 50*Math.sin(1/100);
-      for( let v = 1; v <= 157; v++ ) {
-        if (this.rayLight.intensity > 0) {
-          this.lightTimer.push(setTimeout(() => {
-            this.rayLight.intensity = ((20)*Math.sin(v/100));
-            // this.raySphere.scale.set(v/157, v/157, v/157);
-          }, (10*v)));
-        }
-        this.lightTimer.push(setTimeout(() => {
-          this.setState({drawLine : true})
-          // console.log(this.state.drawLine);
-          // console.log(this.state.raycastXY);
-        }, (50)));
-      }
-    }
-  }
   //Write event when user scrolls to certain points on the scrollbar. Have certain waypoints that
   //trigger specific camera movements at that point.
 
@@ -297,48 +193,11 @@ class ThreeDBrain extends Component {
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-            <div className = {(this.state.thresholdCounter %2 === 0 ) ? "blur-on" : "blur-off"}>
+            <div className ={"blur-on"}>
             </div>
-          {
-            <StoreText showClass = {
-              (this.state.drawLine) ? "storeText" : "storeText-hidden"
-            } title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText>
-          }
-          { ( this.state.drawLine ) && <Link
-            startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
-            startY = { -((this.el.clientHeight*this.state.blurbXY.y/2) - this.el.clientHeight/2) }
-            endX = { (this.state.width*this.state.raycastXY.x)/2 + this.state.width/2 }
-            endY = { -((this.el.clientHeight*this.state.raycastXY.y/2) - this.el.clientHeight/2) }
-          /> }
           </div>);
         </>
       );
   }
 }
-
-// class ThreeScene extends Component {
-
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   state = { isMounted: true };
-//   render() {
-//     const { isMounted = true } = this.state;
-//     return (
-//       <>
-//         <button
-//           onClick={() =>
-//             this.setState(state => ({ isMounted: !state.isMounted }))
-//           }
-//         >
-//           {isMounted ? "Unmount" : "Mount"}
-//         </button>
-//         {isMounted && <LoadBrain userScroll = {this.props.userScroll} targets = {this.props.targets} thresholds = {this.props.thresholds} rays = {this.props.rays} />}
-//         {isMounted && <div>Scroll to zoom, drag to rotate</div>}
-//       </>
-//     );
-//   }
-// }
-
-export default ThreeDBrain;
+export default ThreeDBrainBG;

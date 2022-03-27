@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useScrollPosition from "./useScrollPosition";
 import "./Styles.css";
 import "./OurTeamStyles.css";
+import ThreeDBrainBG from './OurTeam_Background.js'
 import Navbar from "./Navbar.js"
 import Admin from "./Admin.js";
 import Alumni from "./Alumni.js";
@@ -17,8 +18,9 @@ function OurTeam() {
           @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inconsolata&family=Open+Sans:wght@800&family=Roboto:wght@400;900&display=swap');
         </style>
       </head>
+      
       <Navbar show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
-
+      <ThreeDBrainBG/>
       <div Style = {"display: flex; flex-direction: row; justify-content: right; padding-right: 3rem; margin-top: 4rem"}>
         <h2>Administration</h2>
       </div>
