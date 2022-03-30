@@ -26,13 +26,13 @@ html {
   }
 }
 
-div {
+/* div {
   color: #073763;
-}
+} */
 
 img {
-  width: 213px;
-  height: 213px;
+  width: 12rem;
+  height: 12rem;
 }
 
 .AdminContainer {

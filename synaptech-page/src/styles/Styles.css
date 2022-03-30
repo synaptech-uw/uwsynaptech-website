@@ -87,16 +87,17 @@ h3 {
 }
 
 .Logo {
-  position: fixed;
+  position: absolute;
   height: 10rem;
   width: 10rem;
-  background: url("./assets/synaptechLogos/dark_synaptech_logo_transparent.png");
+  background: url("../assets/synaptechLogos/dark_synaptech_logo_transparent.png");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   margin-left: 1rem;
   display:flex;
   left:-1rem;
+  top:-3rem;
 }
 
 .Navbar-Link {
@@ -141,7 +142,7 @@ h3 {
   z-index:10000;
   transition-property: height;
   transition: transform 1s ease-in-out;
-  transform: translateY(-4rem);
+  transform: translateY(-5rem);
 }
 
 .Welcome {
@@ -154,7 +155,7 @@ h3 {
   min-width: 100vw;
   transition: opacity 0.5s ease-in-out;
   opacity:100%;
-  z-index: 100000;
+  z-index: 9999;
 }
 
 .Welcome-Scrolled {
@@ -167,7 +168,7 @@ h3 {
   min-width: 100vw;
   transition: opacity 0.5s ease-in-out;
   opacity:0%;
-  z-index: 100000;
+  z-index: 0;
 }
 
 .Body{

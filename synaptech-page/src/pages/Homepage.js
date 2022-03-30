@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import useScrollPosition from "./useScrollPosition";
-import "./Styles.css";
-import ThreeDBrain from "./Homepage_Background";
-import Carousel from "./Carousel";
-import Carousel2 from "./Carousel2";
+import useScrollPosition from "../Components/useScrollPosition";
+import "../styles/Styles.css";
+import ThreeDBrain from "../Components/Homepage_Background";
+import Carousel2 from "../Components/Carousel2";
 import { Vector3 } from "three";
-import BrainWindow from "./Homepage_Background_Window";
-import Navbar from "./Navbar.js"
+import BrainWindow from "../Components/Homepage_Background_Window";
+import Navbar from "../Components/Navbar.js"
 
 function HomePage() {
   const numWindows = 5;
@@ -147,7 +146,7 @@ function HomePage() {
     <div className = {firstLockClass}>
       <head>
         <style>
-          @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inconsolata&family=Open+Sans:wght@800&family=Roboto:wght@400;900&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inconsolata&family=Open+Sans:wght@800&family=Roboto:wght@400;900&display=swap'
         </style>
       </head>
       <Navbar show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import "./Styles.css"
+import "../styles/Styles.css"
 
 function BrainWindow(props) {
     const winRef = useRef();

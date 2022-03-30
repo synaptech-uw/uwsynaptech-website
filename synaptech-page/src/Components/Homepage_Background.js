@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-import Link from './BrainConnector.js';
-import './Styles.css';
-import StoreText from "./StoreText";
+import Link from '../Components/BrainConnector.js';
+import '../styles/Styles.css';
+import StoreText from "../Components/StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
@@ -47,7 +47,6 @@ class ThreeDBrain extends Component {
     window.removeEventListener('scroll', this.updateScrollPos);
     window.removeEventListener('load', this.updateScrollPos);
     window.cancelAnimationFrame(this.requestID);
-    
   }
 
   updateScrollPos = () => {
@@ -312,7 +311,7 @@ class ThreeDBrain extends Component {
             endX = { (this.state.width*this.state.raycastXY.x)/2 + this.state.width/2 }
             endY = { -((this.el.clientHeight*this.state.raycastXY.y/2) - this.el.clientHeight/2) }
           /> }
-          </div>);
+          </div>
         </>
       );
   }

@@ -1,4 +1,4 @@
-import './Styles.css';
+import '../styles/Styles.css';
 import React, {useEffect} from 'react';
 function StoreText(props) {
 

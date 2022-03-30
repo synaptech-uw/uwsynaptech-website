@@ -1,14 +1,24 @@
-import React, { useEffect, useState } from "react";
-import './Styles.css'
+import React from "react";
+import '../styles/Styles.css';
+import {Outlet, Link} from "react-router-dom";
+
 function Navbar(props) {
+    function refreshPage() {
+        setTimeout(()=>{
+            window.location.reload(false);
+        }, 1);
+    }
+
     return(
         <header className={props.show}>
-            <div className="Logo">
-            </div>
+            <Link Style = "" to = "/" onClick={refreshPage}>
+                <div className="Logo">
+                </div>
+            </Link>
             <span className = "app-title">
-                <button className = "Navbar-Link">
+                <Link className = "Navbar-Link" to = "/OurTeam" onClick={refreshPage}>
                     OUR TEAM
-                </button>
+                </Link>
                 <button className = "Navbar-Link">
                     PROJECTS
                 </button>
@@ -22,6 +32,7 @@ function Navbar(props) {
                     CONTACT
                 </button>
             </span>
+            <Outlet />
         </header>
     );
 }

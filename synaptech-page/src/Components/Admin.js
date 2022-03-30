@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import "./OurTeamStyles.css";
+import "../styles/OurTeamStyles.css";
 
 function Admin(props) {
 
