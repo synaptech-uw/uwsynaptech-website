@@ -188,14 +188,14 @@ function HomePage() {
       </div>
       {winArray[0]}
       <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
-        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 50vw; padding-right: 2rem;"}>
+        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 10rem; right: 50vw; padding-right: 2rem;"}>
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
             About us
           </h2>
           <p Style={"font-size : 1.5rem; text-align: left; padding-top:4rem;"}> We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field!</p>
             <p Style={"font-size : 1.5rem; text-align: left;"}> We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects! </p>
         </div>
-        <div Style = {"display: flex; flex-direction: row; position: absolute; right: 4rem; left: 50vw; padding-left: 2rem;"}>
+        <div Style = {"display: flex; flex-direction: row; position: absolute; right: 10rem; left: 50vw; padding-left: 2rem;"}>
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
             Upcoming events
           </h2>
@@ -218,18 +218,18 @@ function HomePage() {
       </div>
       {winArray[2]}
       <div className="Body" Style  = {"flex-direction: row;"}>
-        <div Style = {"display: flex; flex-direction: column; left: 4rem; right: 50vw; padding-right:2rem; position: absolute;"}>
+        <div Style = {"display: flex; flex-direction: column; left:10rem; right: 50vw; padding-right:2rem; position: absolute;"}>
           <h1> CNT Hackathon! </h1>
           <p Style = {"font-size : 1.5rem; text-align: left;"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-        <div Style = {"display: flex; flex-direction: column; right:4rem; left : 50vw; padding-left: 2rem; position: absolute;"}>
+        <div Style = {"display: flex; flex-direction: column; right:10rem; left : 50vw; padding-left: 2rem; position: absolute;"}>
           <div  Style = {"position: absolute; right:0; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/fall_hackjam_flyer.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/>
         </div>
       </div>
       {winArray[3]}
       <div className="Body-cols">
       <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
-        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
+        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 10rem; right: 10rem;"}>
           <h2>
             Sponsors
           </h2>
