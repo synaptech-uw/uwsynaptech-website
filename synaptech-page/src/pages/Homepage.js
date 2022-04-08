@@ -210,7 +210,7 @@ function HomePage() {
           <h2>
             Project Spotlight
           </h2>
-          <div Style = {"top: 5rem; border: solid white; left: 10rem; right: 10rem; height: 50vh; position: absolute;"}>
+          <div Style = {"top: 5rem; left: 10rem; right: 10rem; height: 50vh; position: absolute; display: flex; justify-content: center;"}>
             {/* Projects carousel here */}
             <Carousel2 />
           </div>
