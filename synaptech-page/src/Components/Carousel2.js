@@ -30,8 +30,6 @@ const data = [
    }
 ]
 
-let textcolor = "white"
-
 function Carousel2() {
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex, e) => {
@@ -40,7 +38,7 @@ function Carousel2() {
 
   return (
     <div className = "carousel-holder">
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+        <Carousel activeIndex={index} onSelect={handleSelect} slide={false}>
           {data.map((slide, i) => {
             return (
               <Carousel.Item>
