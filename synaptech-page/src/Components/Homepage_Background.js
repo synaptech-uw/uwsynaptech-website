@@ -39,7 +39,7 @@ class ThreeDBrain extends Component {
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
       window.addEventListener('scroll', this.updateScrollPos);
-      window.addEventListener('load', this.updateScrollPos);
+      window.addEventListener('pageshow', this.handleWindowResize);
       this.setState({
         width : window.innerWidth,
         height : window.innerHeight
@@ -49,7 +49,7 @@ class ThreeDBrain extends Component {
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowResize);
     window.removeEventListener('scroll', this.updateScrollPos);
-    window.removeEventListener('load', this.updateScrollPos);
+    window.removeEventListener('pageshow', this.handleWindowResize);
     window.cancelAnimationFrame(this.requestID);
   }
 
