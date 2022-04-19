@@ -21,14 +21,14 @@ class ThreeDBrainBG extends Component {
   };
 
   componentDidMount() {
-      this.setState({
-        width : this.el.clientWidth,
-        height : this.el.clientHeight
-      });
       this.sceneSetup();
       this.populateScene();
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
+      this.setState({
+        width : this.el.clientWidth,
+        height : this.el.clientHeight
+      });
   }
 
   componentWillUnmount() {

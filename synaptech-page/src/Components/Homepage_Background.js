@@ -34,16 +34,16 @@ class ThreeDBrain extends Component {
   };
 
   componentDidMount() {
-      this.setState({
-        width : this.el.clientWidth,
-        height : this.el.clientHeight
-      });
       this.sceneSetup();
       this.populateScene();
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
       window.addEventListener('scroll', this.updateScrollPos);
       window.addEventListener('load', this.updateScrollPos);
+      this.setState({
+        width : this.el.clientWidth,
+        height : this.el.clientHeight
+      });
   }
 
   componentWillUnmount() {
