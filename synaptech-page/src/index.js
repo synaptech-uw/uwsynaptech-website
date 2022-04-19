@@ -9,10 +9,11 @@ import OurTeam from './pages/OurTeam.js';
 
 export default function App() {
   return (
+
     <HashRouter>
       <Routes path="/" element = {<Navbar /> }>
-        <Route index element = {<HomePage />} />
-        <Route path="OurTeam" element = { <OurTeam/> } />
+        <Route index element = {<HomePage />} title = "Synaptech Home" />
+        <Route path="OurTeam" element = { <OurTeam/> } title = "Our Team"/>
       </Routes>
     </HashRouter>
   );

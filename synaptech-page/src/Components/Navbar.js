@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import '../styles/Styles.css';
 import {Outlet, Link} from "react-router-dom";
 
@@ -8,8 +8,13 @@ function Navbar(props) {
             window.location.reload(false);
         }, 1);
     }
-    window.title = "Synaptech";
     return(
+    <>
+        <head>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inconsolata&family=Open+Sans:wght@800&family=Roboto:wght@400;900&display=swap');
+            </style>
+        </head>
         <header className={props.show}>
             <Link Style = "" to = "/" onClick={refreshPage}>
                 <div className="Logo">
@@ -34,6 +39,7 @@ function Navbar(props) {
             </span>
             <Outlet />
         </header>
+        </>
     );
 }
 

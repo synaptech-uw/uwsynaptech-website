@@ -154,11 +154,6 @@ function HomePage() {
 
   return (
     <div className = {firstLockClass}>
-      <head>
-        <style>
-          @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Inconsolata&family=Open+Sans:wght@800&family=Roboto:wght@400;900&display=swap'
-        </style>
-      </head>
       <Navbar show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
       <div className={ (!firstScroll && !(scrollPos > 1)) ? "Welcome" : "Welcome-Scrolled" }>
         {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
