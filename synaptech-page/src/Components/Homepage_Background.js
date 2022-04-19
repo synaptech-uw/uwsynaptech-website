@@ -51,6 +51,7 @@ class ThreeDBrain extends Component {
   }
 
   updateScrollPos = () => {
+    this.handleWindowResize();
     //console.log(this.props.userScroll);
     if (this.props.userScroll > this.props.thresholds[this.state.thresholdCounter] ) {
       const currThreshold = this.state.thresholdCounter;
@@ -297,7 +298,6 @@ class ThreeDBrain extends Component {
   //trigger specific camera movements at that point.
 
   render() {
-    if (this.state.loaded){
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
@@ -317,13 +317,6 @@ class ThreeDBrain extends Component {
           </div>
         </>
       );
-    }
-    else {
-      return (
-        <div className = "ThreeScene" ref={ref => (this.el = ref)}></div>
-      );
-      
-    }
   }
 }
 
