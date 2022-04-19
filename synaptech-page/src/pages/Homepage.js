@@ -3,9 +3,11 @@ import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
 import ThreeDBrain from "../Components/Homepage_Background";
 import Carousel2 from "../Components/Carousel2";
+
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";
 import Navbar from "../Components/Navbar.js"
+import UpcomingEvents from "../Components/UpcomingEvents.js";
 
 function HomePage() {
   const numWindows = 5;
@@ -141,6 +143,14 @@ function HomePage() {
   // const testText = [];
   // testText[0] = <p>The fitnessgram pacer test is a multistage</p>;
 
+  //dateNum, dateMon, timeString, title, loc
+  const eventsArray =
+    [
+      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"]
+    ];
 
   return (
     <div className = {firstLockClass}>
@@ -188,53 +198,56 @@ function HomePage() {
       </div>
       {winArray[0]}
       <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
-        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 10rem; right: 50vw; padding-right: 2rem;"}>
+        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 12rem; right: 50vw; padding-right: 2rem;"}>
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
             About us
           </h2>
           <p Style={"font-size : 1.5rem; text-align: left; padding-top:4rem;"}> We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field!</p>
             <p Style={"font-size : 1.5rem; text-align: left;"}> We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects! </p>
         </div>
-        <div Style = {"display: flex; flex-direction: row; position: absolute; right: 10rem; left: 50vw; padding-left: 2rem;"}>
+        <div Style = {"display: flex; flex-direction: row; position: absolute; right: 12rem; left: 50vw; padding-left: 2rem;"}>
           <h2 Style = {"left: 0; right: 0; position: absolute;"}>
             Upcoming events
           </h2>
-          <div Style = "top: 4rem; border: solid white; position: absolute; left: 2rem; right: 0; height: 50vh;">
-            <p> calendar component here </p>
+          <div Style = "top: 4rem; position: absolute; left: 2rem; right: 0; height: 50vh;">
+            <UpcomingEvents nextEvents = {eventsArray}/>{
+            /* <p> calendar component here </p> */}
           </div>
         </div>
       </div>
       {winArray[1]}
-      <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
+      {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
         <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
           <h2>
             Project Spotlight
           </h2>
           <div Style = {"top: 5rem; left: 10rem; right: 10rem; height: 50vh; position: absolute; display: flex; justify-content: center;"}>
-            {/* Projects carousel here */}
             <Carousel2 />
           </div>
         </div>
-      </div>
+      </div> */}
       {winArray[2]}
       <div className="Body" Style  = {"flex-direction: row;"}>
-        <div Style = {"display: flex; flex-direction: column; left:10rem; right: 50vw; padding-right:2rem; position: absolute;"}>
-          <h1> CNT Hackathon! </h1>
-          <p Style = {"font-size : 1.5rem; text-align: left;"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <div Style = {"display: flex; flex-direction: column; left:12rem; right: 50vw; padding-right:2rem; position: absolute;"}>
+          <h1> NeuraHack 2022! </h1>
+          <p Style = {"font-size : 1.5rem; text-align: left;"}>NeuroTEC and Synaptech’s first jointly-run hackathon, occurred the weekend of April 2nd. 29 students - most of whom were new to neurotechnology - participated and gained experience with hardware. Each of the seven teams demonstrated impressive creativity in their projects: focus monitoring for studying, examining the interplay of brain signals and language, fatigue monitoring, EMG for grip strength monitoring, and painting software controlled by the Muse headset. Congratulations to Tim Li, Sunny Zheng, Yanfeng Cui for winning the hackathon! The winning team designed an automated annotator, which aimed to allow users to annotate each region of an image with their brain activity (as recorded by the Muse headset).</p>
         </div>
-        <div Style = {"display: flex; flex-direction: column; right:10rem; left : 50vw; padding-left: 2rem; position: absolute;"}>
-          <div  Style = {"position: absolute; right:0; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/fall_hackjam_flyer.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/>
+        <div Style = {"display: flex; flex-direction: column; right:12rem; left : 50vw; padding-left: 2rem; position: absolute;"}>
+          <div  Style = {"position: absolute; right:0; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/>
         </div>
       </div>
       {winArray[3]}
       <div className="Body-cols">
       <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
-        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 10rem; right: 10rem;"}>
+        <div Style = {"display: flex; flex-direction: column; position: absolute; left: 12rem; right: 10rem; justify-content: center;"}>
           <h2>
             Sponsors
           </h2>
-          <div Style = {"top: 5rem; border: solid white; left: 10rem; right: 10rem; height: 50vh; position: absolute;"}>
-            Sponsors here (CNT)
+          <div Style = {"top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; display:flex; justify-content:center;"}>
+            <a Style = "height: 10rem; width:45rem; " href = "https://centerforneurotech.uw.edu/">
+                <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                </div>
+            </a>
           </div>
         </div>
       </div>

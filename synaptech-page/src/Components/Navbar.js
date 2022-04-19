@@ -19,7 +19,7 @@ function Navbar(props) {
                 <Link className = "Navbar-Link" to = "/OurTeam" onClick={refreshPage}>
                     OUR TEAM
                 </Link>
-                <button className = "Navbar-Link">
+                {/* <button className = "Navbar-Link">
                     PROJECTS
                 </button>
                 <button className = "Navbar-Link">
@@ -30,7 +30,7 @@ function Navbar(props) {
                 </button>
                 <button className = "Navbar-Link">
                     CONTACT
-                </button>
+                </button> */}
             </span>
             <Outlet />
         </header>
