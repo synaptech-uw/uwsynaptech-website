@@ -21,6 +21,10 @@ class ThreeDBrainBG extends Component {
   };
 
   componentDidMount() {
+      this.setState({
+        width : this.el.clientWidth,
+        height : this.el.clientHeight
+      });
       this.sceneSetup();
       this.populateScene();
       this.startAnimationLoop();
@@ -34,11 +38,11 @@ class ThreeDBrainBG extends Component {
 
   handleWindowResize = () => {
     this.setState({
-      width : window.innerWidth,
-      height : window.innerHeight
+      width : this.el.clientWidth,
+      height : this.el.clientHeight
     });
     this.camera.aspect = this.state.width / this.state.height;
-    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth )));
+    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( this.el.clientWidth / this.state.ogWinWidth )));
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.state.width, this.state.height );
     this.reshapeTex(this.scene.background, this);
@@ -59,8 +63,8 @@ class ThreeDBrainBG extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = this.el.clientWidth;
+    const height = this.el.clientHeight;
     this.setState({
       width : width,
       height : width
