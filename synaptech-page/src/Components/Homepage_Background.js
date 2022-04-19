@@ -114,11 +114,11 @@ class ThreeDBrain extends Component {
 
   handleWindowResize = () => {
     this.setState({
-      width : this.el.clientWidth,
-      height : this.el.clientHeight
+      width : window.innerWidth,
+      height : window.innerHeight
     });
     this.camera.aspect = this.state.width / this.state.height;
-    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( this.el.clientWidth / this.state.ogWinWidth )));
+    this.camera.fov = Math.min(50, ( 360 / Math.PI ) * Math.atan( this.state.tanFOV * ( this.state.ogWinWidth / this.state.ogWinHeight ) / ( window.innerWidth / this.state.ogWinWidth )));
     this.camera.updateProjectionMatrix();
     this.renderer.setSize( this.state.width, this.state.height );
     this.reshapeTex(this.scene.background, this);
@@ -139,8 +139,8 @@ class ThreeDBrain extends Component {
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing
-    const width = this.el.clientWidth;
-    const height = this.el.clientHeight;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     this.setState({
       width : width,
       height : width
@@ -307,9 +307,9 @@ class ThreeDBrain extends Component {
           }
           { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
-            startY = { -((this.el.clientHeight*this.state.blurbXY.y/2) - this.el.clientHeight/2) }
+            startY = { -((window.innerHeight*this.state.blurbXY.y/2) - window.innerHeight/2) }
             endX = { (this.state.width*this.state.raycastXY.x)/2 + this.state.width/2 }
-            endY = { -((this.el.clientHeight*this.state.raycastXY.y/2) - this.el.clientHeight/2) }
+            endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/2) }
           /> }
           </div>
         </>
