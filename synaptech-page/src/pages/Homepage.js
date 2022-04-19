@@ -125,6 +125,7 @@ function HomePage() {
   }, []);
 
   const scrollPos = useScrollPosition();
+
   if ( firstScroll === false && scrollPos >= 20) {
     setFirstScroll(true);
     setFirstLockClass("test-locked");
