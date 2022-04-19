@@ -8,7 +8,7 @@ function Navbar(props) {
             window.location.reload(false);
         }, 1);
     }
-
+    window.title = "Synaptech";
     return(
         <header className={props.show}>
             <Link Style = "" to = "/" onClick={refreshPage}>
