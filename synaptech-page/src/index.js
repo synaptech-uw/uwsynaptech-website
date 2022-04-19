@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {BrowserRouter, Routes, Route} from "react-router-dom"
+import {HashRouter, Routes, Route} from "react-router-dom"
 import Navbar from "./Components/Navbar.js";
 import HomePage from './pages/Homepage.js';
 import OurTeam from './pages/OurTeam.js';
@@ -9,12 +9,12 @@ import OurTeam from './pages/OurTeam.js';
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes path="/" element = {<Navbar /> }>
         <Route index element = {<HomePage />} />
         <Route path="OurTeam" element = { <OurTeam/> } />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
