@@ -44,6 +44,12 @@ class ThreeDBrain extends Component {
         width : window.innerWidth,
         height : window.innerHeight
       });
+      window.scrollTo(0, 0, "instant")
+      setTimeout(()=>{
+        this.updateScrollPos();
+      }, 1);
+
+
   }
 
   componentWillUnmount() {

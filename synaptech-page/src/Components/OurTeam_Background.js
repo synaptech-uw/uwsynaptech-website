@@ -29,6 +29,7 @@ class ThreeDBrainBG extends Component {
         width : window.innerWidth,
         height : window.innerHeight
       });
+      window.scrollTo(0, 0);
   }
 
   componentWillUnmount() {

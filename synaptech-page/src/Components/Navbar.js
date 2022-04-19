@@ -4,9 +4,9 @@ import {Outlet, Link} from "react-router-dom";
 
 function Navbar(props) {
     function refreshPage() {
-        setTimeout(()=>{
-            window.location.reload(false);
-        }, 1);
+        // setTimeout(()=>{
+        //     window.location.reload(false);
+        // }, 1);
     }
     return(
     <>
