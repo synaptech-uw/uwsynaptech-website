@@ -10,6 +10,10 @@ html {
   html {
       font-size: 12px;
   }
+
+  .sponsor-image {
+    width: 37rem;
+  }
 }
 
 /* desktop */
@@ -17,6 +21,7 @@ html {
   html {
       font-size: 16px;
   }
+
 }
 
 /* extra large */
@@ -49,6 +54,17 @@ a:hover { text-decoration: none; }
 
 
 a:active { text-decoration: none; }
+
+.sponsor-image {
+  width: 25rem;
+}
+
+@media (min-width: 768px) {
+  .sponsor-image {
+    width: 45rem;
+    height: 9rem;
+  }
+}
 
 .cta {
   font-family:"Roboto"

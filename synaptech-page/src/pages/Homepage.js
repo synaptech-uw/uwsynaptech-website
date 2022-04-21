@@ -233,15 +233,16 @@ function HomePage() {
       </div>
       {winArray[3]}
       <div className="Body-cols">
-      <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
+      <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0; padding-top: 12rem;"}>
         <div Style = {"display: flex; flex-direction: column; position: absolute; left: 12rem; right: 10rem; justify-content: center;"}>
           <h2>
             Sponsors
           </h2>
           <div Style = {"top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; display:flex; justify-content:center;"}>
             <a Style = "height: 10rem; width:45rem; " href = "https://centerforneurotech.uw.edu/">
-                <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                </div>
+                {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+                </div> */}
+                <img className="sponsor-image" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
             </a>
           </div>
         </div>
