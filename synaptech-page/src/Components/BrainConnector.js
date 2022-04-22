@@ -46,7 +46,7 @@ export default class Link extends React.Component {
   render() {
     return (
       <div>
-        <SvgLines animate={ true } fade = { true } duration={ 1300 } >
+        <SvgLines animate={ true } fade = { true } duration={ 1200 } >
           <svg className='wire'>
             {/* <path
               className='backgroundPath'

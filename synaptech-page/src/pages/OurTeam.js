@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
 import "../styles/OurTeamStyles.css";
@@ -6,11 +6,14 @@ import ThreeDBrainBG from '../Components/OurTeam_Background.js'
 import Navbar from "../Components/Navbar.js"
 import Admin from "../Components/Admin.js";
 import Alumni from "../Components/Alumni.js";
+import SetPageScroll from "../Components/SetPageScroll"
 
 function OurTeam() {
-
   const scrollPos = useScrollPosition();
 
+  useEffect(() => {
+    window.scrollTo(window.scrollX, 0, true);
+  }, [])
   return (
     <>
       <head>
@@ -54,7 +57,7 @@ function OurTeam() {
         <h2>Want to join in on the fun?</h2>
         <h2>Send us an email from your UW account!</h2>
       </div>
-
+      {/* <SetPageScroll pageName = "OurTeam" pageScroll = {scrollPos} /> */}
     </>
   );
 }

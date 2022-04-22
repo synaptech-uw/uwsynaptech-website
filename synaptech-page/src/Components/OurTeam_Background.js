@@ -29,12 +29,12 @@ class ThreeDBrainBG extends Component {
         width : window.innerWidth,
         height : window.innerHeight
       });
-  }
+  };
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleWindowResize);
     window.cancelAnimationFrame(this.requestID);
-  }
+  };
 
   handleWindowResize = () => {
     this.setState({
@@ -59,7 +59,7 @@ class ThreeDBrainBG extends Component {
 
     tex.offset.y = aspect > 1 ? 0 : (1 - aspect) / 2;
     tex.repeat.y = aspect > 1 ? 1 : aspect;
-  }
+  };
 
   sceneSetup = () => {
     // get container dimensions and use them for scene sizing

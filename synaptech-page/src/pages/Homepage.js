@@ -3,6 +3,7 @@ import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
 import ThreeDBrain from "../Components/Homepage_Background";
 import Carousel2 from "../Components/Carousel2";
+// import SetPageScroll from "../Components/SetPageScroll"
 
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";
@@ -118,21 +119,28 @@ function HomePage() {
 
   const [firstScroll, setFirstScroll] = useState(false);
   const [firstLockClass, setFirstLockClass] = useState("test")
+  const [pageLoaded, setPageLoaded] = useState(false);
+  var updateBrain = false;
 
   useEffect(() => {
     setThresholds()
     window.addEventListener("resize", setThresholds);
+    window.scrollTo(window.scrollX, 0, true);
+    // window.addEventListener("pageshow", () => {setFirstScroll(false)});
+    setFirstScroll(sessionStorage.getItem("previouslyVisited") === "true")
+    setPageLoaded(true);
   }, []);
 
   const scrollPos = useScrollPosition();
-
-  if ( firstScroll === false && scrollPos >= 20) {
+  if ( pageLoaded && firstScroll === false && scrollPos >= 20) {
+    sessionStorage.setItem("previouslyVisited", "true")
     setFirstScroll(true);
     setFirstLockClass("test-locked");
     setTimeout(() => {
       setFirstLockClass("test")
     }, 2000);
   }
+
   // I need a boolean that tracks when the user first scrolls past the beginning of the page.
 
   // This boolean will be used to evaluate whether the page should be locked from scrolling for a second.
@@ -151,11 +159,10 @@ function HomePage() {
       [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
       [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"]
     ];
-
   return (
     <div className = {firstLockClass}>
       <Navbar show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
-      <div className={ (!firstScroll && !(scrollPos > 1)) ? "Welcome" : "Welcome-Scrolled" }>
+      <div className={ (!firstScroll && !(scrollPos > 0 )) ? "Welcome" : "Welcome-Scrolled" }>
         {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
         <header className="App-header">
           <img
@@ -173,14 +180,15 @@ function HomePage() {
     the other elements in the return. Getting these y values is the next step. Then we just
     have to evaluate the step in the array and move forward or backward depending on the evaluation
     */}
-      <ThreeDBrain
+    {/* On page load, finally load this! MUST BE LAST! */}
+     { (pageLoaded) && <ThreeDBrain
         userScroll={scrollPos}
         targets={targetVecs}
         thresholds={thresh}
         rays={raycasts}
         blurb = {blurbs}
         blurbCoords = {blurbCoords}
-      />
+      /> }
 
       {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
     and start getting some text into the page.  */}
@@ -249,6 +257,9 @@ function HomePage() {
       </div>
       </div>
       {winArray[4]}
+
+      {/* <SetPageScroll pageName = "Homepage" pageScroll = {scrollPos} /> */}
+
       {/* <footer Style = {"bottom: 0; width: 100%; height: 6rem; color: white; background-color: #031A2F; display: flex; flex-direction: column;"}>
         <div Style = {"padding-top: 3rem; padding-right: 2rem; display: flex; flex-direction: row; position: absolute; right: 0; "}>
           <h3 Style = {"padding-right: 1rem;"}>Contact us: </h3>

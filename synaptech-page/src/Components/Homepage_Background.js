@@ -27,8 +27,7 @@ class ThreeDBrain extends Component {
                 tanFOV : Math.tan( ( ( Math.PI / 180 ) * 120 / 2 ) ), //55 here is the camera's FOV remember this
                 ogWinHeight : window.innerHeight,
                 ogWinWidth : window.innerWidth,
-                drawLine : false,
-                inThreshold : false
+                drawLine : false
               };
     this.lightTimer = [];
   };
@@ -39,18 +38,42 @@ class ThreeDBrain extends Component {
       this.startAnimationLoop();
       window.addEventListener('resize', this.handleWindowResize);
       window.addEventListener('scroll', this.updateScrollPos);
-      window.addEventListener('pageshow', this.handleWindowResize);
       this.setState({
         width : window.innerWidth,
         height : window.innerHeight
       });
+      window.addEventListener('pagehide', this.serializeCurrThresh)
+
+      if (sessionStorage.getItem("currThreshold")) {
+        // if(sessionStorage.getItem("homeScroll")) {
+        //   window.scrollTo(window.scrollX, JSON.parse(sessionStorage.getItem("homeScroll")));
+        // }
+        const currThreshold = 0; // JSON.parse(sessionStorage.getItem("currThreshold"));
+        this.setState({
+          thresholdCounter : currThreshold,
+          targetPOV : this.props.targets[currThreshold],
+          raycastXY : this.props.rays[currThreshold],
+          blurbXY : this.props.blurbCoords[currThreshold],
+          currBlurb : this.props.blurb[currThreshold],
+          drawLine : false
+        });
+        if (currThreshold % 2 === 1) {
+          this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
+        }
+        this.setState({drawLine : false})
+      }
   }
 
   componentWillUnmount() {
+    sessionStorage.setItem("homeScroll", JSON.stringify(this.props.userScroll))
+    window.removeEventListener("pagehide", this.serializeCurrThresh)
     window.removeEventListener("resize", this.handleWindowResize);
     window.removeEventListener('scroll', this.updateScrollPos);
-    window.removeEventListener('pageshow', this.handleWindowResize);
     window.cancelAnimationFrame(this.requestID);
+  }
+
+  serializeCurrThresh = () => {
+    sessionStorage.setItem("currThreshold", JSON.stringify(this.state.thresholdCounter));
   }
 
   updateScrollPos = () => {
@@ -59,7 +82,6 @@ class ThreeDBrain extends Component {
       const currThreshold = this.state.thresholdCounter;
       //console.log(this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
-        inThreshold : false,
         thresholdCounter : currThreshold + 1,
         targetPOV : this.props.targets[currThreshold + 1],
         raycastXY : this.props.rays[currThreshold + 1],
@@ -89,7 +111,6 @@ class ThreeDBrain extends Component {
       const currThreshold = this.state.thresholdCounter;
       //console.log(window.scrollY, this.props.thresholds[this.state.thresholdCounter]);
       this.setState({
-        inThreshold : false,
         thresholdCounter : currThreshold - 1,
         targetPOV : this.props.targets[currThreshold - 1],
         raycastXY : this.props.rays[currThreshold - 1],
