@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.1e48cca0.css",
-    "main.js": "/static/js/main.63a971a9.js",
+    "main.css": "/static/css/main.39321b4f.css",
+    "main.js": "/static/js/main.55895d82.js",
     "static/media/HritikArasu.png": "/static/media/HritikArasu.38c3951de15f27cfa03b.png",
     "static/media/AlejandroStriefel.jpg": "/static/media/AlejandroStriefel.4df8eebb38d04fa1b079.jpg",
     "static/media/DevyanshGupta.png": "/static/media/DevyanshGupta.a5a3c22edfdbf458700f.png",
@@ -11,11 +11,11 @@
     "static/media/ChetanaIyer.jpg": "/static/media/ChetanaIyer.c77a3dc2d38b49fb8b38.jpg",
     "static/media/dark_synaptech_logo_transparent.png": "/static/media/dark_synaptech_logo_transparent.ed55cec1a165722abd63.png",
     "index.html": "/index.html",
-    "main.1e48cca0.css.map": "/static/css/main.1e48cca0.css.map",
-    "main.63a971a9.js.map": "/static/js/main.63a971a9.js.map"
+    "main.39321b4f.css.map": "/static/css/main.39321b4f.css.map",
+    "main.55895d82.js.map": "/static/js/main.55895d82.js.map"
   },
   "entrypoints": [
-    "static/css/main.1e48cca0.css",
-    "static/js/main.63a971a9.js"
+    "static/css/main.39321b4f.css",
+    "static/js/main.55895d82.js"
   ]
 }
