@@ -17,6 +17,11 @@ html {
   html {
       font-size: 16px;
   }
+
+  .AdminInfo {
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
 }
 
 /* extra large */
@@ -61,6 +66,10 @@ img {
   margin-top: 0;
 }
 
+.AdminInfo {
+  columns: 400px 2;
+}
+
 .AlumniContainer h2 {
   color: black;
   font-size: 1.3rem;
@@ -88,7 +97,7 @@ img {
   width: 90%;
   height: 1px;
   background-color: rgb(51, 51, 51);
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 
 .EndBlurb {
