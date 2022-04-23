@@ -323,13 +323,10 @@ class ThreeDBrain extends Component {
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
-            <div className = {(this.state.thresholdCounter %2 === 0 ) ? "blur-on" : "blur-off"}>
-            </div>
-          {
-            <StoreText showClass = {
+            <div className = {(this.state.thresholdCounter %2 === 0 ) ? "blur-on" : "blur-off"}/>
+          <StoreText showClass = {
               (this.state.drawLine) ? "storeText" : "storeText-hidden"
             } title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText>
-          }
           { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
             startY = { -((window.innerHeight*this.state.blurbXY.y/2) - window.innerHeight/2) }

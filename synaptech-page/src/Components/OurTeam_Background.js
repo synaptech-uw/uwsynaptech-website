@@ -197,7 +197,7 @@ class ThreeDBrainBG extends Component {
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
             <div className ={"blur-on"}>
             </div>
-          </div>);
+          </div>
         </>
       );
   }

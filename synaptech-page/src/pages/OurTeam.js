@@ -6,7 +6,6 @@ import ThreeDBrainBG from '../Components/OurTeam_Background.js'
 import Navbar from "../Components/Navbar.js"
 import Admin from "../Components/Admin.js";
 import Alumni from "../Components/Alumni.js";
-import SetPageScroll from "../Components/SetPageScroll"
 
 function OurTeam() {
   const scrollPos = useScrollPosition();

@@ -14,6 +14,7 @@ export default function App() {
       <Routes path="/" element = {<Navbar /> }>
         <Route index element = {<HomePage />} title = "Synaptech Home" />
         <Route path="OurTeam" element = { <OurTeam/> } title = "Our Team"/>
+        <Route path="404" element = {<HomePage />} title = "Synaptech Home" />
       </Routes>
     </HashRouter>
   );
