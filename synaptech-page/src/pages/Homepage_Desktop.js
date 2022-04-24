@@ -138,7 +138,7 @@ function HomePageDesktop() {
     setFirstScroll(true);
     setFirstLockClass("test-locked");
     setTimeout(() => {
-      setFirstLockClass("test")
+      setFirstLockClass("test");
       window.scrollTo(0, window.innerHeight);
     }, 2000);
   }
@@ -263,11 +263,22 @@ function HomePageDesktop() {
           <h2>
             Sponsors
           </h2>
-            <a Style = "display:block; z-index: 2000;" href = "https://centerforneurotech.uw.edu/">
-                {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
-                </div> */}
-                <img src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
+
+          { (window.innerWidth > SIZE_THRESHOLD) ?
+
+            <a  Style = "display:block; z-index: 2000;" href = "https://centerforneurotech.uw.edu/">
+              {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+              </div> */}
+              <img className="sponsor-image-small" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
             </a>
+            :
+            <a  Style = "display:block; z-index: 2000;" href = "https://centerforneurotech.uw.edu/">
+              {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+              </div> */}
+              <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
+            </a>
+          }
+ 
         </div>
       </div>
       {/* {winArray[4]} */}

@@ -151,9 +151,10 @@ a:active { text-decoration: none; }
 }
 
 .BodyBox-Mobile {
+  font-size: 1.25rem;
   display: flex;
   flex-direction: column;
-  padding: 10rem;
+  padding: 4rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   text-align: left;
@@ -438,6 +439,6 @@ html::-webkit-scrollbar {
 
 .sponsor-image-small {
   width: 30vw;
-  height: 5vw;
+  height: 7vw;
  
 }

@@ -9,7 +9,7 @@ function Admin(props) {
       <div className={"AdminContainer"} Style = {"display: flex; flex-direction: row; justify-content: space-around; padding-bottom: 0.5rem; padding-top:4rem;"}>
 
         <div Style = {"flex-direction: column; display: flex; align-items: center;"}>
-          <img Style = {"border-radius:100vh; height: 10vw; width: 10vw"} src={props.image} alt={props.name} />
+          <img Style = {"border-radius:100vh; height: 20vw; width: 20vw"} src={props.image} alt={props.name} />
           <div>
             <h3>{props.major}</h3>
             <h4>{props.minor}</h4>
