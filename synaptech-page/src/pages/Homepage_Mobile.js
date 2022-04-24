@@ -138,7 +138,7 @@ function HomePageMobile() {
     setFirstLockClass("test-locked");
     setTimeout(() => {
       setFirstLockClass("test")
-      window.scrollTo(0, window.innerHeight);
+      window.scrollTo(0, window.innerHeight/2);
     }, 2000);
   }
 
@@ -220,7 +220,7 @@ function HomePageMobile() {
         </div>
 
         <div Style = "height: 20vh" />
-        
+
         <div className="BodyBox-Mobile">
           <h2> {/* left: 0; right: 0; position: absolute; */}
             Upcoming events

@@ -139,6 +139,7 @@ function HomePageDesktop() {
     setFirstLockClass("test-locked");
     setTimeout(() => {
       setFirstLockClass("test")
+      window.scrollTo(0, window.innerHeight);
     }, 2000);
   }
 
