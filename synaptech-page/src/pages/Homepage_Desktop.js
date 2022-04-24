@@ -242,7 +242,7 @@ function HomePageDesktop() {
          
           :
           
-            <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 10rem; margin-right: 10rem; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/> 
+            <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/> 
           }
                 
        

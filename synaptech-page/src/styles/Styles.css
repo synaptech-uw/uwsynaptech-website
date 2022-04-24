@@ -137,7 +137,8 @@ a:active { text-decoration: none; }
   flex-direction: column; 
   padding:4rem; 
   padding-left:10rem; 
-  width: 50vw
+  width: 50vw;
+  text-align: left;
 }
 
 .BodyBox-Right {
@@ -145,7 +146,8 @@ a:active { text-decoration: none; }
   flex-direction: column;
   padding: 4rem;
   padding-right: 10rem;
-  width: 50vw
+  width: 50vw;
+  text-align: left;
 }
 
 .BodyBox-Mobile {
@@ -154,6 +156,7 @@ a:active { text-decoration: none; }
   padding: 10rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
+  text-align: left;
 }
 
 .Navbar-Link {
