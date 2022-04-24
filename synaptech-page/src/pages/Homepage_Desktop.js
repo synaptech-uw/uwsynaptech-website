@@ -262,7 +262,7 @@ function HomePageDesktop() {
           <h2>
             Sponsors
           </h2>
-            <a Style = "display:block;" href = "https://centerforneurotech.uw.edu/">
+            <a Style = "display:block; z-index: 2000;" href = "https://centerforneurotech.uw.edu/">
                 {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 </div> */}
                 <img src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
