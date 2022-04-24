@@ -1,47 +1,7 @@
 /* Styling for overall html */
 
-html {
-  font-size: 10px;
-  font-family:'Bungee', 'Open Sans', Geneva, Verdana, sans-serif;
-}
-
-/* tablet */
-@media only screen and (min-width: 480px) {
-  html {
-      font-size: 12px;
-  }
-}
-
-/* desktop */
-@media only screen and (min-width: 768px) {
-  html {
-      font-size: 16px;
-  }
-
-  .AdminInfo {
-    margin-left: 10rem;
-    margin-right: 10rem;
-  }
-}
-
-/* extra large */
-@media only screen and (min-width: 1024px) {
-  html {
-      font-size: 18px;
-  }
-}
-
-/* div {
-  color: #073763;
-} */
-
-img {
-  width: 12rem;
-  height: 12rem;
-}
-
 .AdminContainer {
-  margin-bottom: 2rem;
+  padding-bottom: 2rem;
 }
 
 .AdminContainer h1, .AlumniContainer h1 {

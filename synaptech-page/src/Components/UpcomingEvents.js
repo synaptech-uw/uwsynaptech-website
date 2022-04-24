@@ -27,7 +27,7 @@ function UpcomingEvents(props) {
     return (
         <div Style = "border: solid; border-radius: 2rem; border-color: #5f7385; border-width:100%; width:100%; height:100%; background-color: rgb(5, 37, 66, .59); border-opacity: 100%; padding:2rem;">
             {/* {events} */}
-            <p>No upcoming events scheduled!</p>
+            <h3 Style = "text-align: center; text-indent: 0pt;">No upcoming events scheduled!</h3>
         </div>
 
     );

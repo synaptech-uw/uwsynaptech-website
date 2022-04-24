@@ -3,18 +3,35 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import {HashRouter, Routes, Route} from "react-router-dom"
 import Navbar from "./Components/Navbar.js";
-import HomePage from './pages/Homepage.js';
-import OurTeam from './pages/OurTeam.js';
-// import reportWebVitals from './reportWebVitals';
+import HomePageMobile from './pages/Homepage_Mobile.js';
+import OurTeamMobile from './pages/OurTeam_Mobile.js';
+import HomePageDesktop from './pages/Homepage_Desktop.js';
+import OurTeamDesktop from './pages/OurTeam_Desktop.js';
+import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
+
+
+
+
+
+// import reportWebVitals from './reportWebVitals';
+const routeElems = (isMobile) ? <>
+                                  <Route index element = {<HomePageMobile />} title = "Synaptech Home" />
+                                  <Route path="OurTeam" element = { <OurTeamMobile/> } title = "Our Team"/>
+                                  <Route path="404" element = {<HomePageMobile/>} title = "Synaptech Home" />
+                                </>
+                                :     
+                                <>
+                                  <Route index element = {<HomePageDesktop />} title = "Synaptech Home" />
+                                  <Route path="OurTeam" element = { <OurTeamDesktop/> } title = "Our Team"/>
+                                  <Route path="404" element = {<HomePageDesktop />} title = "Synaptech Home" />
+                                </>
 export default function App() {
   return (
 
     <HashRouter>
       <Routes path="/" element = {<Navbar /> }>
-        <Route index element = {<HomePage />} title = "Synaptech Home" />
-        <Route path="OurTeam" element = { <OurTeam/> } title = "Our Team"/>
-        <Route path="404" element = {<HomePage />} title = "Synaptech Home" />
+       { routeElems }
       </Routes>
     </HashRouter>
   );

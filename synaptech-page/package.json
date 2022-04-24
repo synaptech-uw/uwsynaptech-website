@@ -12,6 +12,7 @@
     "postprocessing": "^6.24.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
+    "react-device-detect": "^2.2.2",
     "react-dom": "^17.0.2",
     "react-mt-svg-lines": "^0.9.1",
     "react-router-cache-route": "^1.12.7",
