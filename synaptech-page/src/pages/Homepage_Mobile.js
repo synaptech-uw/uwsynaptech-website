@@ -162,26 +162,32 @@ function HomePageMobile() {
     ];
   return (
     <div className = {firstLockClass}>
-      <Navbar show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
-      <div className={ (!firstScroll && !(scrollPos > 0 )) ? "Welcome" : "Welcome-Scrolled" }>
+      <header>
+        <Navbar role="navigation" show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
+        {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function and start getting some text into the page.  */}
+        <div className="Body-default">
+          <div role="separator" Style={"height:50vh"} />
+          <h1 className = {(firstScroll) ? "Welcome-Text" : "Welcome-Text-hidden"}>
+            Welcome to Synaptech, the University of Washington's Undergraduate Neurotechnology RSO
+          </h1>
+        </div>
+      </header>
+      <div aria-hidden="true" className={ (!firstScroll && !(scrollPos > 0 )) ? "Welcome" : "Welcome-Scrolled" }>
         {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
-        <header className="App-header">
+        <div className="App-header">
           <img
             src={"/assets/dark_synaptech_logo_transparent.png"}
             className="App-logo"
-            alt="logo"
+            alt="The Synaptech Logo - a blue brain overlaid with text saying Synap Tech @ UW"
           />
-        </header>
+        </div>
+        {/* <Carousel2 /> */}
       </div>
 
 
-      {/* Change props to list of vectors with varying points, maybe I can do a list of like x and y
-    values instead. Otherwise, we'll also need to pass in a couple waypoints, being the y value of
-    the other elements in the return. Getting these y values is the next step. Then we just
-    have to evaluate the step in the array and move forward or backward depending on the evaluation
-    */}
-    {/* On page load, finally load this! MUST BE LAST! */}
-     {/* { (pageLoaded) && <ThreeDBrain
+      {/* Change props to list of vectors with varying points, maybe I can do a list of like x and y values instead. Otherwise, we'll also need to pass in a couple waypoints, being the y value of the other elements in the return. Getting these y values is the next step. Then we just have to evaluate the step in the array and move forward or backward depending on the evaluation*/}
+      {/* On page load, finally load this! MUST BE LAST! */}
+      {/* { (pageLoaded) && <ThreeDBrain
         update = {refreshUpdate}
         userScroll={scrollPos}
         targets={targetVecs}
@@ -193,44 +199,36 @@ function HomePageMobile() {
 
       { (pageLoaded) && <ThreeDBrainBG/>}
 
-      {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function
-    and start getting some text into the page.  */}
-      <div className="Body">
-
-        <div Style={"height:50vh"} alt = "spacer" />
-
-        <p className = {(firstScroll) ? "Welcome-Text" : "Welcome-Text-hidden"}>
-          Welcome to Synaptech, the University of Washington's Undergraduate Neurotechnology RSO
-        </p>
-
-      </div>
-
-      <div Style = "height: 40vh" alt = "spacer" />
+      <div Style = "height: 40vh" role="separator" />
 
       {/* {winArray[0]} */}
-      <div className="Body">
-        <div className="BodyBox-Mobile"> {/* left: 12rem; right: 50vw; padding-right: 2rem; */}
+      <main className="Body">
+        <article className="BodyBox-Mobile"> {/* left: 12rem; right: 50vw; padding-right: 2rem; */}
           <h2>
             About us
           </h2>
           <div className = "BodyText-Mobile">
-            <p> We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field! </p>
-            <p> We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects! </p>
+            <p>
+              We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field!
+              </p>
+            <p>
+              We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects!
+            </p>
           </div>
-        </div>
+        </article>
 
-        <div Style = "height: 20vh" />
+        <div Style = "height: 20vh" role="separator" />
 
-        <div className="BodyBox-Mobile">
+        <article className="BodyBox-Mobile">
           <h2> {/* left: 0; right: 0; position: absolute; */}
             Upcoming events
           </h2>
           <div> {/* top: 4rem; position: absolute; left: 2rem; right: 0; height: 50vh; */}
             <UpcomingEvents nextEvents = {eventsArray}/>
           </div>
-        </div>
+        </article>
 
-        <div Style = "height: 20vh" />
+        <div Style = "height: 20vh" role="separator" />
         {/* {winArray[1]} */}
 
         {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
@@ -244,20 +242,24 @@ function HomePageMobile() {
         </div>
         </div> */}
         {/* {winArray[2]} */}
-        <div className="BodyBox-Mobile"> {/* position: absolute; right:12rem; left : 50vw; padding-left: 2rem; */}
-          <h1> NeuraHack 2022! </h1>
-          <p> NeuroTEC and Synaptech’s first jointly-run hackathon, occurred the weekend of April 2nd. 29 students - most of whom were new to neurotechnology - participated and gained experience with hardware. Each of the seven teams demonstrated impressive creativity in their projects: focus monitoring for studying, examining the interplay of brain signals and language, fatigue monitoring, EMG for grip strength monitoring, and painting software controlled by the Muse headset. </p>
-          <p> Congratulations to Tim Li, Sunny Zheng, Yanfeng Cui for winning the hackathon! The winning team designed an automated annotator, which aimed to allow users to annotate each region of an image with their brain activity (as recorded by the Muse headset).</p>
-        </div>
+        <article className="BodyBox-Mobile"> {/* position: absolute; right:12rem; left : 50vw; padding-left: 2rem; */}
+          <h1>NeuraHack 2022!</h1>
+          <p>
+            NeuroTEC and Synaptech’s first jointly-run hackathon, occurred the weekend of April 2nd. 29 students - most of whom were new to neurotechnology - participated and gained experience with hardware. Each of the seven teams demonstrated impressive creativity in their projects: focus monitoring for studying, examining the interplay of brain signals and language, fatigue monitoring, EMG for grip strength monitoring, and painting software controlled by the Muse headset.
+          </p>
+          <p>
+            Congratulations to Tim Li, Sunny Zheng, Yanfeng Cui for winning the hackathon! The winning team designed an automated annotator, which aimed to allow users to annotate each region of an image with their brain activity (as recorded by the Muse headset).
+          </p>
+        </article>
 
-        <div role='img' aria-label='Photo of student groups working during Neurahack 2022' className = "BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
-          <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } />  {/* position: absolute; right:0; */}
+        <div className = "BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
+          <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } />  {/* position: absolute; right:0; */}
         </div>
         {/* {winArray[3]} */}
 
-        <div Style = "height: 20vh" />
+        <div Style = "height: 20vh" role="separator"/>
 
-        <div Style = {"display: flex; flex-direction: column; "}> {/* <div Style = {"display: inline-flex; flex-direction: column"}>  */} {/* top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; */}
+        <article Style = {"display: flex; flex-direction: column; "}> {/* <div Style = {"display: inline-flex; flex-direction: column"}>  */} {/* top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; */}
           <h2>
             Sponsors
           </h2>
@@ -266,10 +268,10 @@ function HomePageMobile() {
                 </div> */}
                 <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
             </a>
-        </div>
-      </div>
+        </article>
 
-      <div Style = "height: 20vh" />
+        <div Style = "height: 20vh" role="separator"/>
+      </main>
 
       {/* {winArray[4]} */}
 

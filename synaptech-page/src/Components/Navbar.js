@@ -12,7 +12,7 @@ function Navbar(props) {
             </head>
             <header className={props.show}>
                 <Link Style = "" to = "/">
-                    <div className="Logo">
+                    <div className="Logo" aria-label="The Synaptech Logo - a blue brain overlaid with text saying Synap Tech @ UW">
                     </div>
                 </Link>
                 <span className = "app-title">
