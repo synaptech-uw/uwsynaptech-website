@@ -3,13 +3,21 @@ import React, {useState} from "react";
 
 function Admin(props) {
 
+  let imgStyle = "border-radius:100vh; height: 15vw; width: 15vw"
+
+  if (props.sizing === "single_column") {
+    imgStyle = "border-radius:100vh; height: 30vw; width: 30vw";
+  } else {
+    imgStyle = "border-radius:100vh; height: 15vw; width: 15vw";
+  }
+
   return(
     // original styling: width: 30vw; display: flex; flex-direction: row; justify-content: space-around; padding: 2rem;
     <div Style = "display:flex; flex-direction:column;">
       <div className={"AdminContainer"} Style = {"display: flex; flex-direction: row; padding-bottom: 0.5rem; padding-top:4rem;"}>
 
         <div Style = {"flex-direction: column; display: flex; align-items: left;"}>
-          <img Style = {"border-radius:100vh; height: 20vw; width: 20vw"} src={props.image} alt={props.name} aria-label={String("Image of " + String(props.name)) } />
+          <img Style = {imgStyle} src={props.image} alt={props.name} aria-label={String("Image of " + String(props.name)) } />
           <div>
             <h3>{props.major}</h3>
             <h4>{props.minor}</h4>
