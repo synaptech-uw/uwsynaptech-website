@@ -239,7 +239,7 @@ function HomePageDesktop() {
         <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
 
           { (window.innerWidth > SIZE_THRESHOLD) ?
-            <div Style = {"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } aria-label='Photo of student groups working during Neurahack 2022' alt="Hackjam flyer"/>
+            <div Style = {"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } aria-label='Photo of student groups working during Neurahack 2022' role='feed'/>
 
           :
 
