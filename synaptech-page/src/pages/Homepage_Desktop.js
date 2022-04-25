@@ -203,7 +203,7 @@ function HomePageDesktop() {
       </div>
       <div Style = "height: 40vh" />
       {/* {winArray[0]} */}
-      
+
       <div className={(window.innerWidth > SIZE_THRESHOLD) ? "Body-cols" : "Body-rows"}>
         <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"} > {/* position: absolute; left: 12rem; right: 50vw; padding-right: 2rem; */}
           <h2 Style = "text-align: center;">
@@ -239,21 +239,21 @@ function HomePageDesktop() {
         <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
 
           { (window.innerWidth > SIZE_THRESHOLD) ?
-            <div Style = {"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/>
-         
+            <div Style = {"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } aria-label='Photo of student groups working during Neurahack 2022' alt="Hackjam flyer"/>
+
           :
-          
-            <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/> 
+
+            <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer"/>
           }
-                
-       
+
+
         </div>
         <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Right" : "BodyBox-Mobile"}>
           <h1> NeuraHack 2022! </h1>
           <p> NeuroTEC and Synaptech’s first jointly-run hackathon, occurred the weekend of April 2nd. 29 students - most of whom were new to neurotechnology - participated and gained experience with hardware. Each of the seven teams demonstrated impressive creativity in their projects: focus monitoring for studying, examining the interplay of brain signals and language, fatigue monitoring, EMG for grip strength monitoring, and painting software controlled by the Muse headset. </p>
           <p> Congratulations to Tim Li, Sunny Zheng, Yanfeng Cui for winning the hackathon! The winning team designed an automated annotator, which aimed to allow users to annotate each region of an image with their brain activity (as recorded by the Muse headset).</p>
-        
-          
+
+
           </div>
       </div>
       <div Style = "height: 20vh" />
@@ -278,7 +278,7 @@ function HomePageDesktop() {
               <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
             </a>
           }
- 
+
         </div>
       </div>
       {/* {winArray[4]} */}

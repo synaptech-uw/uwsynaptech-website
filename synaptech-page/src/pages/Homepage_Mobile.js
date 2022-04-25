@@ -251,7 +251,7 @@ function HomePageMobile() {
         </div>
 
         <div className = "BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
-          <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer" aria-label='Image of student groups working during Neurahack 2022'/>  {/* position: absolute; right:0; */}
+          <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } alt="Hackjam flyer" aria-label='Photo of student groups working during Neurahack 2022'/>  {/* position: absolute; right:0; */}
         </div>
         {/* {winArray[3]} */}
 
