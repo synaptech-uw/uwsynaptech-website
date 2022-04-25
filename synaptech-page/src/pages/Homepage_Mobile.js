@@ -250,8 +250,8 @@ function HomePageMobile() {
           <p> Congratulations to Tim Li, Sunny Zheng, Yanfeng Cui for winning the hackathon! The winning team designed an automated annotator, which aimed to allow users to annotate each region of an image with their brain activity (as recorded by the Muse headset).</p>
         </div>
 
-        <div className = "BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
-          <div aria-label='Photo of student groups working during Neurahack 2022' role='feed' Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } />  {/* position: absolute; right:0; */}
+        <div role='img' aria-label='Photo of student groups working during Neurahack 2022' className = "BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
+          <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } />  {/* position: absolute; right:0; */}
         </div>
         {/* {winArray[3]} */}
 

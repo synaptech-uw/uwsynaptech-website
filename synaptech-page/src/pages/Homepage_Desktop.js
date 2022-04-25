@@ -236,10 +236,10 @@ function HomePageDesktop() {
       </div> */}
       {/* {winArray[2]} */}
       <div className={(window.innerWidth > SIZE_THRESHOLD) ? "Body-cols" : "Body-rows"}>
-        <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
+        <div role='img' aria-label='Photo of student groups working during Neurahack 2022' className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
 
           { (window.innerWidth > SIZE_THRESHOLD) ?
-            <div aria-label='Photo of student groups working during Neurahack 2022' role='feed' Style = {"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } />
+            <div Style = {"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;" } />
 
           :
 
