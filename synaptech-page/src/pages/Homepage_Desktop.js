@@ -245,7 +245,7 @@ function HomePageDesktop() {
 
             :
 
-              <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" }/>
+              <div Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" }/>
             }
 
           </div>
