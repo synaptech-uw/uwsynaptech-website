@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
-import ThreeDBrainBG from "../Components/OurTeam_Background";
+import ThreeDBrain from "../Components/Homepage_Background"
+// import ThreeDBrainBG from "../Components/OurTeam_Background";
 //import Carousel2 from "../Components/Carousel2";
 // import SetPageScroll from "../Components/SetPageScroll"
 
@@ -24,10 +25,6 @@ function HomePageDesktop() {
 
   const [thresh, setThresh] = useState([]);
 
-  for (let i = 0; i < numWindows; i++) {
-    winArray.push(<BrainWindow setRefFunc={(ra) => refArray.push(ra)} />);
-  }
-
   raycasts[0] = { x: 0.15, y: 0.05 };
   raycasts[2] = { x: 0.2, y: -0.1 };
   raycasts[4] = { x: -0.2, y: -0.03 };
@@ -47,7 +44,7 @@ function HomePageDesktop() {
   </p>]]
 
   blurbs[2] = ["What to expect", [<p>All of us here at Synaptech are students interested in a highly challenging and future-focused field. We work hard to foster a strong community of
-     neuroengineers that can operate and communicate interdisciplinarily.
+    neuroengineers that can operate and communicate interdisciplinarily.
   </p>]]
 
   blurbs[4] = ["Build a BCI", [<p>Synaptech supplies students with hardware that they can use to undertake personal projects as well, hack your muscles with EMG or your brain with EEG! </p>]]
@@ -58,11 +55,6 @@ function HomePageDesktop() {
 
   blurbs[10] = [null, [null, null]];
 
-  for (let n = 1; n < numWindows*2; n = n + 2) {
-    raycasts[n] = raycasts[n-1];
-    blurbCoords[n] = blurbCoords[n-1];
-    blurbs[n] = blurbs[n-1];
-  }
 
   const targetVecs = new Array(2 * numWindows);
   const vecZ = 8;
@@ -82,12 +74,21 @@ function HomePageDesktop() {
   var windowsRendered = false;
 
 
+  for (let i = 0; i < numWindows; i++) {
+    winArray.push(<BrainWindow setRefFunc={(ra) => refArray.push(ra)} />);
+  }
+
+  for (let n = 1; n < numWindows*2; n = n + 2) {
+    raycasts[n] = raycasts[n-1];
+    blurbCoords[n] = blurbCoords[n-1];
+    blurbs[n] = blurbs[n-1];
+  }
 
   useEffect(() => {
     if (refArray.length === numWindows) {
       windowsRendered = true;
     }
-  }, [refArray.length]);
+  }, [refArray]);
 
   // MAKE SURE TO MAKE THIS UPDATE ON RESIZE AS WELL
   function setThresholds() {
@@ -124,6 +125,7 @@ function HomePageDesktop() {
   var updateBrain = false;
 
   useEffect(() => {
+
     setThresholds()
     window.addEventListener("resize", setThresholds);
     window.scrollTo(window.scrollX, 0, true);
@@ -133,6 +135,7 @@ function HomePageDesktop() {
   }, []);
 
   const scrollPos = useScrollPosition();
+
   if ( pageLoaded && firstScroll === false && scrollPos >= 20) {
     sessionStorage.setItem("previouslyVisited", "true")
     setFirstScroll(true);
@@ -188,7 +191,7 @@ function HomePageDesktop() {
 
       {/* Change props to list of vectors with varying points, maybe I can do a list of like x and y values instead. Otherwise, we'll also need to pass in a couple waypoints, being the y value of the other elements in the return. Getting these y values is the next step. Then we just have to evaluate the step in the array and move forward or backward depending on the evaluation*/}
       {/* On page load, finally load this! MUST BE LAST! */}
-      { (pageLoaded) && <ThreeDBrainBG
+      { (pageLoaded) && <ThreeDBrain
         userScroll={scrollPos}
         targets={targetVecs}
         thresholds={thresh}
@@ -198,8 +201,8 @@ function HomePageDesktop() {
       /> }
 
       <main>
-        <div role="separator" Style = "height: 40vh" />
-        {/* {winArray[0]} */}
+        {/* <div role="separator" Style = "height: 40vh" /> */}
+        {winArray[0]}
 
         <section className={(window.innerWidth > SIZE_THRESHOLD) ? "Body-cols" : "Body-rows"}>
           <article className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"} > {/* position: absolute; left: 12rem; right: 50vw; padding-right: 2rem; */}
@@ -224,8 +227,8 @@ function HomePageDesktop() {
           </article>
         </section>
 
-        <div Style = "height: 20vh" />
-        {/* {winArray[1]} */}
+        {/* <div Style = "height: 20vh" /> */}
+        {winArray[1]}
         {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
           <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
             <h2>
@@ -236,7 +239,7 @@ function HomePageDesktop() {
             </div>
           </div>
         </div> */}
-        {/* {winArray[2]} */}
+        {winArray[2]}
         <section className={(window.innerWidth > SIZE_THRESHOLD) ? "Body-cols" : "Body-rows"}>
           <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
 
@@ -260,9 +263,9 @@ function HomePageDesktop() {
             </p>
           </article>
         </section>
-
-        <div role="separator" Style = "height: 20vh" />
-        {/* {winArray[3]} */}
+{/* 
+        <div role="separator" Style = "height: 20vh" /> */}
+        {winArray[3]}
 
         <section className={"Body-default"}>
           <div Style = {"display: flex; flex-direction: column; "}> {/* <div Style = {"display: inline-flex; flex-direction: column"}>  */} {/* top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; */}
@@ -288,8 +291,8 @@ function HomePageDesktop() {
           </div>
         </section>
 
-        {/* {winArray[4]} */}
-        <div role="separator" Style = "height: 40vh" />
+        {winArray[4]}
+        {/* <div role="separator" Style = "height: 40vh" /> */}
       </main>
 
 
