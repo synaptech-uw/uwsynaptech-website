@@ -6,7 +6,7 @@ import '../styles/Styles.css';
 import StoreText from "../Components/StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
-
+const HIGHLIGHTDELAY = 300;
 class ThreeDBrain extends Component {
   constructor(props) {
     super(props);
@@ -31,6 +31,7 @@ class ThreeDBrain extends Component {
               };
     this.lightTimer = [];
   };
+
 
   componentDidMount() {
       this.sceneSetup();
@@ -58,7 +59,7 @@ class ThreeDBrain extends Component {
           drawLine : false
         });
         if (currThreshold % 2 === 1) {
-          this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
+          this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, HIGHLIGHTDELAY);
         }
         this.setState({drawLine : false})
       }
@@ -103,7 +104,7 @@ class ThreeDBrain extends Component {
 
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, HIGHLIGHTDELAY);
       }
       this.setState({drawLine : false});
 
@@ -130,7 +131,7 @@ class ThreeDBrain extends Component {
       }
       this.rayLight.intensity = 0;
       if (this.state.thresholdCounter % 2 === 1) {
-        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, 800);
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, HIGHLIGHTDELAY);
       }
       this.setState({drawLine : false});
     }
@@ -284,7 +285,7 @@ class ThreeDBrain extends Component {
     const lookAtCoord = this.state.lookAtPoint;
 
     // Right now this only runs once?
-    this.camera.position.lerp(targetPos, 0.08);
+    this.camera.position.lerp(targetPos, 0.1);
     this.camera.lookAt(lookAtCoord);
   }
 
@@ -312,7 +313,7 @@ class ThreeDBrain extends Component {
           this.setState({drawLine : true})
           // console.log(this.state.drawLine);
           // console.log(this.state.raycastXY);
-        }, (50)));
+        }, (1)));
       }
     }
   }
@@ -327,12 +328,12 @@ class ThreeDBrain extends Component {
           <StoreText showClass = {
               (this.state.drawLine) ? "storeText" : "storeText-hidden"
             } title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText>
-          { ( this.state.drawLine ) && <Link
+          {/* { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
             startY = { -((window.innerHeight*this.state.blurbXY.y/2) - window.innerHeight/2) }
             endX = { (this.state.width*this.state.raycastXY.x)/2 + this.state.width/2 }
             endY = { -((window.innerHeight*this.state.raycastXY.y/2) - window.innerHeight/2) }
-          /> }
+          /> } */}
           </div>
         </>
       );

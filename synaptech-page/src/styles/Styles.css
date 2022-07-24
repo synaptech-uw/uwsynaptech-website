@@ -164,6 +164,7 @@ a:active { text-decoration: none; }
   background:none;
   border: none;
   color: white;
+  padding:1rem;
 }
 
 .app-title {
@@ -375,7 +376,9 @@ html::-webkit-scrollbar {
   height: fit-content;
   display:flex;
   flex-direction: column;
-  width: 25rem;
+  /* width: 25rem; */
+  height:100%;
+  width:30%;
   border-style:solid;
   border-color:rgb(255, 255, 162);
   border-width: 0;
@@ -386,10 +389,11 @@ html::-webkit-scrollbar {
   background-color: rgba(7, 14, 29, 0.719);
   color: white;
   padding: 1rem;
+  padding-top:5rem;
   backdrop-filter: blur(7px);
   z-index:200;
   transition: transform 1s ease-in-out;
-  transition-delay: 1s;
+  transition-delay: 0s;
   transform: rotateY(0deg);
   transform-origin: left bottom;
 }

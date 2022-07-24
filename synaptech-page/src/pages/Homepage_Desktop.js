@@ -32,12 +32,18 @@ function HomePageDesktop() {
   raycasts[8] = { x: -0.05, y: 0.2 };
   raycasts[10] = { x: 0, y: 0 };
 
-  blurbCoords[0] = { x: -0.5, y: -0.1 };
-  blurbCoords[2] = { x: -0.5, y: 0.2 };
-  blurbCoords[4] = { x: -0.1, y: -0.4 };
-  blurbCoords[6] = { x: 0.05, y: -0.3 };
-  blurbCoords[8] = { x: -0.1, y: -0.5 };
-  blurbCoords[10] = { x: 0, y: 0 };
+  // blurbCoords[0] = { x: -0.5, y: -0.1 };
+  // blurbCoords[2] = { x: -0.5, y: 0.2 };
+  // blurbCoords[4] = { x: -0.1, y: -0.4 };
+  // blurbCoords[6] = { x: 0.05, y: -0.3 };
+  // blurbCoords[8] = { x: -0.1, y: -0.5 };
+  // blurbCoords[10] = { x: 0, y: 0 };
+  blurbCoords[0] = { x: -1, y: -1 };
+  blurbCoords[2] = { x: -1, y: -1 };
+  blurbCoords[4] = { x: -1, y: -1 };
+  blurbCoords[6] = { x: -1, y: -1 };
+  blurbCoords[8] = { x: -1, y: -1 };
+  blurbCoords[10] = { x: -1, y: -1 };
 
   blurbs[0] = ["Neurotech Development @ UW", [<p>
     Synaptech serves as University of Washington’s sole project-based neurotech club, hosting opportunities to hack and develop various neurotech projects. From HackJams to long-term projects, students can look to gain real experience with neural interfaces and neural data.
