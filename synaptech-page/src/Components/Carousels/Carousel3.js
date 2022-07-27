@@ -1,6 +1,6 @@
+// DOES NOT WORK: error: "Support for the experimental syntax 'jsx' isn't currently enabled"
 // third attempt at making working carousel with images and text in react
 // uses https://www.npmjs.com/package/react-native-image-slider-text-box
-// DOES NOT WORK: error: "Support for the experimental syntax 'jsx' isn't currently enabled"
 
 import React from "react";
 import { SliderBox } from "react-native-image-slider-box";

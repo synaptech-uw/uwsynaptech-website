@@ -224,8 +224,8 @@ function HomePageDesktop() {
           </article>
         </section>
 
-        <div role="separator" Style = "height: 20vh" />
-        {/* {winArray[1]} */}
+        {/* decent-ish carousel! */}
+        {/* <div role="separator" Style = "height: 20vh" />
         <section className={"Body-default"}>
           <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
             <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
@@ -239,24 +239,7 @@ function HomePageDesktop() {
           </div>
         </section>
 
-        <div role="separator" Style = "height: 50vh" />
-
-
-        {/* <div role="separator" Style = "height: 20vh" /> */}
-        {/* <section className={"Body-default"}>
-          <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
-            <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
-              <h2>
-                Project Spotlight
-              </h2>
-              <div Style = {"top: 5rem; left: 10rem; right: 10rem; height: 50vh; position: absolute; display: flex; justify-content: center;"}>
-                <Carousel3 />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <div role="separator" Style = "height: 50vh" /> */}
+        <div role="separator" Style = "height: 80vh" /> */}
 
         {/* {winArray[2]} */}
         <section className={(window.innerWidth > SIZE_THRESHOLD) ? "Body-cols" : "Body-rows"}>

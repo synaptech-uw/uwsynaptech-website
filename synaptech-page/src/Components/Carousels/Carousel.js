@@ -1,3 +1,5 @@
+// DOES NOT WORK - was attempting to do it the same way as in default JavaScript, and that does not work
+
 import './Carousel.css'
 
 function Carousel(props) {
