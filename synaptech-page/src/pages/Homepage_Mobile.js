@@ -3,7 +3,7 @@ import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
 //import ThreeDBrain from "../Components/Homepage_Background";
 import ThreeDBrainBG from "../Components/OurTeam_Background";
-import Carousel2 from "../Components/Carousel2";
+// import Carousel2 from "../Components/Carousel2";
 
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";

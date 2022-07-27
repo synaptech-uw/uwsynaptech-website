@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
 import ThreeDBrainBG from "../Components/OurTeam_Background";
-//import Carousel2 from "../Components/Carousel2";
+import Carousel2 from "../Components/Carousels/Carousel2";
 // import SetPageScroll from "../Components/SetPageScroll"
 
 import { Vector3 } from "three";
@@ -224,18 +224,40 @@ function HomePageDesktop() {
           </article>
         </section>
 
-        <div Style = "height: 20vh" />
+        <div role="separator" Style = "height: 20vh" />
         {/* {winArray[1]} */}
-        {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
-          <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
-            <h2>
-              Project Spotlight
-            </h2>
-            <div Style = {"top: 5rem; left: 10rem; right: 10rem; height: 50vh; position: absolute; display: flex; justify-content: center;"}>
-              <Carousel2 />
+        <section className={"Body-default"}>
+          <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
+            <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
+              <h2>
+                Project Spotlight
+              </h2>
+              <div Style = {"top: 5rem; left: 10rem; right: 10rem; height: 50vh; position: absolute; display: flex; justify-content: center;"}>
+                <Carousel2 />
+              </div>
             </div>
           </div>
-        </div> */}
+        </section>
+
+        <div role="separator" Style = "height: 50vh" />
+
+
+        {/* <div role="separator" Style = "height: 20vh" /> */}
+        {/* <section className={"Body-default"}>
+          <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
+            <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
+              <h2>
+                Project Spotlight
+              </h2>
+              <div Style = {"top: 5rem; left: 10rem; right: 10rem; height: 50vh; position: absolute; display: flex; justify-content: center;"}>
+                <Carousel3 />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div role="separator" Style = "height: 50vh" /> */}
+
         {/* {winArray[2]} */}
         <section className={(window.innerWidth > SIZE_THRESHOLD) ? "Body-cols" : "Body-rows"}>
           <div className = {(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
