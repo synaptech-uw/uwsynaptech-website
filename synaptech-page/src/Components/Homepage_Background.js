@@ -7,9 +7,22 @@ import StoreText from "../Components/StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
 
+
+// Thank you for reading this incredibly stupid implementation of our website! This page is 
+// going to be the worst of it, as it is all hand-coded by me. I will attempt to comment each
+// segment clearly, but please reach out if you have any questions! 
+
+// We use a React Class Component for this one. While functional components are easier to implement,
+//  ThreeJS works best in a class component as it has a bit more functionality. For info on what
+//  a class component is: https://reactjs.org/docs/react-component.html
 class ThreeDBrain extends Component {
   constructor(props) {
     super(props);
+
+    // To make this versatile and enable extraction, the component takes in a list of 3D camera position 
+    // coordinates (called targets), a list of coordinates to raycast a glowing light (-1 to 1 on both x
+    // and y axis), a list of coordinates to put the top-left corner of a blurb object, and a list of blurb
+    // objects themselves. Everything else is used throughout the script as camera calculations and etc.
     this.state = {
                 targets : props.targets,
                 targetPOV : props.targets[0],
@@ -32,6 +45,9 @@ class ThreeDBrain extends Component {
     this.lightTimer = [];
   };
 
+  // This runs once the component is mounted, populating the scene and setting the screen size, etc.
+  // I wonder if some of this could be run BEFORE the component mounts? On page load maybe? I think
+  // at least the event listeners could be.
   componentDidMount() {
       this.sceneSetup();
       this.populateScene();
@@ -44,6 +60,8 @@ class ThreeDBrain extends Component {
       });
       window.addEventListener('pagehide', this.serializeCurrThresh)
 
+      // Site uses sessionStorage to track someone's last visited position on the site until they close the browser.
+      // Hopefully this doesn't require a cookie message? We should look into that!
       if (sessionStorage.getItem("currThreshold")) {
         // if(sessionStorage.getItem("homeScroll")) {
         //   window.scrollTo(window.scrollX, JSON.parse(sessionStorage.getItem("homeScroll")));
@@ -63,7 +81,7 @@ class ThreeDBrain extends Component {
         this.setState({drawLine : false})
       }
   }
-
+  // Good practice to remove eventlisteners upon component unmount, and saves the user scroll position to sessionStorage as a string.
   componentWillUnmount() {
     sessionStorage.setItem("homeScroll", JSON.stringify(this.props.userScroll))
     window.removeEventListener("pagehide", this.serializeCurrThresh)
@@ -71,11 +89,15 @@ class ThreeDBrain extends Component {
     window.removeEventListener('scroll', this.updateScrollPos);
     window.cancelAnimationFrame(this.requestID);
   }
-
+  // Used to also save the current threshold
   serializeCurrThresh = () => {
     sessionStorage.setItem("currThreshold", JSON.stringify(this.state.thresholdCounter));
   }
 
+  // Possibly one of the most important functions in this script, used to update the current scroll 
+  // thresholds and everything tied to them. Also updates the timer variable, which is used to count
+  // and make the light on the brain light up. The timer essentially multiplies the brightness of the
+  // light up until a point and then caps out. When the threshold changes the timer resets.
   updateScrollPos = () => {
     //console.log(this.props.userScroll);
     if (this.props.userScroll > this.props.thresholds[this.state.thresholdCounter] ) {
@@ -137,6 +159,7 @@ class ThreeDBrain extends Component {
     //console.log(this.props.thresholds[this.state.thresholdCounter])
   }
 
+  // Adjusts the camera when it's called based on the window proportions.
   handleWindowResize = () => {
     this.setState({
       width : window.innerWidth,
@@ -150,6 +173,7 @@ class ThreeDBrain extends Component {
     // console.log(this.props.thresholds);
   };
 
+  // Helper function to handleWindowResize() for the background
   reshapeTex = (tex, reference) => {
     const canvasAspect = reference.camera.aspect;
     const imageAspect = tex.image ? tex.image.width / tex.image.height : 1;
@@ -162,7 +186,9 @@ class ThreeDBrain extends Component {
     tex.repeat.y = aspect > 1 ? 1 : aspect;
   }
 
+  // Preparing the scene, called on ComponentIsMounted()
   sceneSetup = () => {
+
     // get container dimensions and use them for scene sizing
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -179,7 +205,6 @@ class ThreeDBrain extends Component {
     );
 
     // default camera position
-
     this.camera.z = 3;
     this.camera.y = 1;
     this.camera.z = 8;
@@ -206,7 +231,7 @@ class ThreeDBrain extends Component {
     this.raycaster = new THREE.Raycaster();
   };
 
-
+  // Sets up the lighting in the scene
   populateScene  = () => {
     const light = new THREE.AmbientLight(0x0E62AB, 2);
     light.position.set(0, -4, 0);
@@ -269,7 +294,7 @@ class ThreeDBrain extends Component {
     //this.composer.addPass(new EffectPass(this.camera, new GodRaysEffect(this.camera, this.raySphere)))
   };
 
-
+  // Need to look up the docs on what exactly this does. It's important and connects to stuff with lerp.
   startAnimationLoop = () => {
     // this.cube.rotation.x += 0.01;
     // this.cube.rotation.y += 0.01;
@@ -278,6 +303,8 @@ class ThreeDBrain extends Component {
     this.requestID = window.requestAnimationFrame(this.startAnimationLoop);
   };
 
+  // Runs in the animation loop to constantly update the camera when there's 
+  // something to update on.
   updateCamera = () => {
     //console.log(this.state.targetPOV);
     const targetPos = this.state.targetPOV;;
@@ -288,6 +315,8 @@ class ThreeDBrain extends Component {
     this.camera.lookAt(lookAtCoord);
   }
 
+  // Used to highlight a specific point of the brain by sending a raycast to the
+  // screen coordinates (screen coordinates are -1 to 1 on x and y)
   highlightPoint = (coords) => {
     this.raycaster.setFromCamera(coords,  this.camera);
     var intersects = this.raycaster.intersectObjects(this.scene.children);
@@ -316,9 +345,8 @@ class ThreeDBrain extends Component {
       }
     }
   }
-  //Write event when user scrolls to certain points on the scrollbar. Have certain waypoints that
-  //trigger specific camera movements at that point.
 
+  // Final render and defining HTML
   render() {
       return(
         <>
