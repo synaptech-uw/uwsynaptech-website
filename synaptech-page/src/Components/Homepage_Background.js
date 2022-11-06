@@ -6,33 +6,37 @@ import '../styles/Styles.css';
 import StoreText from "../Components/StoreText";
 import { Vector3 } from "three";
 import { BloomEffect, EffectComposer, EffectPass, RenderPass } from "postprocessing";
+
 const HIGHLIGHTDELAY = 300;
+const DRAWLINE_BLANK = 1;
+
 class ThreeDBrain extends Component {
   constructor(props) {
     super(props);
     this.state = {
-                targets : props.targets,
-                targetPOV : props.targets[0],
-                raycasts : props.rays,
-                raycastXY : props.rays[0],
-                blurbCoords : props.blurbCoords,
-                blurbXY : props.blurbCoords[0],
-                blurbs : props.blurb,
-                currBlurb : props.blurb[0],
-                lookAtPoint : (new Vector3(0, 0, 0)),
-                height : 0,
-                width : 0,
-                thresholdCounter : 0,
-                animationCalled : false,
-                tanFOV : Math.tan( ( ( Math.PI / 180 ) * 120 / 2 ) ), //55 here is the camera's FOV remember this
-                ogWinHeight : window.innerHeight,
-                ogWinWidth : window.innerWidth,
-                drawLine : false
+                targets : props.targets, // Array of camera coordinates
+                targetPOV : props.targets[0], // Which of the camera coordinates we have iterated to
+                raycasts : props.rays, // Array of raycast coordinates (-1 to 1 on the screen in x and y)
+                raycastXY : props.rays[0], // Which of the raycast coordinates we have iterated to.
+                blurbCoords : props.blurbCoords, // Array of blurb coordinates (-1 to 1 on the screen in x and y)
+                blurbXY : props.blurbCoords[0], // Which of the blurb coordinates (the pixel at the bottom left corner) we have iterated to.
+                blurbs : props.blurb, // Array of StoreText blurbs.
+                currBlurb : props.blurb[0], // Current StoreText blurb to load once within threshold.
+                lookAtPoint : (new Vector3(0, 0, 0)), // Point for the camera to look at within 3JS coordinate system.
+                height : 0, // Screen height (updated in componentDidMount)
+                width : 0, // Screen width (updated in componentDidMount)
+                thresholdCounter : 0, // Which threshold we have crossed last (starting from 0 and counting to the total number)
+                animationCalled : false, // Unused
+                tanFOV : Math.tan( ( ( Math.PI / 180 ) * 120 / 2 ) ), // Used by 3JS to create camera view. 55 here is the camera's FOV remember this
+                ogWinHeight : window.innerHeight, // Tracks the original window height for initial FOV calculations
+                ogWinWidth : window.innerWidth, // Tracks the original window width for initital FOV calculations
+                drawLine : false // State used to tell drawLine to activate or not
               };
-    this.lightTimer = [];
+    this.lightTimer = []; // Used by the glowing light effect in 3JS
   };
 
-
+// componentDidMount: Runs to initalize the component. Sets up the 3JS scene and adds EventListeners so we can tell where the user is on the page.
+//                    The important part about this is that it sets up the initial position of the 3JS scene to be based on the top of the page.
   componentDidMount() {
       this.sceneSetup();
       this.populateScene();
@@ -45,10 +49,8 @@ class ThreeDBrain extends Component {
       });
       window.addEventListener('pagehide', this.serializeCurrThresh)
 
+      // Detects if there is a current threshold from the sessionStorage and loads it all into the current state.
       if (sessionStorage.getItem("currThreshold")) {
-        // if(sessionStorage.getItem("homeScroll")) {
-        //   window.scrollTo(window.scrollX, JSON.parse(sessionStorage.getItem("homeScroll")));
-        // }
         const currThreshold = 0; // JSON.parse(sessionStorage.getItem("currThreshold"));
         this.setState({
           thresholdCounter : currThreshold,
@@ -65,6 +67,9 @@ class ThreeDBrain extends Component {
       }
   }
 
+  // componentWillUnmount: What is run when the component unmounts (which is called on page unload). Removes eventlisteners and saves the sessionstorage
+  //                       so the user can return to the same scroll position after clicking off unless their session was restarted. Also cancels 3JS
+  //                       animations
   componentWillUnmount() {
     sessionStorage.setItem("homeScroll", JSON.stringify(this.props.userScroll))
     window.removeEventListener("pagehide", this.serializeCurrThresh)
@@ -73,6 +78,7 @@ class ThreeDBrain extends Component {
     window.cancelAnimationFrame(this.requestID);
   }
 
+  // Component
   serializeCurrThresh = () => {
     sessionStorage.setItem("currThreshold", JSON.stringify(this.state.thresholdCounter));
   }
@@ -313,7 +319,7 @@ class ThreeDBrain extends Component {
           this.setState({drawLine : true})
           // console.log(this.state.drawLine);
           // console.log(this.state.raycastXY);
-        }, (1)));
+        }, (DRAWLINE_BLANK)));
       }
     }
   }
@@ -328,6 +334,7 @@ class ThreeDBrain extends Component {
           <StoreText showClass = {
               (this.state.drawLine) ? "storeText" : "storeText-hidden"
             } title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText>
+            {/* UNUSED DRAWLINE CODE REPURPOSE FOR LATER?? */}
           {/* { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }
             startY = { -((window.innerHeight*this.state.blurbXY.y/2) - window.innerHeight/2) }

@@ -2,6 +2,8 @@ import React from "react";
 import "../styles/Styles.css";
 import SvgLines from 'react-mt-svg-lines';
 
+const DRAWSPEEDMS = 1200;
+
 export default class Link extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +48,7 @@ export default class Link extends React.Component {
   render() {
     return (
       <div>
-        <SvgLines animate={ true } fade = { true } duration={ 1200 } >
+        <SvgLines animate={ true } fade = { true } duration={ DRAWSPEEDMS } >
           <svg className='wire'>
             {/* <path
               className='backgroundPath'

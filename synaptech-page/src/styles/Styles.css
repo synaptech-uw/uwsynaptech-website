@@ -377,26 +377,31 @@ html::-webkit-scrollbar {
   display:flex;
   flex-direction: column;
   /* width: 25rem; */
-  height:100%;
-  width:30%;
+  height:25%;
+  width:50%;
   border-style:solid;
   border-color:rgb(255, 255, 162);
   border-width: 0;
-  border-left-width: 1rem;
+  /* border-left-width: 1rem;
   border-left-color:rgb(255, 255, 162);
   border-right-width: 0.1rem;
-  border-right-color:white;
+  border-right-color:white; */
+  border-bottom-width: 1rem;
+  border-bottom-color:rgb(255, 255, 162);
+  border-top-width: 0.1rem;
+  border-top-color:white;
   background-color: rgba(7, 14, 29, 0.719);
   color: white;
   padding: 1rem;
-  padding-top:5rem;
+  padding-top:1rem;
   backdrop-filter: blur(7px);
-  z-index:200;
+  z-index:9999999999;
   transition: transform 1s ease-in-out;
-  transition-delay: 0s;
-  transform: rotateY(0deg);
+  transition-delay: 5ms;
+  transform: rotateX(0deg);
   transform-origin: left bottom;
 }
+
 .storeText-hidden {
   position:absolute;
   height: fit-content;
@@ -417,7 +422,7 @@ html::-webkit-scrollbar {
   backdrop-filter: blur(7px);
   z-index:200;
   transition: transform 0s;
-  transform: rotateY(90deg);
+  transform: rotateX(90deg);
   transform-origin:left bottom;
 }
 
