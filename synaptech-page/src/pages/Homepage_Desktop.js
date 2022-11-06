@@ -45,6 +45,10 @@ function HomePageDesktop() {
   blurbCoords[8] = { x: -.5, y: -.75};
   blurbCoords[10] = { x: -.5, y: -.75};
 
+//  _______________________ALEJANDRO'S TO DO LIST_________________________________________________
+  // WE NEED TO ADD EACH OF THESE BLURB TEXTS TO THE ACCESSIBILITY READER STUFF, THE ARIA LABELS!
+  // ALSO WE NEED TO ADD A LITTLE MARKER OR NAVBAR THING SO WE CAN GO BETWEEN SECTIONS!
+
   blurbs[0] = ["Neurotech Development @ UW", [<p>
     Synaptech serves as University of Washington’s sole project-based neurotech club, hosting opportunities to hack and develop various neurotech projects. From HackJams to long-term projects, students can look to gain real experience with neural interfaces and neural data.
   </p>]]
