@@ -38,7 +38,7 @@ function HomePageDesktop() {
   // blurbCoords[6] = { x: 0.05, y: -0.3 };
   // blurbCoords[8] = { x: -0.1, y: -0.5 };
   // blurbCoords[10] = { x: 0, y: 0 };
-  blurbCoords[0] = { x: -.5, y: -.75};
+  blurbCoords[0] = { x: -.5, y: -1};
   blurbCoords[2] = { x: -.5, y: -.75};
   blurbCoords[4] = { x: -.5, y: -.75};
   blurbCoords[6] = { x: -.5, y: -.75};
