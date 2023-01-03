@@ -46,7 +46,7 @@ function HomePageMobile() {
   </p>]]
 
   blurbs[2] = ["What to expect", [<p>All of us here at Synaptech are students interested in a highly challenging and future-focused field. We work hard to foster a strong community of
-     neuroengineers that can operate and communicate interdisciplinarily.
+    neuroengineers that can operate and communicate interdisciplinarily.
   </p>]]
 
   blurbs[4] = ["Build a BCI", [<p>Synaptech supplies students with hardware that they can use to undertake personal projects as well, hack your muscles with EMG or your brain with EEG! </p>]]
@@ -57,10 +57,10 @@ function HomePageMobile() {
 
   blurbs[10] = [null, [null, null]];
 
-  for (let n = 1; n < numWindows*2; n = n + 2) {
-    raycasts[n] = raycasts[n-1];
-    blurbCoords[n] = blurbCoords[n-1];
-    blurbs[n] = blurbs[n-1];
+  for (let n = 1; n < numWindows * 2; n = n + 2) {
+    raycasts[n] = raycasts[n - 1];
+    blurbCoords[n] = blurbCoords[n - 1];
+    blurbs[n] = blurbs[n - 1];
   }
 
   const targetVecs = new Array(2 * numWindows);
@@ -132,13 +132,13 @@ function HomePageMobile() {
   }, []);
 
   const scrollPos = useScrollPosition();
-  if ( pageLoaded && firstScroll === false && scrollPos >= 20) {
+  if (pageLoaded && firstScroll === false && scrollPos >= 20) {
     sessionStorage.setItem("previouslyVisited", "true")
     setFirstScroll(true);
     setFirstLockClass("test-locked");
     setTimeout(() => {
       setFirstLockClass("test")
-      window.scrollTo(0, window.innerHeight/2);
+      window.scrollTo(0, window.innerHeight / 2);
     }, 2000);
   }
 
@@ -161,18 +161,18 @@ function HomePageMobile() {
       [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"]
     ];
   return (
-    <div className = {firstLockClass}>
+    <div className={firstLockClass}>
       <header>
-        <Navbar role="navigation" show = { (scrollPos > 1) ? "Header" : "Header-Hidden" } />
+        <Navbar role="navigation" show={(scrollPos > 1) ? "Header" : "Header-Hidden"} />
         {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function and start getting some text into the page.  */}
         <div className="Body-default">
           <div role="separator" Style={"height:50vh"} />
-          <h1 className = {(firstScroll) ? "Welcome-Text" : "Welcome-Text-hidden"}>
+          <h1 className={(firstScroll) ? "Welcome-Text" : "Welcome-Text-hidden"}>
             Welcome to Synaptech, the University of Washington's Undergraduate Neurotechnology RSO
           </h1>
         </div>
       </header>
-      <div aria-hidden="true" className={ (!firstScroll && !(scrollPos > 0 )) ? "Welcome" : "Welcome-Scrolled" }>
+      <div aria-hidden="true" className={(!firstScroll && !(scrollPos > 0)) ? "Welcome" : "Welcome-Scrolled"}>
         {/* Make this header slide upwards quickly as soon as the scrollY !==0 */}
         <div className="App-header">
           <img
@@ -197,9 +197,9 @@ function HomePageMobile() {
         blurbCoords = {blurbCoords}
       /> } */}
 
-      { (pageLoaded) && <ThreeDBrainBG/>}
+      {(pageLoaded) && <ThreeDBrainBG />}
 
-      <div Style = "height: 40vh" role="separator" />
+      <div Style="height: 40vh" role="separator" />
 
       {/* {winArray[0]} */}
       <main className="Body">
@@ -207,28 +207,28 @@ function HomePageMobile() {
           <h2>
             About us
           </h2>
-          <div className = "BodyText-Mobile">
+          <div className="BodyText-Mobile">
             <p>
               We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field!
-              </p>
+            </p>
             <p>
               We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects!
             </p>
           </div>
         </article>
 
-        <div Style = "height: 20vh" role="separator" />
+        <div Style="height: 20vh" role="separator" />
 
         <article className="BodyBox-Mobile">
           <h2> {/* left: 0; right: 0; position: absolute; */}
             Upcoming events
           </h2>
           <div> {/* top: 4rem; position: absolute; left: 2rem; right: 0; height: 50vh; */}
-            <UpcomingEvents nextEvents = {eventsArray}/>
+            <UpcomingEvents nextEvents={eventsArray} />
           </div>
         </article>
 
-        <div Style = "height: 20vh" role="separator" />
+        <div Style="height: 20vh" role="separator" />
         {/* {winArray[1]} */}
 
         {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
@@ -252,25 +252,25 @@ function HomePageMobile() {
           </p>
         </article>
 
-        <div className = "BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
-          <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style = {"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;" } />  {/* position: absolute; right:0; */}
+        <div className="BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
+          <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style={"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;"} />  {/* position: absolute; right:0; */}
         </div>
         {/* {winArray[3]} */}
 
-        <div Style = "height: 20vh" role="separator"/>
+        <div Style="height: 20vh" role="separator" />
 
-        <article Style = {"display: flex; flex-direction: column; "}> {/* <div Style = {"display: inline-flex; flex-direction: column"}>  */} {/* top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; */}
+        <article Style={"display: flex; flex-direction: column; "}> {/* <div Style = {"display: inline-flex; flex-direction: column"}>  */} {/* top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; */}
           <h2>
             Sponsors
           </h2>
-            <a Style = " margin-left: auto; margin-right: auto; display:block;" href = "https://centerforneurotech.uw.edu/">
-                {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
+          <a Style=" margin-left: auto; margin-right: auto; display:block;" href="https://centerforneurotech.uw.edu/">
+            {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 </div> */}
-                <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology"/>
-            </a>
+            <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology" />
+          </a>
         </article>
 
-        <div Style = "height: 20vh" role="separator"/>
+        <div Style="height: 20vh" role="separator" />
       </main>
 
       {/* {winArray[4]} */}
