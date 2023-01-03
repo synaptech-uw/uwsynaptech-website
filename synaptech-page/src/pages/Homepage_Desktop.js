@@ -85,7 +85,7 @@ function HomePageDesktop() {
 
 
   for (let i = 0; i < numWindows; i++) {
-    winArray.push(<BrainWindow setRefFunc={(ra) => refArray.push(ra)} />);
+    winArray.push(<BrainWindow setRefFunc={(ra) => refArray.push(ra)} />); // Pass in the related blurb to this window, so we can add aria labels to it.
   }
 
   for (let n = 1; n < numWindows*2; n = n + 2) {
@@ -273,7 +273,7 @@ function HomePageDesktop() {
             </p>
           </article>
         </section>
-{/* 
+{/*
         <div role="separator" Style = "height: 20vh" /> */}
         {winArray[3]}
 
