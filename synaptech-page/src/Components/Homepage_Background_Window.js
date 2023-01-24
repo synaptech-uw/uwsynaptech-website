@@ -13,7 +13,7 @@ function BrainWindow(props) {
     props.setRefFunc(winRef);
   });
   return (
-    <div ref={winRef} aria-label={props.title + props.content} className="BrainWindow">
+    <div ref={winRef} aria-label={props.title + " - " + props.content} className="BrainWindow">
       {props.el}
     </div>
   )
