@@ -1,16 +1,22 @@
 import React, { useRef, useEffect } from "react";
 import "../styles/Styles.css"
 
+// Props:
+//  setRefFunc: set Ref function
+//  content: blurb's content
+//  title: blurb's title
+//  el: pass in blurb
+
 function BrainWindow(props) {
-    const winRef = useRef();
-    useEffect(() => {
-        props.setRefFunc(winRef);
-    });
-    return(
-        <div ref = {winRef} className = "BrainWindow">
-            { props.el }
-        </div>
-    )
+  const winRef = useRef();
+  useEffect(() => {
+    props.setRefFunc(winRef);
+  });
+  return (
+    <div ref={winRef} aria-label={props.title + " - " + props.content} className="BrainWindow">
+      {props.el}
+    </div>
+  )
 }
 
 export default BrainWindow;
