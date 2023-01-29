@@ -137,10 +137,8 @@ function HomePageDesktop() {
       const thresholds = [];
       for (let i = 0; i < numWindows; i++) {
         const element = refArray[i].current;
-        const threshStart =
-          element.offsetTop - window.innerHeight / 2;
-        const threshEnd =
-          element.offsetTop - window.innerHeight / 2 + element.clientHeight;
+        const threshStart = element.offsetTop - window.innerHeight / 2;
+        const threshEnd = element.offsetTop - window.innerHeight / 2 + element.clientHeight;
         thresholds[i * 2] = threshStart; //[threshStart, threshEnd];
         thresholds[i * 2 + 1] = threshEnd;
         // console.log(thresholds[i]);
