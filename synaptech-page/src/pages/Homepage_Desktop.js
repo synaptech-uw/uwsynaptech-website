@@ -132,19 +132,14 @@ function HomePageDesktop() {
 
   // MAKE SURE TO MAKE THIS UPDATE ON RESIZE AS WELL
   function setThresholds() {
-    //console.log("windowsRendered", windowsRendered);
     if (windowsRendered === true) {
       const thresholds = [];
       for (let i = 0; i < numWindows; i++) {
         const element = refArray[i].current;
-        const threshStart =
-          element.offsetTop - window.innerHeight / 2;
-        const threshEnd =
-          element.offsetTop - window.innerHeight / 2 + element.clientHeight;
+        const threshStart = element.offsetTop - window.innerHeight / 2;
+        const threshEnd = element.offsetTop - window.innerHeight / 2 + element.clientHeight;
         thresholds[i * 2] = threshStart; //[threshStart, threshEnd];
         thresholds[i * 2 + 1] = threshEnd;
-        // console.log(thresholds[i]);
-        // console.log("THRESHOLDS", thresholds.length);
         //TEST PROPERTIES, THESE WILL NEED TO BE MANUALLY SET LATER
         // targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
         // targetVecs[ (i*2) +1  ] = (new Vector3(0, 2, 3));
