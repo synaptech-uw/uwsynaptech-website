@@ -86,7 +86,6 @@ class ThreeDBrain extends Component {
       this.setState({drawLine : false})
   }
   componentDidUpdate() {
-    console.log(this.state.currBlurb);
   }
   // componentWillUnmount: What is run when the component unmounts (which is called on page unload). Removes eventlisteners and saves the sessionstorage
   //                       so the user can return to the same scroll position after clicking off unless their session was restarted. Also cancels 3JS

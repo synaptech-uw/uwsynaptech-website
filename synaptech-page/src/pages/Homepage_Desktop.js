@@ -192,20 +192,12 @@ function HomePageDesktop() {
   // WE NEED TO ADD EACH OF THESE BLURB TEXTS TO THE ACCESSIBILITY READER STUFF, THE ARIA LABELS!
   // ALSO WE NEED TO ADD A LITTLE MARKER OR NAVBAR THING SO WE CAN GO BETWEEN SECTIONS!
 
-  let windowsRendered = false;
-
-  useEffect(() => {
-    if (refArray.length === NUM_WINDOWS) {
-      windowsRendered = true;
-    }
-  }, [refArray]);
-
   // MAKE SURE TO MAKE THIS UPDATE ON RESIZE AS WELL
   const setThresholds = useCallback(() => {
-    if (windowsRendered) {
+    if (refArray.length === NUM_WINDOWS) {
       const thresholds = [];
-      for (let i = 0; i < NUM_WINDOWS; i++) {
-        const element = refArray[i].current;
+      refArray.forEach((e, i) => {
+        const element = e.current;
         const threshStart = element.offsetTop - window.innerHeight / 2;
         const threshEnd =
           element.offsetTop - window.innerHeight / 2 + element.clientHeight;
@@ -220,10 +212,10 @@ function HomePageDesktop() {
         //cast.y = 0.1;
         //raycasts[i * 2] = cast;
         // raycasts[(i * 2) + 1] = cast;
-      }
+      });
       setThresh(thresholds);
     }
-  }, [windowsRendered, refArray, setThresh]);
+  }, [refArray, setThresh]);
 
   useEffect(() => {
     setThresholds();
@@ -238,15 +230,18 @@ function HomePageDesktop() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (pageLoaded && firstScroll === false && scrollPos >= 20) {
-    sessionStorage.setItem("previouslyVisited", "true");
-    setFirstScroll(true);
-    setFirstLockClass("test-locked");
-    setTimeout(() => {
-      setFirstLockClass("test");
-      window.scrollTo(0, window.innerHeight);
-    }, 2000);
-  }
+  useEffect(() => {
+    if (pageLoaded && firstScroll === false && scrollPos >= 20) {
+      sessionStorage.setItem("previouslyVisited", "true");
+      setFirstScroll(true);
+      setFirstLockClass("test-locked");
+      setTimeout(() => {
+        setFirstLockClass("test");
+        window.scrollTo(0, window.innerHeight);
+      }, 2000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollPos]);
 
   // I need a boolean that tracks when the user first scrolls past the beginning of the page.
 
