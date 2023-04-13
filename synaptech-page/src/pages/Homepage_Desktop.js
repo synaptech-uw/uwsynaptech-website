@@ -125,8 +125,7 @@ function HomePageDesktop() {
   const memoizedTargetVecs = useMemo(() => {
     const vecs = new Array(2 * NUM_WINDOWS);
     TARGET_VECS_CONFIG.forEach((config) => {
-      vecs[config.id * 2] = new Vector3(config.x, config.y, config.z);
-      vecs[config.id * 2 + 1] = new Vector3(config.x, config.y, config.z);
+      vecs[config.id] = new Vector3(config.x, config.y, config.z);
     });
     return vecs;
   }, []);
@@ -164,6 +163,16 @@ function HomePageDesktop() {
     return computedBlurb;
   }, []);
 
+  for (let i = 0; i < NUM_WINDOWS; i++) {
+    winArray.push(
+      <BrainWindow
+        setRefFunc={(ra) => refArray.push(ra)}
+        title={BLURB_CONTENT_CONFIG[i].title}
+        content={BLURB_CONTENT_CONFIG[i].content}
+      />
+    ); // Pass in the related blurb to this window, so we can add aria labels to it.
+  }
+
   useEffect(() => {
     setRaycast(raycastsInitializationState);
   }, [raycastsInitializationState]);
@@ -184,16 +193,6 @@ function HomePageDesktop() {
   // ALSO WE NEED TO ADD A LITTLE MARKER OR NAVBAR THING SO WE CAN GO BETWEEN SECTIONS!
 
   let windowsRendered = false;
-
-  for (let i = 0; i < NUM_WINDOWS; i++) {
-    winArray.push(
-      <BrainWindow
-        setRefFunc={(ra) => refArray.push(ra)}
-        title={BLURB_CONTENT_CONFIG[i].title}
-        content={BLURB_CONTENT_CONFIG[i].content}
-      />
-    ); // Pass in the related blurb to this window, so we can add aria labels to it.
-  }
 
   useEffect(() => {
     if (refArray.length === NUM_WINDOWS) {
