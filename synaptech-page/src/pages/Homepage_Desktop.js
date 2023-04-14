@@ -284,7 +284,7 @@ function HomePageDesktop() {
           <div className={(window.innerWidth > SIZE_THRESHOLD) ? "BodyBox-Left" : "BodyBox-Mobile"}>
 
             {(window.innerWidth > SIZE_THRESHOLD) ?
-              <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style={"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;"} />
+              <div role="img" aria-label="Image of multiple student groups working during NeuraHack 2022" Style={"display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;"} />
 
               :
 
@@ -318,13 +318,13 @@ function HomePageDesktop() {
               <a Style="display:block; z-index: 2000;" href="https://centerforneurotech.uw.edu/">
                 {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 </div> */}
-                <img className="sponsor-image-small" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology" />
+                <img className="sponsor-image-small" src="../assets/CNTLogo.png" alt="A logo for the University of Washington's Center for Neurotechnology" />
               </a>
               :
               <a Style="display:block; z-index: 2000;" href="https://centerforneurotech.uw.edu/">
                 {/* <div Style = "height: 100%; width: 100%; background: url('../assets/CNTLogo.png'); background-position: center; background-size: cover; background-repeat: no-repeat;">
                 </div> */}
-                <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology" />
+                <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="A logo for the University of Washington's Center for Neurotechnology" />
               </a>
             }
 

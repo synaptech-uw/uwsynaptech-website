@@ -17,7 +17,7 @@ function Admin(props) {
       <div className={"AdminContainer"} Style = {"display: flex; flex-direction: row; padding-bottom: 0.5rem; padding-top:4rem;"}>
 
         <div Style = {"flex-direction: column; display: flex; align-items: left;"}>
-          <img Style = {imgStyle} src={props.image} alt={props.name} aria-label={String("Image of " + String(props.name)) } />
+          <img Style = {imgStyle} src={props.image} alt={props.name} aria-label={String("Portrait of " + String(props.name)) } />
           <div>
             <h3>{props.major}</h3>
             <h4>{props.minor}</h4>
