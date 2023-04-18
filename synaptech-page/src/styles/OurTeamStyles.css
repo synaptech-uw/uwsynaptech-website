@@ -10,14 +10,14 @@
 
 .AdminContainer h2 {
   font-size: 1.3rem;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
 }
 
 .AdminContainer h3 {
   font-size: 1rem;
   color: #9E9577;
   margin-top: 0.5rem;
-  margin-bottom: 0
+  margin-bottom: 0;
 }
 
 .AdminContainer h4 {
@@ -48,7 +48,7 @@
 .AlumniContainer a {
   font-size: 0.9rem;
   color: #073763;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .hr {
