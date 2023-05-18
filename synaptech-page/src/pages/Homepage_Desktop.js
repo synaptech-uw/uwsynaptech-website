@@ -75,16 +75,15 @@ function HomePageDesktop() {
   // blurbCoords[6] = { x: 0.05, y: -0.3 };
   // blurbCoords[8] = { x: -0.1, y: -0.5 };
   // blurbCoords[10] = { x: 0, y: 0 };
-  blurbCoords[0] = { x: -.5, y: -1 };
+  blurbCoords[0] = { x: -1, y: -1 };
   blurbCoords[2] = { x: -.5, y: -.75 };
   blurbCoords[4] = { x: -.5, y: -.75 };
   blurbCoords[6] = { x: -.5, y: -.75 };
   blurbCoords[8] = { x: -.5, y: -.75 };
   blurbCoords[10] = { x: -.5, y: -.75 };
 
-  //  _______________________ALEJANDRO'S TO DO LIST_________________________________________________
-  // WE NEED TO ADD EACH OF THESE BLURB TEXTS TO THE ACCESSIBILITY READER STUFF, THE ARIA LABELS!
-  // ALSO WE NEED TO ADD A LITTLE MARKER OR NAVBAR THING SO WE CAN GO BETWEEN SECTIONS!
+//  EFRA TO DO LIST:
+// Add header margin so upon upward scroll
 
   useEffect(() => {
     blurbContent.map((e, i) => {
@@ -207,7 +206,7 @@ function HomePageDesktop() {
   return (
     <div className={firstLockClass}>
       <header>
-        <Navbar role="navigation" show={(scrollPos > 1) ? "Header" : "Header-Hidden"} />
+        <Navbar role="navigation" show={(firstScroll) ? "Header" : "Header-Hidden"} />
         {/* New goal here is to get a homepage logo in, preferrably a menu bar though it may not function and start getting some text into the page.  */}
         <div className="Body-default">
           <div role="separator" Style={"height:50vh"} />
