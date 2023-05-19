@@ -15,6 +15,8 @@ function BrainWindow(props) {
   return (
     <div ref={winRef} aria-label={props.title + " - " + props.content} className="BrainWindow">
       {props.el}
+
+      {/* Add blurb text and aria-label info with blurb readouts */}
     </div>
   )
 }

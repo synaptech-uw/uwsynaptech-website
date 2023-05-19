@@ -377,8 +377,8 @@ html::-webkit-scrollbar {
   display:flex;
   flex-direction: column;
   /* width: 25rem; */
-  height:25%;
-  width:50%;
+  height:100%;
+  width:20%;
   border-style:solid;
   border-color:rgb(255, 255, 162);
   border-width: 0;

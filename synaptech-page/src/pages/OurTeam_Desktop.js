@@ -79,10 +79,10 @@ function OurTeamDesktop() {
       </div> */}
       <div Style = "height: 20vh" />
 
-      <div className="EndBlurb">
+      <footer className="EndBlurb">
         <h2>Want to join in on the fun?</h2>
         <h2>Send us an email from your UW account!</h2>
-      </div>
+      </footer>
       {/* <SetPageScroll pageName = "OurTeam" pageScroll = {scrollPos} /> */}
     </>
   );
