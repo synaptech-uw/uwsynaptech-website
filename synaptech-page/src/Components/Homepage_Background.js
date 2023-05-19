@@ -68,23 +68,25 @@ class ThreeDBrain extends Component {
       // Detects if there is a current threshold from the sessionStorage and loads it all into the current state.
       // Site uses sessionStorage to track someone's last visited position on the site until they close the browser.
       // Hopefully this doesn't require a cookie message? We should look into that!
+      var currThreshold = 0;
       if (sessionStorage.getItem("currThreshold")) {
-        const currThreshold = 0; // JSON.parse(sessionStorage.getItem("currThreshold"));
-        this.setState({
-          thresholdCounter : currThreshold,
-          targetPOV : this.props.targets[currThreshold],
-          raycastXY : this.props.rays[currThreshold],
-          blurbXY : this.props.blurbCoords[currThreshold],
-          currBlurb : this.props.blurb[currThreshold],
-          drawLine : false
-        });
-        if (currThreshold % 2 === 1) {
-          this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, HIGHLIGHTDELAY);
-        }
-        this.setState({drawLine : false})
+         currThreshold = JSON.parse(sessionStorage.getItem("currThreshold"));
       }
+      this.setState({
+        thresholdCounter : currThreshold,
+        targetPOV : this.props.targets[currThreshold],
+        raycastXY : this.props.rays[currThreshold],
+        blurbXY : this.props.blurbCoords[currThreshold],
+        currBlurb : this.props.blurb[currThreshold],
+        drawLine : false
+      });
+      if (currThreshold % 2 === 1) {
+        this.timer = setTimeout(() => {this.highlightPoint(this.state.raycastXY)}, HIGHLIGHTDELAY);
+      }
+      this.setState({drawLine : false})
   }
-
+  componentDidUpdate() {
+  }
   // componentWillUnmount: What is run when the component unmounts (which is called on page unload). Removes eventlisteners and saves the sessionstorage
   //                       so the user can return to the same scroll position after clicking off unless their session was restarted. Also cancels 3JS
   //                       animations
