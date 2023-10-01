@@ -153,6 +153,7 @@ a:active { text-decoration: none; }
 .BodyBox-Mobile {
   font-size: 1.25rem;
   display: flex;
+  align-items: center;
   flex-direction: column;
   padding: 4rem;
   padding-top: 2rem;
@@ -377,8 +378,8 @@ html::-webkit-scrollbar {
   display:flex;
   flex-direction: column;
   /* width: 25rem; */
-  height:25%;
-  width:50%;
+  /* height: 80%; */
+  /* width: 33%; */
   border-style:solid;
   border-color:rgb(255, 255, 162);
   border-width: 0;

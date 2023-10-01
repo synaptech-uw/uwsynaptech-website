@@ -68,12 +68,12 @@ const RAYCASTS_CONFIG = [
 ];
 
 const BLURB_COORDS_CONFIG = [
-  { id: 0, x: -0.5, y: -1 },
-  { id: 2, x: -0.5, y: -0.75 },
-  { id: 4, x: -0.5, y: -0.75 },
-  { id: 6, x: -0.5, y: -0.75 },
-  { id: 8, x: -0.5, y: -0.75 },
-  { id: 10, x: -0.5, y: -0.75 },
+  { id: 0, x: 0.30, y: -1 },
+  { id: 2, x: -1, y: -1 },
+  { id: 4, x: 0.30, y: -1 },
+  { id: 6, x: -1, y: -1 },
+  { id: 8, x: 0.30, y: -1 },
+  { id: 10, x: -1, y: -1 },
 ];
 
 //dateNum, dateMon, timeString, title, loc
@@ -110,6 +110,7 @@ function HomePageDesktop() {
   const [raycasts, setRaycast] = useState([]);
   const [blurbCoords, setBlurbCoords] = useState([]);
   const [targetVecs, setTargetVecs] = useState([]);
+  const [scrollStyle, setScrollStyle] = useState("position:absolute; right:4rem; bottom:2rem; opacity: 0; transition: opacity 1s ease-in;");
 
   //Blurbs will be structured as an array [title, elemsArr[]]
   //These will be passed into the background to render the different elements.
@@ -224,6 +225,9 @@ function HomePageDesktop() {
     // window.addEventListener("pageshow", () => {setFirstScroll(false)});
     setFirstScroll(sessionStorage.getItem("previouslyVisited") === "true");
     setPageLoaded(true);
+    setTimeout(() => {
+      setScrollStyle("position:absolute; right:4rem; bottom:2rem; opacity: 1; transition: opacity 1s ease-in;");
+    }, 2000);
     return () => {
       window.removeEventListener("resize", setThresholds);
     };
@@ -235,6 +239,7 @@ function HomePageDesktop() {
       sessionStorage.setItem("previouslyVisited", "true");
       setFirstScroll(true);
       setFirstLockClass("test-locked");
+      setScrollStyle("position:absolute; right:4rem; bottom:2rem; opacity: 0; transition: opacity 1s ease-in;");
       setTimeout(() => {
         setFirstLockClass("test");
         window.scrollTo(0, window.innerHeight);
@@ -281,6 +286,7 @@ function HomePageDesktop() {
             className="App-logo"
             alt="The Synaptech Logo - a blue brain overlaid with text saying Synap Tech @ UW"
           />
+          <p Style = {scrollStyle}>Scroll Down</p>
         </div>
         {/* <Carousel2 /> */}
       </div>
@@ -301,7 +307,7 @@ function HomePageDesktop() {
       <main>
         {/* <div role="separator" Style = "height: 40vh" /> */}
         {winArray[0]}
-
+        <div Style="height: 20vh" role="separator" />
         <section
           className={
             window.innerWidth > SIZE_THRESHOLD ? "Body-cols" : "Body-rows"
@@ -337,14 +343,11 @@ function HomePageDesktop() {
             }
           >
             <h2 Style="text-align: center;">Upcoming events</h2>
-            <div>
-              <UpcomingEvents nextEvents={eventsArray} />
-              {/* <p> calendar component here </p> */}
-            </div>
+            <UpcomingEvents nextEvents={eventsArray} />
           </article>
         </section>
 
-        {/* <div Style = "height: 20vh" /> */}
+        <div Style="height: 30vh" role="separator" />
         {winArray[1]}
         {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
           <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
@@ -357,6 +360,7 @@ function HomePageDesktop() {
           </div>
         </div> */}
         {winArray[2]}
+        <div Style="height: 30vh" role="separator" />
         <section
           className={
             window.innerWidth > SIZE_THRESHOLD ? "Body-cols" : "Body-rows"
@@ -380,7 +384,7 @@ function HomePageDesktop() {
             ) : (
               <div
                 Style={
-                  "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;"
+                  "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width:50vw; margin-left: 0rem; margin-right: 0rem; height: 80vh; background-position: center; background-size: cover; background-repeat: no-repeat;"
                 }
               />
             )}
@@ -412,10 +416,9 @@ function HomePageDesktop() {
             </p>
           </article>
         </section>
-        {/*
-        <div role="separator" Style = "height: 20vh" /> */}
+        <div Style="height: 30vh" role="separator" />
         {winArray[3]}
-
+        <div Style="height: 30vh" role="separator" />
         <section className={"Body-default"}>
           <div Style={"display: flex; flex-direction: column; "}>
             {" "}
@@ -451,7 +454,7 @@ function HomePageDesktop() {
             )}
           </div>
         </section>
-
+        <div Style="height: 30vh" role="separator" />
         {winArray[4]}
         {/* <div role="separator" Style = "height: 40vh" /> */}
       </main>

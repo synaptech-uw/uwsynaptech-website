@@ -1,108 +1,213 @@
-import React, { useEffect, useState } from "react";
-import useScrollPosition from "../Components/useScrollPosition";
-import "../styles/Styles.css";
 //import ThreeDBrain from "../Components/Homepage_Background";
 import ThreeDBrainBG from "../Components/OurTeam_Background";
 // import Carousel2 from "../Components/Carousel2";
 
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import useScrollPosition from "../Components/useScrollPosition";
+import "../styles/Styles.css";
+import ThreeDBrain from "../Components/Homepage_Background";
+// import ThreeDBrainBG from "../Components/OurTeam_Background";
+//import Carousel2 from "../Components/Carousel2";
+// import SetPageScroll from "../Components/SetPageScroll"
+
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";
-import Navbar from "../Components/Navbar.js"
+import Navbar from "../Components/Navbar.js";
 import UpcomingEvents from "../Components/UpcomingEvents.js";
+import { arrToParaArr } from "../utils";
+
+// This need to move to a config file soon
+// Will be refactor in the future
+const BLURB_CONTENT_CONFIG = [
+  {
+    id: 0,
+    blurbId: 0,
+    title: "Neurotech Development @ UW",
+    content: [
+      "Synaptech serves as University of Washington’s sole project-based neurotech club, hosting opportunities to hack and develop various neurotech projects. From HackJams to long-term projects, students can look to gain real experience with neural interfaces and neural data.",
+    ],
+  },
+  {
+    id: 1,
+    blurbId: 2,
+    title: "What to expect",
+    content: [
+      "All of us here at Synaptech are students interested in a highly challenging and future-focused field. We work hard to foster a strong community of neuroengineers that can operate and communicate interdisciplinarily.",
+    ],
+  },
+  {
+    id: 2,
+    blurbId: 4,
+    title: "Build a BCI",
+    content: [
+      "Synaptech supplies students with hardware that they can use to undertake personal projects as well, hack your muscles with EMG or your brain with EEG!",
+    ],
+  },
+  {
+    id: 3,
+    blurbId: 6,
+    title: "Feeling unprepared?",
+    content: [
+      "Synaptech offers workshops to help prepare students for their Hackathons, to ensure everyone feels prepared to attempt their dream project! Check out our upcoming events!",
+    ],
+  },
+  {
+    id: 4,
+    blurbId: 8,
+    title: "Prospective members",
+    content: [
+      "Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!",
+      "Don't feel discouraged just because you don't see an immediate use for your skillset; neuroengineering is an extremely diverse field!",
+    ],
+  },
+];
+
+const RAYCASTS_CONFIG = [
+  { id: 0, x: 0.15, y: 0.05 },
+  { id: 2, x: 0.2, y: -0.1 },
+  { id: 4, x: -0.2, y: -0.03 },
+  { id: 6, x: -0.15, y: 0 },
+  { id: 8, x: -0.05, y: 0.2 },
+  { id: 10, x: 0, y: 0 },
+];
+
+const BLURB_COORDS_CONFIG = [
+  { id: 0, x: -1, y: -1 },
+  { id: 2, x: -1, y: -1 },
+  { id: 4, x: -1, y: -1 },
+  { id: 6, x: -1, y: -1 },
+  { id: 8, x: -1, y: -1 },
+  { id: 10, x: -1, y: -1 },
+];
+
+//dateNum, dateMon, timeString, title, loc
+const eventsArray = [
+  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
+];
+
+const SIZE_THRESHOLD = 1064;
+const NUM_WINDOWS = 5;
+
+const VECZ = 8;
+const VECZ2 = 3;
+
+const TARGET_VECS_CONFIG = [
+  { id: 0, x: 0, y: 0, z: VECZ },
+  { id: 1, x: 0, y: 2, z: VECZ2 },
+  { id: 2, x: 0, y: 0, z: VECZ },
+  { id: 3, x: 3, y: 1, z: VECZ2 },
+  { id: 4, x: 0, y: 0, z: VECZ },
+  { id: 5, x: 0, y: -2, z: VECZ2 },
+  { id: 6, x: 0, y: 0, z: VECZ },
+  { id: 7, x: 1, y: 1, z: VECZ2 },
+  { id: 8, x: 0, y: 0, z: VECZ },
+  { id: 9, x: -3, y: 3, z: 0 },
+  { id: 10, x: 0, y: 0, z: VECZ },
+];
 
 function HomePageMobile() {
-  const numWindows = 5;
-  const winArray = [];
-  const refArray = [];
-  const raycasts = [];
+  const winArray = useMemo(() => [], []);
+  const refArray = useMemo(() => [], []);
+  const [raycasts, setRaycast] = useState([]);
+  const [blurbCoords, setBlurbCoords] = useState([]);
+  const [targetVecs, setTargetVecs] = useState([]);
+  const [scrollStyle, setScrollStyle] = useState("position:absolute; right:4rem; bottom:2rem; opacity: 0; transition: opacity 1s ease-in;");
+
   //Blurbs will be structured as an array [title, elemsArr[]]
   //These will be passed into the background to render the different elements.
 
-  const blurbs = [];
-  const blurbCoords = [];
-
+  const [blurbs, setBlurbs] = useState([]);
   const [thresh, setThresh] = useState([]);
 
-  for (let i = 0; i < numWindows; i++) {
-    winArray.push(<BrainWindow setRefFunc={(ra) => refArray.push(ra)} />);
+  const [firstScroll, setFirstScroll] = useState(false);
+  const [firstLockClass, setFirstLockClass] = useState("test");
+  const [pageLoaded, setPageLoaded] = useState(false);
+  const scrollPos = useScrollPosition();
+
+  const memoizedTargetVecs = useMemo(() => {
+    const vecs = new Array(2 * NUM_WINDOWS);
+    TARGET_VECS_CONFIG.forEach((config) => {
+      vecs[config.id] = new Vector3(config.x, config.y, config.z);
+    });
+    return vecs;
+  }, []);
+
+  const raycastsInitializationState = useMemo(() => {
+    const computedRaycasts = [];
+    RAYCASTS_CONFIG.forEach((e) => {
+      computedRaycasts[e.id] = { x: e.x, y: e.y };
+    });
+    for (let n = 1; n < NUM_WINDOWS * 2; n = n + 2) {
+      computedRaycasts[n] = computedRaycasts[n - 1];
+    }
+    return computedRaycasts;
+  }, []);
+
+  const blurbCoordsInitializationState = useMemo(() => {
+    const computedBlurbCoords = [];
+    BLURB_COORDS_CONFIG.forEach((e) => {
+      computedBlurbCoords[e.id] = { x: e.x, y: e.y };
+    });
+    for (let n = 1; n < NUM_WINDOWS * 2; n = n + 2) {
+      computedBlurbCoords[n] = computedBlurbCoords[n - 1];
+    }
+    return computedBlurbCoords;
+  }, []);
+
+  const blurbInitializationState = useMemo(() => {
+    const computedBlurb = [];
+    BLURB_CONTENT_CONFIG.forEach((e) => {
+      computedBlurb[e.blurbId] = [e.title, arrToParaArr(e.content)];
+    });
+    for (let n = 1; n < NUM_WINDOWS * 2; n = n + 2) {
+      computedBlurb[n] = computedBlurb[n - 1];
+    }
+    return computedBlurb;
+  }, []);
+
+  for (let i = 0; i < NUM_WINDOWS; i++) {
+    winArray.push(
+      <BrainWindow
+        setRefFunc={(ra) => refArray.push(ra)}
+        title={BLURB_CONTENT_CONFIG[i].title}
+        content={BLURB_CONTENT_CONFIG[i].content}
+      />
+    ); // Pass in the related blurb to this window, so we can add aria labels to it.
   }
-
-  raycasts[0] = { x: 0.15, y: 0.05 };
-  raycasts[2] = { x: 0.2, y: -0.1 };
-  raycasts[4] = { x: -0.2, y: -0.03 };
-  raycasts[6] = { x: -0.15, y: 0 };
-  raycasts[8] = { x: -0.05, y: 0.2 };
-  raycasts[10] = { x: 0, y: 0 };
-
-  blurbCoords[0] = { x: -0.5, y: -0.1 };
-  blurbCoords[2] = { x: -0.5, y: 0.2 };
-  blurbCoords[4] = { x: -0.1, y: -0.4 };
-  blurbCoords[6] = { x: 0.05, y: -0.3 };
-  blurbCoords[8] = { x: -0.1, y: -0.5 };
-  blurbCoords[10] = { x: 0, y: 0 };
-
-  blurbs[0] = ["Neurotech Development @ UW", [<p>
-    Synaptech serves as University of Washington’s sole project-based neurotech club, hosting opportunities to hack and develop various neurotech projects. From HackJams to long-term projects, students can look to gain real experience with neural interfaces and neural data.
-  </p>]]
-
-  blurbs[2] = ["What to expect", [<p>All of us here at Synaptech are students interested in a highly challenging and future-focused field. We work hard to foster a strong community of
-    neuroengineers that can operate and communicate interdisciplinarily.
-  </p>]]
-
-  blurbs[4] = ["Build a BCI", [<p>Synaptech supplies students with hardware that they can use to undertake personal projects as well, hack your muscles with EMG or your brain with EEG! </p>]]
-
-  blurbs[6] = ["Feeling unprepared?", [<p> Synaptech offers workshops to help prepare students for their Hackathons, to ensure everyone feels prepared to attempt their dream project! Check out our upcoming events! </p>]]
-
-  blurbs[8] = ["Prospective members", [<p>Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!</p>, <p>Don't feel discouraged just because you don't see an immediate use for your skillset; neuroengineering is an extremely diverse field!</p>]]
-
-  blurbs[10] = [null, [null, null]];
-
-  for (let n = 1; n < numWindows * 2; n = n + 2) {
-    raycasts[n] = raycasts[n - 1];
-    blurbCoords[n] = blurbCoords[n - 1];
-    blurbs[n] = blurbs[n - 1];
-  }
-
-  const targetVecs = new Array(2 * numWindows);
-  const vecZ = 8;
-  const vecZ2 = 3;
-  targetVecs[0] = new Vector3(0, 0, vecZ);
-  targetVecs[1] = new Vector3(0, 2, vecZ2);
-  targetVecs[2] = new Vector3(0, 0, vecZ);
-  targetVecs[3] = new Vector3(3, 1, vecZ2);
-  targetVecs[4] = new Vector3(0, 0, vecZ);
-  targetVecs[5] = new Vector3(0, -2, vecZ2);
-  targetVecs[6] = new Vector3(0, 0, vecZ);
-  targetVecs[7] = new Vector3(1, 1, vecZ2);
-  targetVecs[8] = new Vector3(0, 0, vecZ);
-  targetVecs[9] = new Vector3(-3, 3, 0);
-  targetVecs[10] = new Vector3(0, 0, vecZ);
-
-  var windowsRendered = false;
-
-
 
   useEffect(() => {
-    if (refArray.length === numWindows) {
-      windowsRendered = true;
-    }
-  }, [refArray.length]);
+    setRaycast(raycastsInitializationState);
+  }, [raycastsInitializationState]);
+
+  useEffect(() => {
+    setBlurbCoords(blurbCoordsInitializationState);
+  }, [blurbCoordsInitializationState]);
+
+  useEffect(() => {
+    setBlurbs(blurbInitializationState);
+  }, [blurbInitializationState]);
+
+  useEffect(() => {
+    setTargetVecs(memoizedTargetVecs);
+  }, [memoizedTargetVecs]);
+  //  _______________________ALEJANDRO'S TO DO LIST_________________________________________________
+  // WE NEED TO ADD EACH OF THESE BLURB TEXTS TO THE ACCESSIBILITY READER STUFF, THE ARIA LABELS!
+  // ALSO WE NEED TO ADD A LITTLE MARKER OR NAVBAR THING SO WE CAN GO BETWEEN SECTIONS!
 
   // MAKE SURE TO MAKE THIS UPDATE ON RESIZE AS WELL
-  function setThresholds() {
-    //console.log("windowsRendered", windowsRendered);
-    if (windowsRendered === true) {
+  const setThresholds = useCallback(() => {
+    if (refArray.length === NUM_WINDOWS) {
       const thresholds = [];
-      for (let i = 0; i < numWindows; i++) {
-        const element = refArray[i].current;
-        const threshStart =
-          element.offsetTop - window.innerHeight / 2;
+      refArray.forEach((e, i) => {
+        const element = e.current;
+        const threshStart = element.offsetTop - window.innerHeight / 2;
         const threshEnd =
           element.offsetTop - window.innerHeight / 2 + element.clientHeight;
         thresholds[i * 2] = threshStart; //[threshStart, threshEnd];
         thresholds[i * 2 + 1] = threshEnd;
-        // console.log(thresholds[i]);
-        // console.log("THRESHOLDS", thresholds.length);
         //TEST PROPERTIES, THESE WILL NEED TO BE MANUALLY SET LATER
         // targetVecs[ i*2 ] = (new Vector3(0, 0, 3));
         // targetVecs[ (i*2) +1  ] = (new Vector3(0, 2, 3));
@@ -112,35 +217,41 @@ function HomePageMobile() {
         //cast.y = 0.1;
         //raycasts[i * 2] = cast;
         // raycasts[(i * 2) + 1] = cast;
-      }
+      });
       setThresh(thresholds);
     }
-  }
-
-  const [firstScroll, setFirstScroll] = useState(false);
-  const [firstLockClass, setFirstLockClass] = useState("test")
-  const [pageLoaded, setPageLoaded] = useState(false);
-  const [refreshUpdate, setRefreshUpdate] = useState(false);
+  }, [refArray, setThresh]);
 
   useEffect(() => {
-    setThresholds()
-    window.addEventListener("beforeunload", setRefreshUpdate(!refreshUpdate));
+    setThresholds();
     window.addEventListener("resize", setThresholds);
     window.scrollTo(window.scrollX, 0, true);
-    setFirstScroll(sessionStorage.getItem("previouslyVisited") === "true")
+    // window.addEventListener("pageshow", () => {setFirstScroll(false)});
+    setFirstScroll(sessionStorage.getItem("previouslyVisited") === "true");
     setPageLoaded(true);
+    setTimeout(() => {
+      setScrollStyle("position:absolute; right:4rem; bottom:2rem; opacity: 1; transition: opacity 1s ease-in;");
+    }, 2000);
+    return () => {
+      window.removeEventListener("resize", setThresholds);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const scrollPos = useScrollPosition();
-  if (pageLoaded && firstScroll === false && scrollPos >= 20) {
-    sessionStorage.setItem("previouslyVisited", "true")
-    setFirstScroll(true);
-    setFirstLockClass("test-locked");
-    setTimeout(() => {
-      setFirstLockClass("test")
-      window.scrollTo(0, window.innerHeight / 2);
-    }, 2000);
-  }
+  useEffect(() => {
+    if (pageLoaded && firstScroll === false && scrollPos >= 20) {
+      sessionStorage.setItem("previouslyVisited", "true");
+      setFirstScroll(true);
+      setScrollStyle("position:absolute; right:4rem; bottom:2rem; opacity: 0; transition: opacity 1s ease-in;");
+      setFirstLockClass("test-locked");
+      setTimeout(() => {
+        setFirstLockClass("test");
+
+        window.scrollTo(0, window.innerHeight);
+      }, 2000);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [scrollPos]);
 
   // I need a boolean that tracks when the user first scrolls past the beginning of the page.
 
@@ -148,18 +259,9 @@ function HomePageMobile() {
 
   // I can use useEffect to trigger this lock once the firstScroll statement changes.
 
-
   // const testText = [];
   // testText[0] = <p>The fitnessgram pacer test is a multistage</p>;
 
-  //dateNum, dateMon, timeString, title, loc
-  const eventsArray =
-    [
-      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-      [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"]
-    ];
   return (
     <div className={firstLockClass}>
       <header>
@@ -180,7 +282,9 @@ function HomePageMobile() {
             className="App-logo"
             alt="The Synaptech Logo - a blue brain overlaid with text saying Synap Tech @ UW"
           />
+          <p Style = {scrollStyle}>Scroll Down</p>
         </div>
+        
         {/* <Carousel2 /> */}
       </div>
 
@@ -197,11 +301,21 @@ function HomePageMobile() {
         blurbCoords = {blurbCoords}
       /> } */}
 
-      {(pageLoaded) && <ThreeDBrainBG />}
+      {pageLoaded && (
+        <ThreeDBrain
+          userScroll={scrollPos}
+          targets={targetVecs}
+          thresholds={thresh}
+          rays={raycasts}
+          blurb={blurbs}
+          blurbCoords={blurbCoords}
+        />
+      )}
 
       <div Style="height: 40vh" role="separator" />
 
-      {/* {winArray[0]} */}
+      {winArray[0]}
+      <div Style="height: 40vh" role="separator" />
       <main className="Body">
         <article className="BodyBox-Mobile"> {/* left: 12rem; right: 50vw; padding-right: 2rem; */}
           <h2>
@@ -223,13 +337,11 @@ function HomePageMobile() {
           <h2> {/* left: 0; right: 0; position: absolute; */}
             Upcoming events
           </h2>
-          <div> {/* top: 4rem; position: absolute; left: 2rem; right: 0; height: 50vh; */}
-            <UpcomingEvents nextEvents={eventsArray} />
-          </div>
+          <UpcomingEvents nextEvents={eventsArray} />
         </article>
 
         <div Style="height: 20vh" role="separator" />
-        {/* {winArray[1]} */}
+        {winArray[1]}
 
         {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
         <div Style = {"display: flex; flex-direction: column; position: absolute; left: 4rem; right: 4rem;"}>
@@ -241,7 +353,9 @@ function HomePageMobile() {
           </div>
         </div>
         </div> */}
-        {/* {winArray[2]} */}
+        {winArray[2]}
+
+        <div Style="height: 40vh" role="separator" />
         <article className="BodyBox-Mobile"> {/* position: absolute; right:12rem; left : 50vw; padding-left: 2rem; */}
           <h1>NeuraHack 2022!</h1>
           <p>
@@ -253,11 +367,11 @@ function HomePageMobile() {
         </article>
 
         <div className="BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
-          <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style={"position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;"} />  {/* position: absolute; right:0; */}
+          <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style={"position: relative; width:80vw; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-position: center; background-size: cover; background-repeat: no-repeat;"} />  {/* position: absolute; right:0; */}
         </div>
-        {/* {winArray[3]} */}
+        {winArray[3]}
 
-        <div Style="height: 20vh" role="separator" />
+        <div Style="height: 40vh" role="separator" />
 
         <article Style={"display: flex; flex-direction: column; "}> {/* <div Style = {"display: inline-flex; flex-direction: column"}>  */} {/* top: 5rem; left: 12rem; right: 12rem; height: 50vh; position: absolute; */}
           <h2>
@@ -273,7 +387,7 @@ function HomePageMobile() {
         <div Style="height: 20vh" role="separator" />
       </main>
 
-      {/* {winArray[4]} */}
+      {winArray[4]}
 
       {/* <SetPageScroll pageName = "Homepage" pageScroll = {scrollPos} /> */}
 

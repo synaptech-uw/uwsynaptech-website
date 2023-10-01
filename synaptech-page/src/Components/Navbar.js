@@ -19,9 +19,9 @@ function Navbar(props) {
                     <Link className = "Navbar-Link" to = "/OurTeam">
                         OUR TEAM
                     </Link>
-                    <Link className = "Navbar-Link" to = "/Projects">
+                    {/* <Link className = "Navbar-Link" to = "/Projects">
                         PROJECTS
-                    </Link>
+                    </Link> */}
                     {/* <button className = "Navbar-Link">
                         PROJECTS
                     </button>

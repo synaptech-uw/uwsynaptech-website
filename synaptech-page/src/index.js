@@ -7,7 +7,7 @@ import HomePageMobile from './pages/Homepage_Mobile.js';
 import OurTeamMobile from './pages/OurTeam_Mobile.js';
 import HomePageDesktop from './pages/Homepage_Desktop.js';
 import OurTeamDesktop from './pages/OurTeam_Desktop.js';
-import ProjectsPageDesktop from './pages/Projects_Desktop';
+// import ProjectsPageDesktop from './pages/Projects_Desktop';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
 
@@ -26,7 +26,7 @@ const routeElems = (isMobile) ? <>
                                   <Route index element = {<HomePageDesktop />} title = "Synaptech Home" />
                                   <Route path="OurTeam" element = { <OurTeamDesktop/> } title = "Our Team"/>
                                   <Route path="404" element = {<HomePageDesktop />} title = "Synaptech Home" />
-                                  <Route path="Projects" element = {<ProjectsPageDesktop/>} title = "Projects"/>
+                                  {/* <Route path="Projects" element = {<ProjectsPageDesktop/>} title = "Projects"/> */}
                                 </>
 export default function App() {
   return (
