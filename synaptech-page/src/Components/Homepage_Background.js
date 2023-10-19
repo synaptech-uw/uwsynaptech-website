@@ -234,6 +234,7 @@ class ThreeDBrain extends Component {
     function applyTex(tex, reference) {
       reference.reshapeTex(tex, reference);
       reference.scene.background = tex;
+      tex.colorSpace = THREE.SRGBColorSpace;
     };
 
     const loader = new THREE.TextureLoader();
@@ -244,13 +245,13 @@ class ThreeDBrain extends Component {
 
   // Sets up the lighting in the scene
   populateScene  = () => {
-    const light = new THREE.AmbientLight(0x0E62AB, 2);
+    const light = new THREE.AmbientLight(0x0E62AB, 10);
     light.position.set(0, -4, 0);
     this.scene.add(light);
-    const light2 = new THREE.DirectionalLight(0x5599ff, 2);
+    const light2 = new THREE.DirectionalLight(0x5599ff, 10);
     light2.position.set(0, 2, 0);
     this.scene.add(light2);
-    const light3 = new THREE.DirectionalLight(0x5599ff, 2);
+    const light3 = new THREE.DirectionalLight(0x5599ff, 10);
     light3.position.set(2, 0, 0);
     this.scene.add(light3);
     this.rayLight = new THREE.PointLight(0xFFFF00, 0, 0.2, 1.5);

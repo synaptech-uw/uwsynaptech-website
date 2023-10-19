@@ -96,6 +96,7 @@ class ThreeDBrainBG extends Component {
     function applyTex(tex, reference) {
       reference.reshapeTex(tex, reference);
       reference.scene.background = tex;
+      tex.colorSpace = THREE.SRGBColorSpace;
     };
 
     const loader = new THREE.TextureLoader();

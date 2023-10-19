@@ -87,8 +87,8 @@ const eventsArray = [
 const SIZE_THRESHOLD = 1064;
 const NUM_WINDOWS = 5;
 
-const VECZ = 8;
-const VECZ2 = 3;
+const VECZ = 5;
+const VECZ2 = 2;
 
 const TARGET_VECS_CONFIG = [
   { id: 0, x: 0, y: 0, z: VECZ },
