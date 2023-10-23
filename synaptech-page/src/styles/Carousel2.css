@@ -1,0 +1,12 @@
+.carousel-image {
+  width: 50%;
+  height: 400px;
+}
+
+.description, .description-dark {
+  font-size: 0.75rem;
+}
+
+.description-dark, .caption-dark {
+  color: black
+}
