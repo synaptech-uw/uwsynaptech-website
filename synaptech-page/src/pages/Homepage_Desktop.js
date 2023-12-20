@@ -18,33 +18,33 @@ const BLURB_CONTENT_CONFIG = [
   {
     id: 0,
     blurbId: 0,
-    title: "Neurotech Development @ UW",
+    title: "About us",
     content: [
-      "Synaptech serves as University of Washington’s sole project-based neurotech club, hosting opportunities to hack and develop various neurotech projects. From HackJams to long-term projects, students can look to gain real experience with neural interfaces and neural data.",
+      "Synaptech is a neuroengineering focused RSO, welcome to any and all majors (no experience required!) We host weekly meetings on Friday evenings, usually focused on mini projects. Last fall (2023), we made “BioBinary” projects which involved collecting your own data using an EEG, preprocessing data, and training and deploying your own machine learning model to a web application. Sometimes, we have special events during our weekly meetings including guest speakers from research labs around campus! Outside of these meetings, we have various student-led project groups - ranging from eye-controlled cars and music generation from neural feedback!",
     ],
   },
   {
     id: 1,
     blurbId: 2,
-    title: "What to expect",
+    title: "Who are we?",
     content: [
-      "All of us here at Synaptech are students interested in a highly challenging and future-focused field. We work hard to foster a strong community of neuroengineers that can operate and communicate interdisciplinarily.",
+      "The interdisciplinary nature of neurotechnology is mirrored by the diverse range of skills and majors of our members. We're a bunch of super passionate neuroscientists, programmers, and engineers!  The one thing we all have in common is enthusiasm and a desire to make cool stuff with brains and tech. If that's you, come join us!",
     ],
   },
   {
     id: 2,
     blurbId: 4,
-    title: "Build a BCI",
+    title: "Hardware",
     content: [
-      "Synaptech supplies students with hardware that they can use to undertake personal projects as well, hack your muscles with EMG or your brain with EEG!",
+      "Synaptech supplies students with hardware that they can use to collaborate on our group projects or work on personal projects. Hack your muscles with EMG or your brain with EEG! To check out any of our hardware, you can leave a comment in the Synaptech Discord or make a request at a general meeting. Our hardware manager, Harshil, is happy to help!",
     ],
   },
   {
     id: 3,
     blurbId: 6,
-    title: "Feeling unprepared?",
+    title: "Want to sponsor us?",
     content: [
-      "Synaptech offers workshops to help prepare students for their Hackathons, to ensure everyone feels prepared to attempt their dream project! Check out our upcoming events!",
+      "That's awesome! We'd love to chat - reach out to ykimm4@uw.edu for more information.",
     ],
   },
   {
@@ -52,8 +52,8 @@ const BLURB_CONTENT_CONFIG = [
     blurbId: 8,
     title: "Prospective members",
     content: [
-      "Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!",
-      "Don't feel discouraged just because you don't see an immediate use for your skillset; neuroengineering is an extremely diverse field!",
+      "Reach out to catraz@uw.edu with your uw.edu email, and we will send you steps to join our community!",
+      "Our weekly meetings are beginner-friendly, and some of our projects are also accepting beginners! No application is required to join.",
     ],
   },
 ];
@@ -268,7 +268,7 @@ function HomePageDesktop() {
         <div className="Body-default">
           <div role="separator" Style={"height:50vh"} />
           <h1 className={firstScroll ? "Welcome-Text" : "Welcome-Text-hidden"}>
-            Welcome to Synaptech, the University of Washington's Undergraduate
+            Welcome to Synaptech, <br/> the University of Washington's
             Neurotechnology RSO
           </h1>
         </div>
@@ -322,18 +322,18 @@ function HomePageDesktop() {
           >
             {" "}
             {/* position: absolute; left: 12rem; right: 50vw; padding-right: 2rem; */}
-            <h2 Style="text-align: center;">About us</h2>
-            <p>
-              We are Synaptech, a neuroengineering focused RSO here at the
-              University of Washington with a goal to help students interested
-              in neurotechnologies enter the field!
-            </p>
-            <p>
-              We are project-focused, hosting quarterly hackjams and competing
-              in the NeurotechX nationwide competition, as well as providing
-              support, hardware, and mentors for students working on their own
-              neurotech projects!
-            </p>
+            <h1 Style = "text-align: center; margin: 0 auto"> 🚧</h1>
+            <h2 Style="text-align: center;">Current Projects</h2>
+            <ul class = "main-lists">
+              <li> <strong>Opticars</strong> &#8226; Lead: Catherine Rasgaitis</li>
+              <p>Mini Arduino cars controlled by eye movements - including saccades to set directions and blinks to control stop/go actions.</p>
+              <li> <strong>Smart Music</strong> &#8226; Lead: Peyton Rapo</li>
+              <p>Use neural feedback to determine if someone likes a music composition, and generate more music in the style that they like! </p>
+              <li> <strong>Looking Glass</strong> &#8226; Lead: Catherine Rasgaitis</li>
+              <p>Experiment, how does eye movement change when we look at familiar versus unfamiliar faces? </p>
+              <br/>
+              <li><em>Propose or lead your own project <a href = "https://forms.gle/Qh4PzJ3bxPdzfPYeA" id = "formlink">here.</a></em></li>
+            </ul>
           </article>
           <article
             className={
@@ -342,9 +342,17 @@ function HomePageDesktop() {
                 : "BodyBox-Mobile"
             }
           >
+            <h1 Style = "text-align: center; margin: 0 auto"> 🕓</h1>
             <h2 Style="text-align: center;">Upcoming events</h2>
-            <UpcomingEvents nextEvents={eventsArray} />
+            {/* <UpcomingEvents nextEvents={eventsArray} /> */}
+            <ul class = "main-lists">
+              <li>Winter break! Dec 16 - Jan 2</li>
+              <li>Orsborn Lab speaker, - Maneeshika, Dec TBD</li>
+              <li>Special event with Neurotech @ Rice, TBD 👀</li>
+            </ul>
+            
           </article>
+
         </section>
 
         <div Style="height: 30vh" role="separator" />
@@ -378,13 +386,13 @@ function HomePageDesktop() {
                 role="img"
                 aria-label="Multiple student groups working during NeuraHack 2022"
                 Style={
-                  "display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width: 30vw; height: 40vw; background-position: center; background-size: cover; background-repeat: no-repeat;"
+                  "display: inline-flex; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url('https://i.imgur.com/2UPavZu.jpg'); width: 30vw; height: 40vw; background-size: cover; background-repeat: no-repeat;"
                 }
               />
             ) : (
               <div
                 Style={
-                  "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url(assets/Neurahack.jpg); width:50vw; margin-left: 0rem; margin-right: 0rem; height: 80vh; background-position: center; background-size: cover; background-repeat: no-repeat;"
+                  "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url('https://i.imgur.com/2UPavZu.jpg'); width:50vw; margin-left: 0rem; margin-right: 0rem; height: 80vh; background-size: cover; background-repeat: no-repeat;"
                 }
               />
             )}
@@ -397,22 +405,12 @@ function HomePageDesktop() {
                 : "BodyBox-Mobile"
             }
           >
-            <h1>NeuraHack 2022!</h1>
+            <h1 Style = "margin: 0  auto; padding: 0">Kicking off the 2023-2024 Year!</h1>
             <p>
-              NeuroTEC and Synaptech’s first jointly-run hackathon, occurred the
-              weekend of April 2nd. 29 students - most of whom were new to
-              neurotechnology - participated and gained experience with
-              hardware. Each of the seven teams demonstrated impressive
-              creativity in their projects: focus monitoring for studying,
-              examining the interplay of brain signals and language, fatigue
-              monitoring, EMG for grip strength monitoring, and painting
-              software controlled by the Muse headset.
-            </p>
-            <p>
-              Congratulations to Tim Li, Sunny Zheng, Yanfeng Cui for winning
-              the hackathon! The winning team designed an automated annotator,
-              which aimed to allow users to annotate each region of an image
-              with their brain activity (as recorded by the Muse headset).
+              Synaptech excitedly started the school year with a bang during our Dawg Daze event, "Painting with Brainwaves!"
+              Students had the chance to learn about EEGs and transform their brainwave activity into fractal patterns or 
+              images, using a little big of neuroscience, data science, and programming. We met over a hundred interested students!
+              Super exciting to see all the interest in neurotech.       
             </p>
           </article>
         </section>
