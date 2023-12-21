@@ -4,16 +4,8 @@ object-assign
 @license MIT
 */
 
-/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
-
 /**
- * @license
- * Copyright 2010-2023 Three.js Authors
- * SPDX-License-Identifier: MIT
- */
-
-/**
- * @remix-run/router v1.10.0
+ * @remix-run/router v1.14.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -24,7 +16,7 @@ object-assign
  */
 
 /**
- * React Router DOM v6.17.0
+ * React Router DOM v6.21.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -35,7 +27,7 @@ object-assign
  */
 
 /**
- * React Router v6.17.0
+ * React Router v6.21.0
  *
  * Copyright (c) Remix Software Inc.
  *
@@ -46,7 +38,7 @@ object-assign
  */
 
 /**
- * postprocessing v6.33.2 build Mon Oct 02 2023
+ * postprocessing v6.33.4 build Sat Dec 02 2023
  * https://github.com/pmndrs/postprocessing
  * Copyright 2015-2023 Raoul van Rüschen
  * @license Zlib
