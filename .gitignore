@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/synaptech-page/node_modules
+/synaptech-page/.pnp
+/synaptech-page/.pnp.js
+
+# testing
+/synaptech-page/coverage
+
+# production
+/synaptech-page/build
+
+# misc
+/synaptech-page/.DS_Store
+/synaptech-page/.env.local
+/synaptech-page/.env.development.local
+/synaptech-page/.env.test.local
+/synaptech-page/.env.production.local
+
+/synaptech-page/npm-debug.log*
+/synaptech-page/yarn-debug.log*
+/synaptech-page/yarn-error.log*
