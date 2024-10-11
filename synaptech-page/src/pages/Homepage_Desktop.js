@@ -393,6 +393,7 @@ function HomePageDesktop() {
               <div
                 Style={
                   "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url('https://i.imgur.com/uXUjaFI.png?2'); width:50vw; margin-left: 0rem; margin-right: 0rem; height: 80vh; background-size: cover; background-repeat: no-repeat;"
+
                 }
               />
             )}
@@ -407,6 +408,7 @@ function HomePageDesktop() {
           >
             <h1 Style = "margin: 0  auto; padding: 0">Kicking off the 2023-2024 Year!</h1>
             <p>
+
               Synaptech excitedly started the school year with a bang during our Dawg Daze event, "Brain Games!"
               Students had the chance to learn about EEGs and transform their brainwave activity into artistic images, using a little big of neuroscience, data science, and programming. We met over a hundred interested students!
               Super exciting to see all the interest in neurotech.       
