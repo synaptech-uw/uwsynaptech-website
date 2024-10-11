@@ -325,10 +325,10 @@ function HomePageDesktop() {
             <h1 Style = "text-align: center; margin: 0 auto"> 🚧</h1>
             <h2 Style="text-align: center;">Current Projects</h2>
             <ul class = "main-lists">
-              <li> <strong>Opticars</strong> &#8226; Lead: Catherine Rasgaitis</li>
-              <p>Mini Arduino cars controlled by eye movements - including saccades to set directions and blinks to control stop/go actions.</p>
-              <li> <strong>Smart Music</strong> &#8226; Lead: Peyton Rapo</li>
-              <p>Use neural feedback to determine if someone likes a music composition, and generate more music in the style that they like! </p>
+              <li> <strong>Truthinator 3000 </strong> &#8226; Lead: Catherine Rasgaitis </li>
+              <p>Use biometrics to detect deception and mildly electrocute people.</p>
+              <li> <strong>EEG Prosthetics </strong> &#8226; Lead: Derek Zhu</li>
+              <p>Building a prosthetic arm that can be worn and controlled through just BCI signals and software.</p>
               <li> <strong>Looking Glass</strong> &#8226; Lead: Catherine Rasgaitis</li>
               <p>Experiment, how does eye movement change when we look at familiar versus unfamiliar faces? </p>
               <br/>
@@ -346,9 +346,9 @@ function HomePageDesktop() {
             <h2 Style="text-align: center;">Upcoming events</h2>
             {/* <UpcomingEvents nextEvents={eventsArray} /> */}
             <ul class = "main-lists">
-              <li>Winter break! Dec 16 - Jan 2</li>
-              <li>Orsborn Lab speaker, - Maneeshika, Dec TBD</li>
-              <li>Special event with Neurotech @ Rice, TBD 👀</li>
+              <li>DubHacks x Synaptech - Intro to Neurotechnology wkshp, Oct 2</li>
+              <li>DubHacks x Synaptech - DubHacks hackathon, Oct 11-13</li>
+              <li>Grey Matters x Synaptech - Synaptic Scare, Oct 19</li>
             </ul>
             
           </article>
@@ -392,7 +392,8 @@ function HomePageDesktop() {
             ) : (
               <div
                 Style={
-                  "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url('https://i.imgur.com/2UPavZu.jpg'); width:50vw; margin-left: 0rem; margin-right: 0rem; height: 80vh; background-size: cover; background-repeat: no-repeat;"
+                  "position: relative; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url('https://i.imgur.com/uXUjaFI.png?2'); width:50vw; margin-left: 0rem; margin-right: 0rem; height: 80vh; background-size: cover; background-repeat: no-repeat;"
+
                 }
               />
             )}
@@ -407,9 +408,9 @@ function HomePageDesktop() {
           >
             <h1 Style = "margin: 0  auto; padding: 0">Kicking off the 2023-2024 Year!</h1>
             <p>
-              Synaptech excitedly started the school year with a bang during our Dawg Daze event, "Painting with Brainwaves!"
-              Students had the chance to learn about EEGs and transform their brainwave activity into fractal patterns or 
-              images, using a little big of neuroscience, data science, and programming. We met over a hundred interested students!
+
+              Synaptech excitedly started the school year with a bang during our Dawg Daze event, "Brain Games!"
+              Students had the chance to learn about EEGs and transform their brainwave activity into artistic images, using a little big of neuroscience, data science, and programming. We met over a hundred interested students!
               Super exciting to see all the interest in neurotech.       
             </p>
           </article>
