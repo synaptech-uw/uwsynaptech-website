@@ -44,7 +44,7 @@ const BLURB_CONTENT_CONFIG = [
     blurbId: 6,
     title: "Want to sponsor us?",
     content: [
-      "That's awesome! We'd love to chat - reach out to ykimm4@uw.edu for more information.",
+      "That's awesome! We'd love to chat - reach out to synaptechuw@gmail.com for more information.",
     ],
   },
   {
@@ -52,7 +52,7 @@ const BLURB_CONTENT_CONFIG = [
     blurbId: 8,
     title: "Prospective members",
     content: [
-      "Reach out to catraz@uw.edu with your uw.edu email, and we will send you steps to join our community!",
+      "Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!",
       "Our weekly meetings are beginner-friendly, and some of our projects are also accepting beginners! No application is required to join.",
     ],
   },
