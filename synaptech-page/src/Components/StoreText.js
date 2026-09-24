@@ -1,27 +1,23 @@
 import '../styles/Styles.css';
-import React, {useEffect} from 'react';
-import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
+import React from 'react';
+import { isMobile } from 'react-device-detect';
 
 function StoreText(props) {
+  // Height is left to the stylesheet (fit-content) so the box sizes to its text.
+  // Lifted slightly off the bottom edge so it doesn't sit flush with the viewport.
+  // On mobile the box spans the screen with a small side gutter (box-sizing: border-box in CSS).
+  const styleStr =
+    " bottom: " + String((props.coords.y + 0.995) * 50 + 4) + "vh;" +
+    (isMobile
+      ? " left: 4vw; width: 92vw;"
+      : " left: " + String((props.coords.x + 1) * 50) + "vw; width: 33%;");
 
-  const elems = props.elems;
-  const textItems = elems.map((para) =>
-    para
-  );
-
-  var styleStr = ("left : " + String((props.coords.x + 1)*50) + "vw;" + " bottom : " + String((props.coords.y + 0.995)*50) + "vh;" + ((isMobile) ? ' height:30%; width:100%;' : ' height:80%; width: 33%;'));
-  useEffect(() => {
-    styleStr = ("left : " + String((props.coords.x + 1)*50) + "vw;" + " bottom : " + String((props.coords.y + 0.995)*50) + "vh;");
-  }, [props.coords]);
-
-  return(
-    <div className = {props.showClass} Style = {styleStr}>
-      <h2 className = "storeTextTitle">{props.title}</h2>
-      {textItems}
-      {/* Add a reference to this object and get its position once it's rendered? */}
+  return (
+    <div className={props.showClass} Style={styleStr}>
+      <h2 className="storeTextTitle">{props.title}</h2>
+      {props.elems}
     </div>
-  )
-
+  );
 }
 
-export default StoreText
+export default StoreText;

@@ -22,6 +22,7 @@ function Admin(props) {
             {/* <h3>{props.image}</h3> */}
             <h3>{props.major}</h3>
             <h4>{props.minor}</h4>
+            <h4>{props.year}</h4>
           </div>
         </div>
 
