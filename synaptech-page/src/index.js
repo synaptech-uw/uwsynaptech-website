@@ -8,6 +8,7 @@ import OurTeamMobile from './pages/OurTeam_Mobile.js';
 import HomePageDesktop from './pages/Homepage_Desktop.js';
 import OurTeamDesktop from './pages/OurTeam_Desktop.js';
 import HowToJoin from './pages/HowToJoin.js';
+import ScrollIndicator from './Components/ScrollIndicator.js';
 // import ProjectsPageDesktop from './pages/Projects_Desktop';
 import { BrowserView, MobileView, isBrowser, isMobile } from 'react-device-detect';
 
@@ -35,6 +36,7 @@ export default function App() {
   return (
 
     <HashRouter>
+      <ScrollIndicator />
       <Routes path="/" element = {<Navbar /> }>
        { routeElems }
       </Routes>
