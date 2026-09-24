@@ -534,3 +534,24 @@ html::-webkit-scrollbar {
   background-color: rgba(47, 141, 218, 0.55);
   will-change: transform;
 }
+
+/* Blurb internal scrollbar (only appears when the content is taller than the screen allows),
+   styled to match the left-edge page scroll indicator. */
+.storeText {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(47, 141, 218, 0.55) rgba(47, 141, 218, 0.15);
+}
+
+.storeText::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+.storeText::-webkit-scrollbar-track {
+  background-color: rgba(47, 141, 218, 0.15);
+  border-radius: 0.25rem;
+}
+
+.storeText::-webkit-scrollbar-thumb {
+  background-color: rgba(47, 141, 218, 0.55);
+  border-radius: 0.25rem;
+}
