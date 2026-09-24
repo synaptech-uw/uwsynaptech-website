@@ -378,6 +378,7 @@ html::-webkit-scrollbar {
   height: fit-content;
   max-height: 85vh;
   overflow-y: auto;
+  overflow-wrap: anywhere;
   display:flex;
   flex-direction: column;
   /* width: 25rem; */
@@ -414,7 +415,6 @@ html::-webkit-scrollbar {
   display:flex;
   overflow: hidden;
   flex-direction: column;
-  right : 10vw;
   border-style:solid;
   border-color:rgb(255, 255, 162);
   border-width: 0;

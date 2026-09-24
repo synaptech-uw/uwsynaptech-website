@@ -258,18 +258,6 @@ function HomePageMobile() {
       {winArray[0]}
       <div Style="height: 40vh" role="separator" />
       <main className="Body">
-        <article className="BodyBox-Mobile"> {/* left: 12rem; right: 50vw; padding-right: 2rem; */}
-          <h2>
-            About us
-          </h2>
-          <div className="BodyText-Mobile">
-            <p>
-              We are Synaptech, UW's neuroengineering RSO. We help students of any major get into neurotech
-              through weekly meetings, student-led projects, and hardware you can borrow.
-            </p>
-          </div>
-        </article>
-
         <div Style="height: 20vh" role="separator" />
 
         <article className="BodyBox-Mobile">
