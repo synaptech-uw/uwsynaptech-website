@@ -270,7 +270,28 @@ function HomePageMobile() {
           </div>
         </article>
 
-        {/* Upcoming events section removed (out of date). A live calendar integration is planned. */}
+        <div Style="height: 20vh" role="separator" />
+
+        <article className="BodyBox-Mobile">
+          <h2>Current Projects</h2>
+          {/* Project listings go here. Keep the empty-state line when there's nothing to show. */}
+          <ul className="main-lists">
+            <li><em>New project teams are forming for the year - check the Discord for current project channels.</em></li>
+            <br />
+            <li><em>Propose or lead your own project <a href="https://forms.gle/Qh4PzJ3bxPdzfPYeA" id="formlink">here.</a></em></li>
+          </ul>
+        </article>
+
+        <div Style="height: 20vh" role="separator" />
+
+        <article className="BodyBox-Mobile">
+          <h2>Upcoming events</h2>
+          {/* Event listings go here (a live calendar integration is planned). */}
+          <ul className="main-lists">
+            <li><em>Nothing on the calendar just yet - follow our Discord and Instagram for announcements.</em></li>
+          </ul>
+        </article>
+
         <div Style="height: 20vh" role="separator" />
         {winArray[1]}
 
