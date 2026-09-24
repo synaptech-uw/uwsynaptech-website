@@ -1,7 +1,7 @@
 const arrToParaArr = (arr) => {
   let pArr = []
-  arr.forEach((e) => {
-    pArr.push((<p>{e}</p>))
+  arr.forEach((e, i) => {
+    pArr.push((<p key={i}>{e}</p>))
   })
   return pArr
 }

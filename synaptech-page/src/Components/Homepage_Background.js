@@ -72,6 +72,12 @@ class ThreeDBrain extends Component {
       if (sessionStorage.getItem("currThreshold")) {
          currThreshold = JSON.parse(sessionStorage.getItem("currThreshold"));
       }
+      // A saved threshold from an older page layout (with more sections) can point past the end
+      // of the current blurb list, so clamp it to a valid index.
+      const lastValid = this.props.blurb.length - 1;
+      if (!Number.isInteger(currThreshold) || currThreshold < 0 || currThreshold > lastValid) {
+        currThreshold = 0;
+      }
       this.setState({
         thresholdCounter : currThreshold,
         targetPOV : this.props.targets[currThreshold],
@@ -360,13 +366,15 @@ class ThreeDBrain extends Component {
 
   // Final render and defining HTML
   render() {
+      const currBlurb = this.state.currBlurb || ["", []];
+      const blurbXY = this.state.blurbXY || { x: -1, y: -1 };
       return(
         <>
           <div className = "ThreeScene" ref={ref => (this.el = ref)}>
             <div className = {(this.state.thresholdCounter %2 === 0 ) ? "blur-on" : "blur-off"}/>
           <StoreText showClass = {
               (this.state.drawLine) ? "storeText" : "storeText-hidden"
-            } title={this.state.currBlurb[0]} coords = {this.state.blurbXY} elems={this.state.currBlurb[1]}></StoreText>
+            } title={currBlurb[0]} coords = {blurbXY} elems={currBlurb[1]}></StoreText>
             {/* UNUSED DRAWLINE CODE REPURPOSE FOR LATER?? */}
           {/* { ( this.state.drawLine ) && <Link
             startX = { (this.state.width*this.state.blurbXY.x)/2 + this.state.width/2 }

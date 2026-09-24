@@ -1,66 +1,18 @@
 //import ThreeDBrain from "../Components/Homepage_Background";
-import ThreeDBrainBG from "../Components/OurTeam_Background";
 // import Carousel2 from "../Components/Carousel2";
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useScrollPosition from "../Components/useScrollPosition";
 import "../styles/Styles.css";
 import ThreeDBrain from "../Components/Homepage_Background";
-// import ThreeDBrainBG from "../Components/OurTeam_Background";
-//import Carousel2 from "../Components/Carousel2";
+// //import Carousel2 from "../Components/Carousel2";
 // import SetPageScroll from "../Components/SetPageScroll"
 
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";
 import Navbar from "../Components/Navbar.js";
-import UpcomingEvents from "../Components/UpcomingEvents.js";
 import { arrToParaArr } from "../utils";
-
-// This need to move to a config file soon
-// Will be refactor in the future
-const BLURB_CONTENT_CONFIG = [
-  {
-    id: 0,
-    blurbId: 0,
-    title: "About us",
-    content: [
-      "Synaptech is a neuroengineering focused RSO, welcome to any and all majors (no experience required!) We host weekly meetings on Friday evenings, usually focused on mini projects. Last fall (2023), we made “BioBinary” projects which involved collecting your own data using an EEG, preprocessing data, and training & deploying custom machine learning model to a web application. Sometimes, we have special events during our weekly meetings including guest speakers from research labs around campus! Outside of these meetings, we have various student-led project groups - ranging from eye-controlled cars and music generation from neural feedback!",
-    ],
-  },
-  {
-    id: 1,
-    blurbId: 2,
-    title: "Who are we?",
-    content: [
-      "The interdisciplinary nature of neurotechnology is mirrored by the diverse range of skills and majors of our members! We're a bunch of super passionate neuroscientists, programmers, and engineers!  The one thing we all have in common is enthusiasm and a desire to make cool stuff with brains and tech. If that's you, come join us! ",
-    ],
-  },
-  {
-    id: 2,
-    blurbId: 4,
-    title: "Hardware",
-    content: [
-      "Synaptech supplies students with hardware that they can use to collaborate on our group projects or work on personal projects. Hack your muscles with EMG or your brain with EEG! To check out any of our hardware, you can leave a comment in the Synaptech Discord or make a request at a general meeting. Our hardware manager, Harshil, is happy to help!",
-    ],
-  },
-  {
-    id: 3,
-    blurbId: 6,
-    title: "Want to sponsor us?",
-    content: [
-      "That's awesome! We'd love to chat - reach out to synaptechuw@gmail.com for more information.",
-    ],
-  },
-  {
-    id: 4,
-    blurbId: 8,
-    title: "Prospective members",
-    content: [
-      "Reach out to synaptechuw@gmail.com with your uw.edu email, and we will send you steps to join our community!",
-      "Our weekly meetings are beginner-friendly, and some of our projects are also accepting beginners! No application is required to join.",
-    ],
-  },
-];
+import { BLURB_CONTENT_CONFIG } from "../data/homepageBlurbs";
 
 const RAYCASTS_CONFIG = [
   { id: 0, x: 0.15, y: 0.05 },
@@ -68,28 +20,19 @@ const RAYCASTS_CONFIG = [
   { id: 4, x: -0.2, y: -0.03 },
   { id: 6, x: -0.15, y: 0 },
   { id: 8, x: -0.05, y: 0.2 },
-  { id: 10, x: 0, y: 0 },
 ];
 
+// y is a -1..1 screen coordinate for the blurb's bottom edge, staggered so the blurbs
+// don't all sit at the bottom of the screen (fixed values so every visitor sees the same layout).
 const BLURB_COORDS_CONFIG = [
-  { id: 0, x: -1, y: -1 },
-  { id: 2, x: -1, y: -1 },
-  { id: 4, x: -1, y: -1 },
-  { id: 6, x: -1, y: -1 },
+  { id: 0, x: -1, y: -0.4 },
+  { id: 2, x: -1, y: -0.9 },
+  { id: 4, x: -1, y: -0.15 },
+  { id: 6, x: -1, y: -0.65 },
   { id: 8, x: -1, y: -1 },
-  { id: 10, x: -1, y: -1 },
 ];
 
-//dateNum, dateMon, timeString, title, loc
-const eventsArray = [
-  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-  [12, "NOV", "11:00am - 8:00pm", "Neurahack", "CNT Room"],
-];
-
-const SIZE_THRESHOLD = 1064;
-const NUM_WINDOWS = 5;
+const NUM_WINDOWS = BLURB_CONTENT_CONFIG.length;
 
 const VECZ = 8;
 const VECZ2 = 3;
@@ -104,8 +47,6 @@ const TARGET_VECS_CONFIG = [
   { id: 6, x: 0, y: 0, z: VECZ },
   { id: 7, x: 1, y: 1, z: VECZ2 },
   { id: 8, x: 0, y: 0, z: VECZ },
-  { id: 9, x: -3, y: 3, z: 0 },
-  { id: 10, x: 0, y: 0, z: VECZ },
 ];
 
 function HomePageMobile() {
@@ -173,7 +114,7 @@ function HomePageMobile() {
       <BrainWindow
         setRefFunc={(ra) => refArray.push(ra)}
         title={BLURB_CONTENT_CONFIG[i].title}
-        content={BLURB_CONTENT_CONFIG[i].content}
+        content={BLURB_CONTENT_CONFIG[i].plainText || BLURB_CONTENT_CONFIG[i].content}
       />
     ); // Pass in the related blurb to this window, so we can add aria labels to it.
   }
@@ -323,23 +264,13 @@ function HomePageMobile() {
           </h2>
           <div className="BodyText-Mobile">
             <p>
-              We are Synaptech, a neuroengineering focused RSO here at the University of Washington with a goal to help students interested in neurotechnologies enter the field!
-            </p>
-            <p>
-              We are project-focused, hosting quarterly hackjams and competing in the NeurotechX nationwide competition, as well as providing support, hardware, and mentors for students working on their own neurotech projects!
+              We are Synaptech, UW's neuroengineering RSO. We help students of any major get into neurotech
+              through weekly meetings, student-led projects, and hardware you can borrow.
             </p>
           </div>
         </article>
 
-        <div Style="height: 20vh" role="separator" />
-
-        <article className="BodyBox-Mobile">
-          <h2> {/* left: 0; right: 0; position: absolute; */}
-            Upcoming events
-          </h2>
-          <UpcomingEvents nextEvents={eventsArray} />
-        </article>
-
+        {/* Upcoming events section removed (out of date). A live calendar integration is planned. */}
         <div Style="height: 20vh" role="separator" />
         {winArray[1]}
 
@@ -356,19 +287,6 @@ function HomePageMobile() {
         {winArray[2]}
 
         <div Style="height: 40vh" role="separator" />
-        <article className="BodyBox-Mobile"> {/* position: absolute; right:12rem; left : 50vw; padding-left: 2rem; */}
-        <h1 Style = "margin: 0  auto; padding: 0">Kicking off the 2023-2024 Year!</h1>
-            <p>
-              Synaptech excitedly started the school year with a bang during our Dawg Daze event, "Painting with Brainwaves!"
-              Students had the chance to learn about EEGs and transform their brainwave activity into fractal patterns or 
-              images, using a little big of neuroscience, data science, and programming. We met over a hundred interested students!
-              Super exciting to see all the interest in neurotech.       
-            </p>
-        </article>
-
-        <div className="BodyBox-Mobile"> {/* left:12rem; right: 50vw; padding-right:2rem; position: absolute; */}
-          <div role="img" aria-label="Multiple student groups working during NeuraHack 2022" Style={"position: relative; width:80vw; border-radius: 0.5rem; border: solid white 0.2rem; background-image: url('https://i.imgur.com/2UPavZu.jpg'); margin-left: 0rem; margin-right: 0rem; height: 50vh; background-size: cover; background-repeat: no-repeat;"} />  {/* position: absolute; right:0; */}
-        </div>
         {winArray[3]}
 
         <div Style="height: 40vh" role="separator" />
@@ -382,12 +300,13 @@ function HomePageMobile() {
                 </div> */}
             <img className="sponsor-image-large" src="../assets/CNTLogo.png" alt="logo for the University of Washington's Center for Neurotechnology" />
           </a>
+          <p className="sponsor-note" Style="text-align: center;">
+            Funded by the UW <a id="formlink" href="https://uwstf.org/">Student Technology Fee</a> (STF).
+          </p>
         </article>
 
         <div Style="height: 20vh" role="separator" />
       </main>
-
-      {winArray[4]}
 
       {/* <SetPageScroll pageName = "Homepage" pageScroll = {scrollPos} /> */}
 

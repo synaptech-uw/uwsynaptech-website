@@ -19,6 +19,9 @@ function Navbar(props) {
                     <Link className = "Navbar-Link" to = "/OurTeam">
                         OUR TEAM
                     </Link>
+                    <Link className = "Navbar-Link" to = "/HowToJoin">
+                        HOW TO JOIN
+                    </Link>
                     {/* <Link className = "Navbar-Link" to = "/Projects">
                         PROJECTS
                     </Link> */}
