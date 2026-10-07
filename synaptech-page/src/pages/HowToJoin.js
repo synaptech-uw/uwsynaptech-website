@@ -40,8 +40,8 @@ function HowToJoin() {
           projects are also accepting beginners.
         </p>
         <p>
-          We meet on Friday evenings during the school year. Join our Discord for meeting times, announcements,
-          and project channels, and follow us on Instagram and LinkedIn to keep up with events.
+          We meet Thursdays 6:30-7:30 pm in Gould Hall (GLD) 435 during the school year. Join our Discord for
+          announcements and project channels, and follow us on Instagram and LinkedIn to keep up with events.
         </p>
       </main>
 

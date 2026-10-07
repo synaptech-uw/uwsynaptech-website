@@ -258,19 +258,28 @@ function HomePageMobile() {
       {winArray[0]}
       <div Style="height: 40vh" role="separator" />
       <main className="Body">
-        <article className="BodyBox-Mobile"> {/* left: 12rem; right: 50vw; padding-right: 2rem; */}
-          <h2>
-            About us
-          </h2>
-          <div className="BodyText-Mobile">
-            <p>
-              We are Synaptech, UW's neuroengineering RSO. We help students of any major get into neurotech
-              through weekly meetings, student-led projects, and hardware you can borrow.
-            </p>
-          </div>
+        <div Style="height: 20vh" role="separator" />
+
+        <article className="BodyBox-Mobile">
+          <h2>Current Projects</h2>
+          {/* Project listings go here. Keep the empty-state line when there's nothing to show. */}
+          <ul className="main-lists">
+            <li><em>New project teams are forming for the year - check the Discord for current project channels.</em></li>
+            <br />
+            <li><em>Propose or lead your own project <a href="https://forms.gle/Qh4PzJ3bxPdzfPYeA" id="formlink">here.</a></em></li>
+          </ul>
         </article>
 
-        {/* Upcoming events section removed (out of date). A live calendar integration is planned. */}
+        <div Style="height: 20vh" role="separator" />
+
+        <article className="BodyBox-Mobile">
+          <h2>Upcoming events</h2>
+          {/* Event listings go here (a live calendar integration is planned). */}
+          <ul className="main-lists">
+            <li><em>Nothing on the calendar just yet - follow our Discord and Instagram for announcements.</em></li>
+          </ul>
+        </article>
+
         <div Style="height: 20vh" role="separator" />
         {winArray[1]}
 
