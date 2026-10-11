@@ -11,6 +11,7 @@ import ThreeDBrain from "../Components/Homepage_Background";
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";
 import Navbar from "../Components/Navbar.js";
+import UpcomingEvents from "../Components/UpcomingEvents.js";
 import { arrToParaArr } from "../utils";
 import { BLURB_CONTENT_CONFIG } from "../data/homepageBlurbs";
 
@@ -274,10 +275,7 @@ function HomePageMobile() {
 
         <article className="BodyBox-Mobile">
           <h2>Upcoming events</h2>
-          {/* Event listings go here (a live calendar integration is planned). */}
-          <ul className="main-lists">
-            <li><em>Nothing on the calendar just yet - follow our Discord and Instagram for announcements.</em></li>
-          </ul>
+          <UpcomingEvents />
         </article>
 
         <div Style="height: 20vh" role="separator" />

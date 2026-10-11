@@ -555,3 +555,26 @@ html::-webkit-scrollbar {
   background-color: rgba(47, 141, 218, 0.55);
   border-radius: 0.25rem;
 }
+
+/* Embedded Google Calendar in the Upcoming events section (Components/UpcomingEvents.js) */
+.events-calendar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events-calendar-frame {
+  width: 100%;
+  height: 24rem;
+  border: 0.1rem solid rgba(47, 141, 218, 0.4);
+  border-radius: 0.5rem;
+  background-color: #031A2F;
+}
+
+.events-calendar-note {
+  text-indent: 0;
+  text-align: center;
+  font-size: 0.9rem;
+  padding-top: 0.5rem;
+}
