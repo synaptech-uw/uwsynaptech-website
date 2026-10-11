@@ -8,7 +8,7 @@ export const BLURB_CONTENT_CONFIG = [
     blurbId: 0,
     title: "About us",
     content: [
-      "Synaptech is UW's neuroengineering RSO, open to all majors - no experience required! We meet on Friday evenings for hands-on mini projects and guest speakers from labs around campus. Outside of meetings, student-led project groups build everything from EEG-adaptive focus timers to BCI-controlled exo-arms.",
+      "Synaptech is UW's neuroengineering RSO, open to all majors - no experience required! We meet Thursdays 6:30-7:30 pm in Gould Hall (GLD) 435 for hands-on mini projects and guest speakers from labs around campus. Outside of meetings, student-led project groups build everything from EEG-adaptive focus timers to BCI-controlled exo-arms.",
     ],
   },
   {

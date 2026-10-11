@@ -9,6 +9,7 @@ import ThreeDBrain from "../Components/Homepage_Background";
 import { Vector3 } from "three";
 import BrainWindow from "../Components/Homepage_Background_Window";
 import Navbar from "../Components/Navbar.js";
+import UpcomingEvents from "../Components/UpcomingEvents.js";
 import { arrToParaArr } from "../utils";
 import { BLURB_CONTENT_CONFIG } from "../data/homepageBlurbs";
 
@@ -252,7 +253,41 @@ function HomePageDesktop() {
       <main>
         {/* <div role="separator" Style = "height: 40vh" /> */}
         {winArray[0]}
-        {/* Projects / upcoming events section removed (out of date). A live calendar integration is planned. */}
+        <div Style="height: 20vh" role="separator" />
+        <section
+          className={
+            window.innerWidth > SIZE_THRESHOLD ? "Body-cols" : "Body-rows"
+          }
+        >
+          <article
+            className={
+              window.innerWidth > SIZE_THRESHOLD
+                ? "BodyBox-Left"
+                : "BodyBox-Mobile"
+            }
+          >
+            <h1 Style="text-align: center; margin: 0 auto"> 🚧</h1>
+            <h2 Style="text-align: center;">Current Projects</h2>
+            {/* Project listings go here. Keep the empty-state line when there's nothing to show. */}
+            <ul className="main-lists">
+              <li><em>New project teams are forming for the year - check the Discord for current project channels.</em></li>
+              <br />
+              <li><em>Propose or lead your own project <a href="https://forms.gle/Qh4PzJ3bxPdzfPYeA" id="formlink">here.</a></em></li>
+            </ul>
+          </article>
+          <article
+            className={
+              window.innerWidth > SIZE_THRESHOLD
+                ? "BodyBox-Right"
+                : "BodyBox-Mobile"
+            }
+          >
+            <h1 Style="text-align: center; margin: 0 auto"> 🕓</h1>
+            <h2 Style="text-align: center;">Upcoming events</h2>
+            <UpcomingEvents />
+          </article>
+        </section>
+
         <div Style="height: 30vh" role="separator" />
         {winArray[1]}
         {/* <div className={"Body"} Style = {"flex-direction: row; left: 0; right: 0;"}>
