@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.fb14c5ce.css",
-    "main.js": "/static/js/main.78aa928f.js",
+    "main.css": "/static/css/main.6ba9cf8a.css",
+    "main.js": "/static/js/main.8c67f941.js",
     "static/media/dark_synaptech_logo_transparent.png": "/static/media/dark_synaptech_logo_transparent.ed55cec1a165722abd63.png",
     "index.html": "/index.html",
-    "main.fb14c5ce.css.map": "/static/css/main.fb14c5ce.css.map",
-    "main.78aa928f.js.map": "/static/js/main.78aa928f.js.map"
+    "main.6ba9cf8a.css.map": "/static/css/main.6ba9cf8a.css.map",
+    "main.8c67f941.js.map": "/static/js/main.8c67f941.js.map"
   },
   "entrypoints": [
-    "static/css/main.fb14c5ce.css",
-    "static/js/main.78aa928f.js"
+    "static/css/main.6ba9cf8a.css",
+    "static/js/main.8c67f941.js"
   ]
 }
